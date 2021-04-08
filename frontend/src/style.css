@@ -1,0 +1,143 @@
+.navImagen{
+    width: 20vw;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.videoHero{
+    /* position: absolute; */
+    width: 100%;
+    /* left: 50%;
+    top: 50%; */
+    height: 100%;
+    /* object-fit: cover; */
+    /* transform: translate(-50%,-50%); */
+    /* z-index: -1; */
+}
+.logo{
+    height: 10vh;
+    width: 10vw;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.contenedorLogoNombre{
+    display: flex;
+    align-items: center;
+}
+
+.contenedorLogoNombre p{
+    color: white;
+    font-size: xx-large;
+}
+
+.containerHero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+
+}
+
+.containerTexto{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.containerTexto h1, p.citiesCallToAction{
+    font-size: 10em;
+    font-family: 'Varela Round', sans-serif;
+}
+
+p.citiesCallToAction{
+    font-size: 5em;
+    text-decoration: none;
+    color: black;
+}
+
+.mainCallToAction{
+    display: flex;
+    justify-content: center;
+    padding: 2em 0px;
+}
+
+.divCallToAction{
+    width: 80%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divCallToAction p{
+    font-size: 4em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.divLogoCallToAction{
+    width: 17vw;
+    height: 32vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* padding-right: 1em; */
+   
+}
+
+.buttonCalToAction{
+    display: flex;
+    align-items: center;
+    background: none;
+    
+    /* border-radius:; */
+    align-self: flex-start;
+    margin-left: 2vw;
+}
+
+.containerCarrousel h2{
+    color: white;
+    text-align: center;
+    padding: 1em 0px;
+}
+
+.slideCarrousel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.slideCity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.521);
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 30vw;
+    height: 40vh;
+}
+
+.slideCity:hover {
+    transform: scale(1.03);
+}
+
+.slideCity h3 {
+    background-color: rgba(0, 0, 0, 0.562);
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 2vh 0;
+}
