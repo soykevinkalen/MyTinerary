@@ -3,7 +3,6 @@ import Nav from 'react-bootstrap/Nav'
 import Dropdown from 'react-bootstrap/Dropdown'
 import React from 'react'
 import HomeIcon from '@material-ui/icons/Home'
-import PersonIcon from '@material-ui/icons/Person'
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff'
 
 
@@ -17,14 +16,13 @@ const Header = () =>{
                         <Dropdown className='d-flex'>
                         <Dropdown.Toggle as={Nav.Link}>
                             <div className='usuario' style={{backgroundImage:'url("../assets/usuario.png")'}}></div>
-                            {/* <PersonIcon fontSize="large" /> */}
                         </Dropdown.Toggle>
                         <Dropdown.Menu className='bg-dark'>
                             <Dropdown.Item className='bg-dark'>
-                                <Nav.Link className='bg-dark' href="#">Sing In</Nav.Link>
+                               <span style={{color:'white'}}>Sing In</span>
                             </Dropdown.Item>
                             <Dropdown.Item className='bg-dark'>
-                                <Nav.Link className='bg-dark' href="#">Sing Up</Nav.Link>
+                               <span style={{color:'white'}}>Sing Up</span>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                         </Dropdown>

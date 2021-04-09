@@ -5,24 +5,26 @@
     background-position: center;
 }
 
-.videoHero{
+/* .videoHero{ */
     /* position: absolute; */
-    width: 100%;
+    /* width: 100%; */
     /* left: 50%;
     top: 50%; */
-    height: 100%;
+    /* height: 100%; */
     /* object-fit: cover; */
     /* transform: translate(-50%,-50%); */
     /* z-index: -1; */
-}
-.logo{
+/* } */
+
+
+/* .logo{
     height: 10vh;
     width: 10vw;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-}
-.contenedorLogoNombre{
+} */
+/* .contenedorLogoNombre{
     display: flex;
     align-items: center;
 }
@@ -30,13 +32,13 @@
 .contenedorLogoNombre p{
     color: white;
     font-size: xx-large;
-}
+} */
 
 .containerHero{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 90vh;
+    min-height: 100vh;
 
 }
 
@@ -59,7 +61,6 @@
 }
 
 p.citiesCallToAction{
-    /* font-size: vw; */
     text-decoration: none;
     color: black;
 }
@@ -74,19 +75,18 @@ p.citiesCallToAction{
 
 .divCallToAction{
     min-width: 80%;
-    height: 50vh;
-    background-position: center center;
-    background-size: cover;
-    /* background-attachment: fixed; */
+    min-height: 50vh;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover; 
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .divCallToAction p{
     font-size: 5vw;
-    /* padding-bottom: 0;
-    margin-bottom: 0; */
     font-weight: bold;
     text-decoration: none;
 }
@@ -95,21 +95,11 @@ p.citiesCallToAction{
     color: black;
     min-width: 15vw;
     min-height: 20vh;
-    /* min-width: 100%;
-    min-height: 100%; */
-    /* background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat; */
-    /* padding-right: 1em; */
 }
 
 .buttonCallToAction{
     display: flex;
     align-items: center;
-    /* background: none; */
-    /* max-width: 30%;
-    max-height: 80%; */
-    /* border-radius:; */
     align-self: flex-start;
     margin-left: 2vw;
     border:1px solid black;
@@ -158,12 +148,16 @@ p.citiesCallToAction{
     width: 100%;
     text-align: center;
     padding: 2vh 0;
+    font-size: 3vw;
 }
 
 footer.footer{
     padding-top: 2em;
     min-height: 40vh;
     background-color: #343a40;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 header.styleFooter{
@@ -177,14 +171,13 @@ footer.footer header.styleFooter{
 div ul.ul-fb li{
     display: block;
     margin: 0 0.5vw;
-    width: 4vw;
-    height: 4vw;
+    min-width: 4vw;
+    min-height: 4vh;
     text-align: center;
 }
 
 div ul.ul-fb li a{
     display: block;
-    /* padding: 0 10px; */
     color: #fff;
     line-height: 4vw;
     font-size: 1.5vw;
@@ -216,6 +209,7 @@ footer div.container{
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 50%;
 }
 
 footer div.container h2{
@@ -228,7 +222,7 @@ footer div.container h2{
 }
 
 .gitHub{
-    background: local;
+    background: black;
 }
 
 .usuario{
@@ -237,4 +231,120 @@ footer div.container h2{
     background-size: cover;
     border-radius: 100%;
     background-position: 50%;
+}
+
+.redesSociales{
+    font-size: 4vw!important;
+}
+
+@media (max-width: 800px) {
+    footer div.container h2{
+        color: white;
+        font-size: 7vw;
+        transition: all 2s;
+    
+    }
+    div ul.ul-fb{
+        width: 50%;
+        transition: all 2s;
+    
+    }
+    div ul.ul-fb li{
+        min-width: auto;
+        min-height: auto;
+        transition: all 2s;
+    
+    }
+    .redesSociales{
+        font-size: 10vw!important;
+        transition: all 2s;
+    }
+    .container{
+        padding-top: 5vw;
+        transition: all 2s;
+    }
+
+    .containerCarrousel{
+        margin-top: 2em;
+        transition: all 2s;
+
+    }
+    .containerTexto h1{
+        font-size: 12vw;
+        transition: all 2s;
+
+    }
+    .containerTexto h2{
+        font-size: 2.5vw;
+        transition: all 2s;
+
+    }
+    .buttonCallToAction{
+        align-self:center;
+        width: 80%;
+        height: 30%;
+        justify-content: space-around;
+        align-items: center;
+        transition: all 2s;
+
+
+    }
+    .buttonCallToAction p{
+        margin: 0;
+        transition: all 2s;
+
+    }
+    .divCallToAction{
+        justify-content: space-around;
+        transition: all 2s;
+
+    }
+    .divCallToAction p{
+        font-size: 6vw;
+        transition: all 2s;
+
+    }
+}
+
+@media (max-width: 500px){
+    .slideCity h3{
+        font-size: 5vw;
+        transition: all 2s;
+        
+    }
+    .buttonCallToAction{
+        height: 20%;
+        transition: all 2s;
+    }
+}
+
+@media (max-width: 360px){
+    .slideCity{
+        min-width: 100%;
+        transition: all 2s;
+    }
+    .slideCarrousel {
+        min-width: 80%;
+        transition: all 2s;
+    }
+    .buttonCallToAction{
+        max-height: 10vh;
+        max-width: 45vw;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em;
+        transition: all 2s;
+    }
+    .containerCarrousel{
+        margin-top: 2em;
+        transition: all 2s;
+    }
+    .containerTexto h1{
+        font-size: 12vw;
+        transition: all 2s;
+    }
+    .containerTexto h2{
+        font-size: 2.5vw;
+        transition: all 2s;
+    }
 }

@@ -12,9 +12,9 @@ const Footer = () =>{
             <div className="container">
                 <h2>Redes sociales</h2>
                 <ul className="ul-fb d-flex justify-content-center">
-                    <li><NavLink to="" className="facebook"><FacebookIcon fontSize="large" /></NavLink></li>
-                    <li><NavLink to="" className="instagram text-center"><InstagramIcon fontSize="large"/></NavLink></li>
-                    <li><NavLink to="" className="instagram text-center gitHub"><GitHubIcon fontSize="large"/></NavLink></li>
+                    <li><NavLink to="" className="facebook"><FacebookIcon className="redesSociales" style={{fontSize:"5vw"}} /></NavLink></li>
+                    <li><NavLink to="" className="instagram text-center"><InstagramIcon className="redesSociales" style={{fontSize:"5vw"}}/></NavLink></li>
+                    <li><NavLink to="" className="instagram text-center gitHub"><GitHubIcon className="redesSociales" style={{fontSize:"5vw"}}/></NavLink></li>
                 </ul>
             </div>
         </footer>

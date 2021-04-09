@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Carousel from 'react-elastic-carousel';
-// import Carousel from 'react-bootstrap/Carousel'
 import Slides from './Slides';
 
 class Carrousel extends Component {
@@ -28,7 +27,7 @@ class Carrousel extends Component {
       return (
         <div className='containerCarrousel bg-dark' >
             <h2>Popular MYtineraries</h2>
-            <Carousel enableAutoPlay={true}>
+            <Carousel enableAutoPlay={true} autoPlaySpeed={4000}>
                 {
                    items.map((item, id) => {
                         return (
