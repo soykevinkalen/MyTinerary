@@ -2,19 +2,22 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Dropdown from 'react-bootstrap/Dropdown'
 import React from 'react'
+import HomeIcon from '@material-ui/icons/Home'
+import PersonIcon from '@material-ui/icons/Person'
+import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff'
+
 
 const Header = () =>{
     return(
-        <header>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <header className='styleFooter'>
+            <Navbar collapseOnSelect expand="lg" variant="dark" className='styleFooter'>
                 <Navbar.Toggle className="mx-4" aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto w-100 d-flex justify-content-between px-4v align-items-center">
-                        <Dropdown>
+                        <Dropdown className='d-flex'>
                         <Dropdown.Toggle as={Nav.Link}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16">
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                        </svg>
+                            <div className='usuario' style={{backgroundImage:'url("../assets/usuario.png")'}}></div>
+                            {/* <PersonIcon fontSize="large" /> */}
                         </Dropdown.Toggle>
                         <Dropdown.Menu className='bg-dark'>
                             <Dropdown.Item className='bg-dark'>
@@ -29,9 +32,9 @@ const Header = () =>{
                             <div className='logo' style={{backgroundImage:'url("./assets/logo-circle.png")'}}></div>
                             <p>MyTinerary</p>
                         </div> */}
-                        <Nav className="d-flex">
-                            <Nav.Link href="/">&#127969; Home</Nav.Link>
-                            <Nav.Link href="/Cities">&#9992; Cities</Nav.Link>
+                        <Nav className="d-flex justify-content-center align-items-center">
+                            <Nav.Link href="/"><HomeIcon fontSize="large" /> Home</Nav.Link>
+                            <Nav.Link href="/Cities"><FlightTakeoffIcon fontSize="large"/> Cities</Nav.Link>
                         </Nav>
                     </Nav>
                 </Navbar.Collapse>

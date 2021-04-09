@@ -49,63 +49,79 @@
 }
 
 .containerTexto h1, p.citiesCallToAction{
-    font-size: 10em;
+    font-size: 10vw;
     font-family: 'Varela Round', sans-serif;
 }
 
+.containerTexto h2{
+    padding: 1vh 1vw;
+    font-size: 2vw;
+}
+
 p.citiesCallToAction{
-    font-size: 5em;
+    /* font-size: vw; */
     text-decoration: none;
     color: black;
 }
 
 .mainCallToAction{
+    max-width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
-    padding: 2em 0px;
+    padding: 2vw 0px;
 }
 
 .divCallToAction{
-    width: 80%;
+    min-width: 80%;
     height: 50vh;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
+    /* background-attachment: fixed; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .divCallToAction p{
-    font-size: 4em;
-    padding-bottom: 0;
-    margin-bottom: 0;
+    font-size: 5vw;
+    /* padding-bottom: 0;
+    margin-bottom: 0; */
     font-weight: bold;
+    text-decoration: none;
 }
 
 .divLogoCallToAction{
-    width: 17vw;
-    height: 32vh;
-    background-position: center;
+    color: black;
+    min-width: 15vw;
+    min-height: 20vh;
+    /* min-width: 100%;
+    min-height: 100%; */
+    /* background-position: center center;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     /* padding-right: 1em; */
-   
 }
 
-.buttonCalToAction{
+.buttonCallToAction{
     display: flex;
     align-items: center;
-    background: none;
-    
+    /* background: none; */
+    /* max-width: 30%;
+    max-height: 80%; */
     /* border-radius:; */
     align-self: flex-start;
     margin-left: 2vw;
+    border:1px solid black;
+    padding-right: 1rem;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.521);
+    text-decoration: none;
 }
 
 .containerCarrousel h2{
     color: white;
     text-align: center;
-    padding: 1em 0px;
+    padding: 1vw 0px;
 }
 
 .slideCarrousel {
@@ -130,8 +146,10 @@ p.citiesCallToAction{
     height: 40vh;
 }
 
-.slideCity:hover {
+.slideCity:hover, .buttonCallToAction:hover {
     transform: scale(1.03);
+    text-decoration: none;
+
 }
 
 .slideCity h3 {
@@ -140,4 +158,83 @@ p.citiesCallToAction{
     width: 100%;
     text-align: center;
     padding: 2vh 0;
+}
+
+footer.footer{
+    padding-top: 2em;
+    min-height: 40vh;
+    background-color: #343a40;
+}
+
+header.styleFooter{
+    background: #343a40;
+}
+
+footer.footer header.styleFooter{
+    background-color: #491b2559;
+}
+
+div ul.ul-fb li{
+    display: block;
+    margin: 0 0.5vw;
+    width: 4vw;
+    height: 4vw;
+    text-align: center;
+}
+
+div ul.ul-fb li a{
+    display: block;
+    /* padding: 0 10px; */
+    color: #fff;
+    line-height: 4vw;
+    font-size: 1.5vw;
+    transition: .2s;
+}
+
+div ul.ul-fb li a:hover{
+    transform: translateY(-3px) scale(1.05);
+}
+
+footer nav,div ul.ul-fb{
+    padding: 0;
+}
+
+.facebook{
+    background: #0572e6;
+}
+
+.instagram{
+    background: #f09433; 
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+
+}
+
+footer div.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer div.container h2{
+    color: white;
+    font-size: 2.5vw;
+}
+
+#root{
+    background-color: #343a40;
+}
+
+.gitHub{
+    background: local;
+}
+
+.usuario{
+    width: 2.5em;
+    height: 2.5em;
+    background-size: cover;
+    border-radius: 100%;
+    background-position: 50%;
 }
