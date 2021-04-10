@@ -26,10 +26,6 @@ const Header = () =>{
                             </Dropdown.Item>
                         </Dropdown.Menu>
                         </Dropdown>
-                        {/* <div className='contenedorLogoNombre'>
-                            <div className='logo' style={{backgroundImage:'url("./assets/logo-circle.png")'}}></div>
-                            <p>MyTinerary</p>
-                        </div> */}
                         <Nav className="d-flex justify-content-center align-items-center">
                             <Nav.Link href="/"><HomeIcon fontSize="large" /> Home</Nav.Link>
                             <Nav.Link href="/Cities"><FlightTakeoffIcon fontSize="large"/> Cities</Nav.Link>

@@ -1,17 +1,13 @@
 import React from 'react'
-// import Slide from './Slide'
-// import Slide from "./Slide";
-// import { v4 as uuidv4 } from 'uuid';
 
-
-const Slides = ({item}) => {
+const Slides = ({ciudades}) => {
     return (
         <div className="slideCarrousel">
             {
-                item.map(foto =>{
+                ciudades.map(ciudad =>{
                     return(
-                        <div key={foto.title} className='slideCity' style={{backgroundImage:`url(${foto.src})`}}>
-                            <h3>{foto.title}</h3>
+                        <div key={ciudad.title} className='slideCity' style={{backgroundImage:`url(${ciudad.src})`}}>
+                            <h3>{ciudad.title}</h3>
                         </div>
                     )
                 })
