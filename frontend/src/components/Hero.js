@@ -1,13 +1,16 @@
 import React from 'react'
 import Carousel from 'react-elastic-carousel'
-
+import Slide from './Slide'
 const Hero = ({gruposDeCiudades}) =>{
     const ciudades = gruposDeCiudades[Math.floor(Math.random()*gruposDeCiudades.length)];
 
     return(
         <div className='containerHero bg-dark'>
-            <Carousel enableAutoPlay={true} autoPlaySpeed={7000}>
-                {ciudades.map(ciudad => <div className='carouselHero' key={'h'+ciudad.title} style={{backgroundImage:`url(${ciudad.src})`}}><h4>{ciudad.title}</h4></div>)}
+            <Carousel enableAutoPlay={true} autoPlaySpeed={10000}>
+            {ciudades.map(ciudad =>{ 
+                return(
+                    <Slide ciudad={ciudad} clase={'carouselHero'} key={'h'+ciudad.title}/>
+                )})}
             </Carousel>
             <div className='containerTexto'>
                 <h1>MyTinerary</h1>

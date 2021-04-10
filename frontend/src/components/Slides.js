@@ -1,14 +1,12 @@
 import React from 'react'
-
+import Slide from './Slide'
 const Slides = ({ciudades}) => {
     return (
         <div className="slideCarrousel">
             {
                 ciudades.map(ciudad =>{
                     return(
-                        <div key={ciudad.title} className='slideCity' style={{backgroundImage:`url(${ciudad.src})`}}>
-                            <h3>{ciudad.title}</h3>
-                        </div>
+                        <Slide ciudad={ciudad} clase={'slideCity'} key={'s'+ciudad.title}/>
                     )
                 })
             }
