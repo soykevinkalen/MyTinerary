@@ -155,6 +155,7 @@ footer.footer{
 
 header.styleFooter{
     background: #343a40;
+    margin: 0 5%;
 }
 
 footer.footer header.styleFooter{
@@ -164,17 +165,15 @@ footer.footer header.styleFooter{
 div ul.ul-fb li{
     display: block;
     margin: 0 0.5vw;
-    min-width: 4vw;
-    min-height: 4vh;
     text-align: center;
 }
 
 div ul.ul-fb li button{
     display: block;
     color: #fff;
-    line-height: 4vw;
-    font-size: 1.5vw;
     transition: .2s;
+    border: 0;
+    border-radius: 10px;
 }
 
 div ul.ul-fb li button:hover{
@@ -202,12 +201,12 @@ footer div.containerSocial{
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* min-width: 50%; */
+    margin-right: 2.5em;
 }
 
 footer div.containerSocial h2{
     color: white;
-    font-size: 2.5vw;
+    font-size: 2vw;
 }
 
 #root{
@@ -223,66 +222,90 @@ footer div.containerSocial h2{
     height: 2.5em;
     background-size: cover;
     border-radius: 100%;
-    background-position: 50%;
+    background-position: center;
 }
 
 .redesSociales{
-    font-size: 4vw!important;
+    font-size: 2vw!important;
 }
 
 .deepFooter{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content:space-between;
     color: white;
+    padding: .5rem 1rem;
+}
+.location{
+    width: 30%;
 }
 .location h4{
-    font-size: 2vw;
+    font-size: 1.5vw;
     text-align: center;
 }
 
-@media (max-width: 800px) {
-    footer div.containerSocial h2{
-        color: white;
-        font-size: 7vw;
-        transition: all 2s;
-    
+.logo-avion{
+    font-size: 6vw!important;
+    margin-right: 0.2em;
+}
+
+.logoHeader{
+    display: flex;
+    width: 30%;
+    align-items: center;
+}
+
+.logoHeader h2,.logoFooter h2{
+    color: white;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 3vw;
+    margin: 0;
+}
+
+.logoHeader .logoGral{
+    font-size: 5vw!important;
+    color: #7198b5;
+    margin-right: 15px;
+}
+
+.logoFooter{
+    display: flex;
+    align-items: center;
+}
+
+
+@media (max-width: 800px) {    
+    footer div.containerSocial{
+        margin: 0;
     }
     div ul.ul-fb{
         width: 50%;
         transition: all 2s;
-    
     }
     div ul.ul-fb li{
         min-width: auto;
         min-height: auto;
         transition: all 2s;
-    
     }
     .redesSociales{
-        font-size: 10vw!important;
+        font-size: 4vw!important;
         transition: all 2s;
     }
     .containerSocial{
         padding-top: 5vw;
         transition: all 2s;
     }
-
     .containerCarrousel{
         margin-top: 2em;
         transition: all 2s;
-
     }
-    
     .containerTexto h1{
         font-size: 12vw;
         transition: all 2s;
-
     }
     .containerTexto h2{
         font-size: 2.5vw;
         transition: all 2s;
-
     }
     .buttonCallToAction{
         align-self:center;
@@ -291,23 +314,53 @@ footer div.containerSocial h2{
         justify-content: space-around;
         align-items: center;
         transition: all 2s;
-
-
     }
     .buttonCallToAction p{
         margin: 0;
         transition: all 2s;
-
     }
     .divCallToAction{
         justify-content: space-around;
         transition: all 2s;
-
     }
     .divCallToAction p{
         font-size: 6vw;
         transition: all 2s;
+    }
+    .redesSociales{
+        font-size: 5vw!important;
+        transition: all 2s;
+    }
+    .logoFooter{
+        flex-direction: column;
+    }
+    .logo-avion{
+        font-size: 12vw!important;
+    }
+    .logoFooter h2{
+        font-size: 5vw;
+    }
+    footer div.containerSocial h2{
+        color: white;
+        font-size: 5vw;
+        transition: all 2s;
+    }
+    .location h4{
+        font-size: 3.5vw;
+    }
+    .logoHeader h2{
+        font-size: 5vw!important;
+        margin-right: 10px;
+    }
+    
+    .logoHeader .logoGral{
+        font-size: 10vw!important;
+    }
+}
 
+@media (max-width: 320px){
+    .navbar{
+        padding:0.5em 0px!important;
     }
 }
 
@@ -321,6 +374,42 @@ footer div.containerSocial h2{
         height: 20%;
         transition: all 2s;
     }
+    .redesSociales{
+        font-size: 5vw!important;
+        transition: all 2s;
+    }
+    .logo-avion{
+        font-size: 15vw!important;
+    }
+    footer div.containerSocial h2{
+        color: white;
+        font-size: 5vw;
+        transition: all 2s;
+    }
+    .location h4{
+        font-size: 3.5vw;
+        transition: all 2s;
+    }
+    .logoHeader h2{
+        font-size: 5vw!important;
+        margin-right: 10px;
+    }
+    
+    .logoHeader .logoGral{
+        font-size: 10vw!important;
+    }
+
+}
+
+@media (max-width: 375px){
+    .slideCity{
+        min-width: 100%;
+        transition: all 2s;
+    }
+    .slideCarrousel {
+        min-width: 100%;
+        transition: all 2s;
+    }
 }
 
 @media (max-width: 360px){
@@ -329,7 +418,7 @@ footer div.containerSocial h2{
         transition: all 2s;
     }
     .slideCarrousel {
-        min-width: 80%;
+        min-width: 100%;
         transition: all 2s;
     }
     .buttonCallToAction{
@@ -352,4 +441,32 @@ footer div.containerSocial h2{
         font-size: 2.5vw;
         transition: all 2s;
     }
+    .redesSociales{
+        font-size: 5vw!important;
+        transition: all 2s;
+    }
+    .logo-avion{
+        font-size: 15vw!important;
+    }
+    footer div.containerSocial h2{
+        color: white;
+        font-size: 5vw;
+        transition: all 2s;
+    }
+    .location h4{
+        font-size: 3.5vw;
+    }
+
+    .logoHeader h2{
+        font-size: 5vw!important;
+        margin-right: 10px;
+    }
+    
+    .logoHeader .logoGral{
+        font-size: 10vw!important;
+    }
+}
+
+.navBarCollapse{
+    z-index: 10!important;
 }

@@ -10,11 +10,15 @@ const Header = () =>{
     return(
         <header className='styleFooter'>
             <Navbar collapseOnSelect expand="lg" variant="dark" className='styleFooter'>
-                <Navbar.Toggle className="mx-4" aria-controls="responsive-navbar-nav" />
+                <div className='logoHeader'>
+                    <FlightTakeoffIcon className='logoGral'/>
+                    <h2>MyTinerary</h2>
+                </div>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto w-100 d-flex justify-content-between px-4v align-items-center">
-                        <Dropdown className='d-flex'>
-                        <Dropdown.Toggle as={Nav.Link}>
+                    <Nav className="mr-auto w-100 d-flex justify-content-end px-4v align-items-center">
+                        <Dropdown>
+                        <Dropdown.Toggle as={Nav.Link} className='d-flex justify-content-center'>
                             <div className='usuario' style={{backgroundImage:'url("../assets/usuario.png")'}}></div>
                         </Dropdown.Toggle>
                         <Dropdown.Menu className='bg-dark'>
@@ -26,6 +30,7 @@ const Header = () =>{
                             </Dropdown.Item>
                         </Dropdown.Menu>
                         </Dropdown>
+                        
                         <Nav className="d-flex justify-content-center align-items-center">
                             <Nav.Link href="/"><HomeIcon fontSize="large" /> Home</Nav.Link>
                             <Nav.Link href="/Cities"><FlightTakeoffIcon fontSize="large"/> Cities</Nav.Link>
