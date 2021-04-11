@@ -22,8 +22,8 @@ const Footer = () =>{
                 <div className="containerSocial">
                     <h2>Social media</h2>
                     <ul className="ul-fb d-flex justify-content-center">
-                        <li><button onClick={ (e) => { e.preventDefault(); handleRedirect('https://www.facebook.com/Mejores-Viajes-1499652030265629')}} className="facebook"><FacebookIcon className="redesSociales"  /></button></li>
-                        <li><button onClick={ (e) => { e.preventDefault(); handleRedirect('https://www.instagram.com/mejoresviajesok/')}} className="instagram text-center"><InstagramIcon className="redesSociales" /></button></li>
+                        <li><button onClick={ (e) => { e.preventDefault(); handleRedirect('https://www.facebook.com/TravelCentreUK/')}} className="facebook"><FacebookIcon className="redesSociales"  /></button></li>
+                        <li><button onClick={ (e) => { e.preventDefault(); handleRedirect('https://www.instagram.com/travelcenteruk/')}} className="instagram text-center"><InstagramIcon className="redesSociales" /></button></li>
                         <li><button onClick={ (e) => { e.preventDefault(); handleRedirect('https://github.com/soykevinkalen')}} className="text-center  gitHub"><GitHubIcon className="redesSociales" style={{color:'white'}}/></button></li>
                     </ul>
                 </div>
