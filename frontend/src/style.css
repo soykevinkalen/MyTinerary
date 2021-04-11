@@ -162,6 +162,10 @@ footer.footer header.styleFooter{
     background-color: #491b2559;
 }
 
+footer.footer header.styleFooter .dropdown{
+    display: none;
+}
+
 div ul.ul-fb li{
     display: block;
     margin: 0 0.5vw;
