@@ -23,10 +23,10 @@ const Header = () =>{
                         </Dropdown.Toggle>
                         <Dropdown.Menu className='bg-dark'>
                             <Dropdown.Item className='bg-dark'>
-                               <span style={{color:'white'}}>Sing In</span>
+                               <span style={{color:'white'}}>Log In</span>
                             </Dropdown.Item>
                             <Dropdown.Item className='bg-dark'>
-                               <span style={{color:'white'}}>Sing Up</span>
+                               <span style={{color:'white'}}>Sign Up</span>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                         </Dropdown>
