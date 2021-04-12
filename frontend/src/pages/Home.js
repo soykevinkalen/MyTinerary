@@ -25,13 +25,13 @@ export default class Home extends Component{
     }
     render(){
         return(
-            <div>
+            <>
                 <Header />
                 <Hero gruposDeCiudades={this.state.gruposDeCiudades}/>
                 <CallToAction />
                 <Carrousel gruposDeCiudades={this.state.gruposDeCiudades}/>
                 <Footer />
-            </div>
+            </>
         )
     }
 }
