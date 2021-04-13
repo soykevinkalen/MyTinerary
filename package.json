@@ -1,0 +1,23 @@
+{
+  "name": "mytinerari-kevinbaez",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soykevinkalen/mytinerary-kevinBaez.git"
+  },
+  "author": "Kevin Baez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soykevinkalen/mytinerary-kevinBaez/issues"
+  },
+  "homepage": "https://github.com/soykevinkalen/mytinerary-kevinBaez#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

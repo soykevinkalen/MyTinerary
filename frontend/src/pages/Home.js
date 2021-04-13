@@ -10,7 +10,7 @@ export default class Home extends Component{
         gruposDeCiudades:[
          [
           {title: 'London', src: '/assets/london.jpg'},
-          {title: 'New York', src: '/assets/newyork.png'},
+          {title: 'New York', src: '/assets/newyork.jpg'},
           {title: 'Paris', src: '/assets/paris.jpg'},
           {title: 'Moscow', src: '/assets/moscow.jpg'}],
           [{title: 'Tokyo', src: '/assets/tokyo.jpg'},
