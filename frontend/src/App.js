@@ -1,6 +1,8 @@
 import React from 'react'
 import Home from './pages/Home'
 import Cities from './pages/Cities'
+import Itineraries from './components/Itineraries'
+
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom'
@@ -11,7 +13,8 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/Cities" component={Cities} />   
+          <Route path="/cities" component={Cities} /> 
+          <Route path="/itineraries/:id" component={Itineraries} />  
           <Redirect to='/'/>
         </Switch>
       </BrowserRouter>

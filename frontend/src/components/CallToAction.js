@@ -6,7 +6,7 @@ const CallToAction = () =>{
         <main className='mainCallToAction bg-dark'>
             <div className='divCallToAction' style={{backgroundImage:'url("/assets/calltoaction.jpg")'}}>
                 <p>Let your adventure begin!</p>
-                <NavLink to='/Cities' className='buttonCallToAction'>
+                <NavLink to='/cities' className='buttonCallToAction'>
                     <FlightTakeoffIcon className='divLogoCallToAction' />
                     <p className='citiesCallToAction'>Cities</p>
                 </NavLink>
