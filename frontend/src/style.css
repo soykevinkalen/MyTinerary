@@ -35,7 +35,8 @@
 }
 
 .containerTexto h1, 
-.containerTexto h2{
+.containerTexto h2,
+.notFound h2{
     text-align: center;
     background-color: #343a40c0;
     width: 100%;
@@ -371,6 +372,21 @@ footer div.containerSocial h2{
     font-family: 'Varela Round', sans-serif;
 
 }
+.preloader,.notFound{
+    display: flex;
+    justify-content: center;
+}
+.preloader{
+    width: 100%;
+}
+
+.notFound{
+    flex-direction: column;
+    width: 70%;
+    background-color: #7198b5;
+    color: white;
+}
+
 
 @media (max-width: 991px){
     .navbar-collapse {
