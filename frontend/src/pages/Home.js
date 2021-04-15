@@ -15,7 +15,7 @@ export default class Home extends Component{
           {title: 'Moscow', src: '/assets/moscow.jpg'}],
           [{title: 'Tokyo', src: '/assets/tokyo.jpg'},
           {title: 'Dubai', src: '/assets/dubai.jpg'},
-          {title: 'Singapore', src: '/assets/singapore.jpg'},
+          {title: 'Prague', src: '/assets/prague.jpg'},
           {title: 'Barcelona', src: '/assets/barcelona.jpg'}],
           [{title: 'Los Angeles', src: '/assets/losAngeles.jpg'},
           {title: 'Madrid', src: '/assets/madrid.jpg'},

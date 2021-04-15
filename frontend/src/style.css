@@ -118,7 +118,7 @@ p.citiesCallToAction{
     justify-content: center;
 }
 
-.slideCity, .city {
+.slideCity, .city , .buttonItenerari{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,13 +133,13 @@ p.citiesCallToAction{
     height: 40vh;
 }
 
-.slideCity:hover, .buttonCallToAction:hover, .city:hover {
+.slideCity:hover, .buttonCallToAction:hover, .city:hover,
+.buttonItenerari:hover {
     transform: scale(1.03);
     text-decoration: none;
-
 }
 
-.slideCity h3, .city h3 {
+.slideCity h3, .city h3 , .buttonItenerari h3{
     background-color: rgba(0, 0, 0, 0.562);
     color: white;
     width: 100%;
@@ -378,6 +378,20 @@ footer div.containerSocial h2{
     width: 25%;
 }
 
+.itinarie{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.itinarie .city, .buttonItenerari{
+    align-self: center;
+}
+
+.logoButtonItenerari{
+    font-size: 6vw!important;
+}
 @media (max-width: 991px){
     .navbar-collapse {
         position: absolute!important;
