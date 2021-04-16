@@ -3,23 +3,14 @@ const router = express.Router()
 const citiesControllers = require('../controllers/citiesControllers')
 const validador = require('../config/validador')
 
-const {getCities, postCities} = citiesControllers
+const {getCities, postCities,getCity,putCity,deleteCity} = citiesControllers
 router.route('/cities')
 .get(getCities)
 .post(postCities)
-// .post(validador, postCities)
-// .post(()=>{
 
-// })
+router.route('/cities/:id')
+.get(getCity)
+.put(putCity)
+.delete(deleteCity)
 
-// router.route('/city/:id')
-// .get(()=>{
-
-// })
-// .put(()=>{
-    
-// })
-// .delete(()=>{
-    
-// })
 module.exports = router

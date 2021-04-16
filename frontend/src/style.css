@@ -392,6 +392,27 @@ footer div.containerSocial h2{
 .logoButtonItenerari{
     font-size: 6vw!important;
 }
+
+.serverError{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.serverError h1{
+    color: white;
+    align-self: center;
+}
+.servidor{
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 50vh;
+    align-self: center;
+    margin-bottom: 2em;
+}
 @media (max-width: 991px){
     .navbar-collapse {
         position: absolute!important;

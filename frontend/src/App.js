@@ -2,6 +2,7 @@ import React from 'react'
 import Home from './pages/Home'
 import Cities from './pages/Cities'
 import Itineraries from './components/Itineraries'
+import Error from './components/Error'
 
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -15,6 +16,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/cities" component={Cities} /> 
           <Route path="/itineraries/:id" component={Itineraries} />  
+          <Route path='/error' component={Error} />
           <Redirect to='/'/>
         </Switch>
       </BrowserRouter>
