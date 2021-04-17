@@ -344,7 +344,7 @@ footer div.containerSocial h2{
     text-align: center;
     /* margin: 2vh; */
     margin-bottom: 4vh;
-    width: 20vw;
+    width: 30%;
     color: white;
     border: none;
     border-bottom: 3px solid #7198b5;
@@ -383,14 +383,28 @@ footer div.containerSocial h2{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
 }
 
 .itinarie .city, .buttonItenerari{
     align-self: center;
 }
 
+.buttonItenerari{
+    margin: 2em 0;
+    height: 10vh;
+    width: 40%;
+}
+
+.chosenCity{
+    width: 80%;
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    align-self: center;
+}
 .logoButtonItenerari{
-    font-size: 6vw!important;
+    font-size: 4vw!important;
 }
 
 .serverError{
@@ -412,6 +426,14 @@ footer div.containerSocial h2{
     height: 50vh;
     align-self: center;
     margin-bottom: 2em;
+}
+
+.under{
+    align-self: center;
+    color: white;
+    width: 80%;
+    background-color: #212529;
+    text-align: center;
 }
 @media (max-width: 991px){
     .navbar-collapse {
@@ -518,6 +540,22 @@ footer div.containerSocial h2{
 }
 
 @media (max-width: 500px){
+    .allCities{
+        flex-direction: column;
+        align-items: center;
+    }
+    .allCities .city{
+        width: 90%;
+    }
+    .city h3{
+        font-size: 8vw;
+    }
+    .inputCities input{
+        width: 50%;
+    }
+    .logoCities{
+        font-size: 20vw!important;
+    }
     .stamp{
         height: 6vh;
     }  
@@ -561,7 +599,17 @@ footer div.containerSocial h2{
 }
 @media (max-width: 400px){
     .dropdown{
-        margin-left: 80px;
+        /* margin-left: 80px; */
+        margin-left: auto;
+    }
+    .logoHeader{
+        width: 25%;
+    }
+    .collapsed{
+        width: 25%;
+    }
+    button.navbar-toggler{
+        width: 25%;
     }
 }
 @media (max-width: 375px){
@@ -647,11 +695,15 @@ footer div.containerSocial h2{
     .navbar{
         padding:0.5em 0px!important;
     }
+    button.navbar-toggler{
+        /* align-self: center; */
+        margin: auto;
+    }
 }
 @media (max-width: 300px){
-    .dropdown{
+    /* .dropdown{
         margin-left: 60px;
-    }
+    } */
 }
 
 .navbar-collapse{

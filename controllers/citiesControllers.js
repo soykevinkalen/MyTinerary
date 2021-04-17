@@ -12,7 +12,7 @@ const citiesControllers = {
         res.json({respuesta: cityToRecord})           
     },
     getCity: async(req,res) =>{
-        const city = await City.findOne()
+        const city = await City.findOne({_id:req.params.id})
         res.json({respuesta: city})
     },
     putCity: async(req, res) =>{

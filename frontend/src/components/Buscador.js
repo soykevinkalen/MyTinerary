@@ -3,7 +3,6 @@ import City from './City'
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff'
 
 const Buscador = ({ciudades, cambiaCiudades, ciudadesAMostrar}) => {
-    console.log(ciudades)
     const filtro = (valor) =>{
         const sinBlancos = valor.trim().toLowerCase()
         const ciudadesFiltradas = ciudades.filter(ciudad => {
