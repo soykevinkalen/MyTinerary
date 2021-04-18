@@ -8,25 +8,38 @@ const citiesControllers = {
     postCities: async (req,res) => {
         const {city, country, path} = req.body
         const cityToRecord = new City({city: city, country: country, path:path})
-        await cityToRecord.save()
-        res.json({respuesta: cityToRecord})           
+        try{
+            await cityToRecord.save()
+            res.json({respuesta: cityToRecord})           
+        }catch(error){
+            res.json({respuesta: 'An error has occurred'})           
+            console.log(error)
+        }
     },
     getCity: async(req,res) =>{
-        const city = await City.findOne({_id:req.params.id})
-        res.json({respuesta: city})
+        try{
+            const city = await City.findOne({_id:req.params.id})
+            console.log(city)
+            res.json({success: true, respuesta: city})
+        }catch(error){
+             res.json({success: false, respuesta: 'An error has occurred'})
+             console.log(error)
+        }
     },
     putCity: async(req, res) =>{
-        const id = req.params.id
-        const modifiedCity = await City.findOneAndUpdate({_id:id}, {...req.body}, {new: true})
-        res.json({respuesta: modifiedCity})
+        try{
+            const modifiedCity = await City.findOneAndUpdate({_id:req.params.id}, {...req.body}, {new: true})
+            res.json({respuesta: modifiedCity})
+        }catch(error){
+            console.log(error)
+        }
     },
     deleteCity: async(req, res) =>{
-        const id = req.params.id
         try {
-            const erasedCity = await City.findOneAndDelete({_id:id})
+            const erasedCity = await City.findOneAndDelete({_id:req.params.id})
             res.json({respuesta: erasedCity})
         }catch(error){
-            res.json({respuesta: 'Ha ocurrido un error'})
+            console.log(error)
         }
     }
 

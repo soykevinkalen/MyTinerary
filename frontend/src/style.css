@@ -139,7 +139,7 @@ p.citiesCallToAction{
     text-decoration: none;
 }
 
-.slideCity h3, .city h3 , .buttonItenerari h3{
+.slideCity h3, .city h3 , .buttonItenerari h3, .chosenCity h3{
     background-color: rgba(0, 0, 0, 0.562);
     color: white;
     width: 100%;
@@ -379,7 +379,7 @@ footer div.containerSocial h2{
 }
 
 .itinarie{
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -401,6 +401,11 @@ footer div.containerSocial h2{
     height: 80vh;
     background-size: cover;
     background-position: center;
+    align-self: center;
+    display: flex;
+}
+
+.chosenCity h3{
     align-self: center;
 }
 .logoButtonItenerari{
@@ -433,7 +438,15 @@ footer div.containerSocial h2{
     color: white;
     width: 80%;
     background-color: #212529;
+    height: 40vh;
+    margin-top: 1em;
+    display: flex;
+}
+
+.under h3{
     text-align: center;
+    align-self: center;
+    width: 100%;
 }
 @media (max-width: 991px){
     .navbar-collapse {

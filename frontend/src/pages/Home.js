@@ -6,6 +6,9 @@ import CallToAction from '../components/CallToAction'
 import Carrousel from '../components/Carrousel'
 
 export default class Home extends Component{
+    componentDidMount(){
+        window.scrollTo(0,0)
+    }
     state = {
         gruposDeCiudades:[
          [

@@ -7,4 +7,6 @@ mongoose.connect(process.env.MONGO_URI, {
     useFindAndModify: false
 })
 .then(()=>console.log('todo ok'))
-.catch(error => console.log(error))
+.catch(error => {
+    console.log(error)
+    this.props.history.push('/error')})

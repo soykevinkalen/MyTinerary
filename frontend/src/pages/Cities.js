@@ -12,12 +12,14 @@ export default class Cities extends Component{
         loading: true
     }
     componentDidMount(){
+        window.scrollTo(0,0)
         axios.get('http://localhost:4000/api/cities')
-        .then(response => this.setState(
-            {ciudades: response.data.respuesta,
-            ciudadesAMostrar: response.data.respuesta,
-            loading: false}))
-        .catch(error => this.props.history.push('/error'))
+        .then(response => {
+                this.setState(
+                    {ciudades: response.data.respuesta,
+                    ciudadesAMostrar: response.data.respuesta,
+                    loading: false})
+            })
     }
     
     cambiaCiudades = (ciudadesFiltradas) =>{
