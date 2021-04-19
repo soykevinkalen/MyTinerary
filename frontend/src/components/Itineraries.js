@@ -6,17 +6,19 @@ import FlightLandIcon from '@material-ui/icons/FlightLand'
 import axios from "axios"
 
 const Itineraries = (props) => {
-    window.scrollTo(0,0)
+    
     const [chosenCity, setChosenCity] = useState([])
+    var id = props.match.params.id
     useEffect(() =>{
-        axios.get(`http://localhost:4000/api/cities/${props.match.params.id}`)
+        window.scrollTo(0,0)
+        axios.get(`http://localhost:4000/api/cities/${id}`)
         .then(response => {
             if(response.data.success){
                 setChosenCity(response.data.respuesta)
             }else{
                 alert('error')
             }})
-    },[])
+    },[id])
     return (
         <div className='itinarie'>
             <Header />
