@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const citiesControllers = require('../controllers/citiesControllers')
-const validador = require('../config/validador')
 
 const {getCities, postCities,getCity,putCity,deleteCity} = citiesControllers
 router.route('/cities')
