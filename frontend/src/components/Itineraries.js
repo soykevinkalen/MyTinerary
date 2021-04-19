@@ -8,17 +8,16 @@ import axios from "axios"
 const Itineraries = (props) => {
     
     const [chosenCity, setChosenCity] = useState([])
-    var id = props.match.params.id
     useEffect(() =>{
         window.scrollTo(0,0)
-        axios.get(`http://localhost:4000/api/cities/${id}`)
+        axios.get(`http://localhost:4000/api/cities/${props.match.params.id}`)
         .then(response => {
             if(response.data.success){
                 setChosenCity(response.data.respuesta)
             }else{
                 alert('error')
             }})
-    },[id])
+    },[props.match.params.id])
     return (
         <div className='itinarie'>
             <Header />
