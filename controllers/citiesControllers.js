@@ -19,7 +19,6 @@ const citiesControllers = {
     getCity: async(req,res) =>{
         try{
             const city = await City.findOne({_id:req.params.id})
-            console.log(city)
             res.json({success: true, respuesta: city})
         }catch(error){
              res.json({success: false, respuesta: 'An error has occurred'})
