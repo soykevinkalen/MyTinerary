@@ -4,10 +4,9 @@ import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff'
 
 const Buscador = ({ciudades, cambiaCiudades, ciudadesAMostrar}) => {
     const filtro = (valor) =>{
-        const sinBlancos = valor.trim().toLowerCase()
+        const valorSinEspacios = valor.trim().toLowerCase()
         const ciudadesFiltradas = ciudades.filter(ciudad => {
-            const ciudadSinBlancos = ciudad.city.toLowerCase()
-            return sinBlancos === ciudadSinBlancos.slice(0,sinBlancos.length).toLowerCase()
+            return valorSinEspacios === ciudad.city.toLowerCase().slice(0,valorSinEspacios.length).toLowerCase()
         })
         cambiaCiudades(ciudadesFiltradas)
     }

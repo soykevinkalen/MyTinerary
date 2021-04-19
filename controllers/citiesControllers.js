@@ -2,12 +2,17 @@ const City = require('../models/City')
 
 const citiesControllers = {
     getCities: async (req,res) =>{
-        const cities = await City.find()
-        res.json({respuesta: cities})
+        try{
+            const cities = await City.find()
+            res.json({respuesta: cities})
+        }catch(error){
+            res.json({respuesta: 'An error has occurred'})
+            console.log(error)
+        }
     },
     postCities: async (req,res) => {
         const {city, country, path} = req.body
-        const cityToRecord = new City({city: city, country: country, path:path})
+        const cityToRecord = new City({city, country, path})
         try{
             await cityToRecord.save()
             res.json({respuesta: cityToRecord})           
@@ -30,6 +35,7 @@ const citiesControllers = {
             const modifiedCity = await City.findOneAndUpdate({_id:req.params.id}, {...req.body}, {new: true})
             res.json({respuesta: modifiedCity})
         }catch(error){
+            res.json({respuesta: 'An error has occurred'})           
             console.log(error)
         }
     },
@@ -38,6 +44,7 @@ const citiesControllers = {
             const erasedCity = await City.findOneAndDelete({_id:req.params.id})
             res.json({respuesta: erasedCity})
         }catch(error){
+            res.json({respuesta: 'An error has occurred'})           
             console.log(error)
         }
     }

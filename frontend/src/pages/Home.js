@@ -15,22 +15,24 @@ export default class Home extends Component{
           {title: 'London', src: '/assets/london.jpg'},
           {title: 'New York', src: '/assets/newyork.jpg'},
           {title: 'Paris', src: '/assets/paris.jpg'},
-          {title: 'Moscow', src: '/assets/moscow.jpg'}],
+          {title: 'Dubai', src: '/assets/dubai.jpg'}
+        ],
           [{title: 'Tokyo', src: '/assets/tokyo.jpg'},
-          {title: 'Dubai', src: '/assets/dubai.jpg'},
-          {title: 'Prague', src: '/assets/prague.jpg'},
-          {title: 'Barcelona', src: '/assets/barcelona.jpg'}],
+          {title: 'Moscow', src: '/assets/moscow.jpg'},
+          {title: 'Tauranga', src: '/assets/tauranga.jpg'},
+          {title: 'Queenstown', src: '/assets/queenstown.jpg'}
+        ],
           [{title: 'Los Angeles', src: '/assets/losAngeles.jpg'},
           {title: 'Madrid', src: '/assets/madrid.jpg'},
           {title: 'Rome', src: '/assets/rome.jpg'},
-          {title: 'Queenstown', src: '/assets/queenstown.jpg'}
+          {title: 'Barcelona', src: '/assets/barcelona.jpg'}          
         ]]
     }
     render(){
         return(
             <>
                 <Header />
-                <Hero gruposDeCiudades={this.state.gruposDeCiudades}/>
+                <Hero gruposDeCiudades={this.state.gruposDeCiudades[1]}/>
                 <CallToAction />
                 <Carrousel gruposDeCiudades={this.state.gruposDeCiudades}/>
                 <Footer />

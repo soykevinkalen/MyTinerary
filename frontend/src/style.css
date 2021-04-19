@@ -307,10 +307,10 @@ footer div.containerSocial h2{
 
 .stamp {
     transform: rotate(12deg);
-    color: #555;
+    color: rgb(0, 0, 0);
     font-size: 4vw;
     font-weight: 700;
-    border: 0.25rem solid #555;
+    border: 0.25rem solid rgb(0, 0, 0);
     display: inline-block;
     padding: 0.25rem 1rem;
     text-transform: uppercase;

@@ -2,7 +2,6 @@ import React from 'react'
 import Carousel from 'react-elastic-carousel'
 import Slide from './Slide'
 const Hero = ({gruposDeCiudades}) =>{
-    const ciudades = gruposDeCiudades[Math.floor(Math.random()*gruposDeCiudades.length)];
     const clase = {
         estampa: 'stamp',
         carousel: 'carouselHero'
@@ -10,7 +9,7 @@ const Hero = ({gruposDeCiudades}) =>{
     return(
         <div className='containerHero bg-dark'>
             <Carousel className='carousel' enableAutoPlay={true} autoPlaySpeed={10000}>
-            {ciudades.map(ciudad =>{ 
+            {gruposDeCiudades.map(ciudad =>{ 
                 return(
                     <Slide ciudad={ciudad} clase={clase} key={'h'+ciudad.title}/>
                 )})}
