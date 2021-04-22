@@ -2,42 +2,36 @@ import React, {Component} from 'react'
 import Header from '../components/Header'
 import Buscador from '../components/Buscador'
 import Footer from '../components/Footer'
-import axios from 'axios'
 import ReactLoading from 'react-loading'
+import { connect } from "react-redux"
+import citiesActions from '../redux/actions/citiesActions'
+class Cities extends Component{
 
-export default class Cities extends Component{
-    state = {
-        ciudades: [],
-        ciudadesAMostrar: [],
-        loading: true
-    }
     componentDidMount(){
-        window.scrollTo(0,0)
-        axios.get('http://localhost:4000/api/cities')
-        .then(response => {
-                this.setState(
-                    {ciudades: response.data.respuesta,
-                    ciudadesAMostrar: response.data.respuesta,
-                    loading: false})
-            })
-    }
-    
-    cambiaCiudades = (ciudadesFiltradas) =>{
-        this.setState({
-            ciudadesAMostrar: ciudadesFiltradas
-        })
+        this.props.getCities()
     }
     
     render(){
+        console.log(this.props.cities)
         return(
             <div>
                 <Header />
-                {this.state.loading
-                ? <ReactLoading className='preloader' type={'cylon'} color={'white'} height={667} width={'100%'} />
-                : <Buscador ciudades={this.state.ciudades} cambiaCiudades={this.cambiaCiudades} ciudadesAMostrar={this.state.ciudadesAMostrar}/>
-                }
+                {this.props.loading ? <ReactLoading className='preloader' type={'cylon'} color={'white'} height={667} width={'100%'} />
+                : <Buscador />} 
                 <Footer />
             </div>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+       loading:  state.only.loading
+    }
+}
+
+const mapDispatchToProps = {
+    getCities: citiesActions.getCities
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cities)

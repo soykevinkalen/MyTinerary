@@ -1,11 +1,12 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import { connect } from "react-redux"
 
-const City = ({ciudadesFiltradas}) => {
+const City = (props) => {
     return (
         <div className='allCities'>
             {
-                ciudadesFiltradas.map(ciudad =>{
+                props.cities.map(ciudad =>{
                     return(
                         
                         <NavLink to={`/itineraries/${ciudad._id}`} className='city' key={'city'+ciudad.city} style={{backgroundImage:`url(${ciudad.path})`}}>
@@ -18,4 +19,10 @@ const City = ({ciudadesFiltradas}) => {
     )
 }
 
-export default City
+const mapStateToProps = state => {
+    return {
+       cities:  state.only.citiesFilter
+    }
+}
+
+export default connect(mapStateToProps, null)(City)
