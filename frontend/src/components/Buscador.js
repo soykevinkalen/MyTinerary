@@ -23,7 +23,6 @@ const mapStateToProps = state => {
     }
 }
 
-
 const mapDispatchToProps = {
     filtro: citiesActions.filterValue
 }

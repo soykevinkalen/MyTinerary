@@ -18,6 +18,7 @@ const onlyReducer = (state = initialState, action) => {
                 ...state,
                 citiesFilter: state.cities.filter(ciudad => action.payload.trim().toLowerCase() === ciudad.city.toLowerCase().slice(0,action.payload.trim().toLowerCase().length))
             }
+
         default:
             return state
     }

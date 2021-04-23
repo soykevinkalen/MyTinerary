@@ -12,7 +12,6 @@ class Cities extends Component{
     }
     
     render(){
-        console.log(this.props.cities)
         return(
             <div>
                 <Header />
