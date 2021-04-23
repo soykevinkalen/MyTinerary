@@ -427,21 +427,46 @@ footer div.containerSocial h2{
     margin-bottom: 2em;
 }
 
-.under{
+.itineraryContent{
     align-self: center;
     color: white;
     width: 80%;
     background-color: #212529;
-    height: 40vh;
+    /* height: 50vh; */
     margin-top: 1em;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
 }
 
-.under h3{
+.itineraryContent h3{
     text-align: center;
     align-self: center;
     width: 100%;
 }
+
+.userImage {
+    width: 7vw;
+    height: 7vw; 
+    border-radius: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.valoration, .hashtag{
+    display: flex;
+    justify-content: space-between;
+    min-width: 25%;
+    align-items: center;
+}
+.hashtag{
+    min-width: none;
+}
+.hashtag p{
+    margin-right: 10px;
+}
+
 @media (max-width: 991px){
     .navbar-collapse {
         position: absolute!important;
