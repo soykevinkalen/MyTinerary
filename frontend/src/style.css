@@ -1,3 +1,7 @@
+body{
+    font-family: 'Varela Round', sans-serif!important;
+}
+
 .navImagen{
     width: 20vw;
     height: 30vh;
@@ -49,7 +53,6 @@
 
 .containerTexto h1, p.citiesCallToAction{
     font-size: 10vw;
-    font-family: 'Varela Round', sans-serif;
 }
 
 .containerTexto h2{
@@ -427,7 +430,7 @@ footer div.containerSocial h2{
     margin-bottom: 2em;
 }
 
-.itineraryContent{
+.itineraryContent, .under{
     align-self: center;
     color: white;
     width: 80%;
@@ -437,21 +440,26 @@ footer div.containerSocial h2{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1rem;
 }
-
-.itineraryContent h3{
+.under h3{
     text-align: center;
-    align-self: center;
-    width: 100%;
 }
 
+.itineraryContent > h5{
+    text-align: center;
+}
 .userImage {
     width: 7vw;
     height: 7vw; 
     border-radius: 100%;
     background-position: center;
     background-size: cover;
+    margin-bottom: 10px;
+}
+
+.valoration div{
+    margin-right: 15px;
 }
 
 .valoration, .hashtag{
@@ -461,12 +469,34 @@ footer div.containerSocial h2{
     align-items: center;
 }
 .hashtag{
+    display: flex;
+    flex-wrap: wrap;
     min-width: none;
+    margin: 10px 0px;
+    align-items: center;
+    justify-content: center;
 }
 .hashtag p{
     margin-right: 10px;
+    color: #0572e6;
 }
-
+.heart{
+    color: red!important;
+}
+.diner{
+    color: green!important;
+}
+.watch{
+    color:#7198b5 ;
+}
+.butonIsOpen{
+    border-radius: 20px;
+    background-color: #daf0ff;
+}
+.itineraryContent > h3{
+    font-size: 4vw;
+    text-align: center;
+}
 @media (max-width: 991px){
     .navbar-collapse {
         position: absolute!important;
@@ -483,8 +513,18 @@ footer div.containerSocial h2{
         width: 100%!important;
         margin-top: -5px!important;
     }
+    .userImage {
+        width: 10vw;
+        height: 10vw;
+        transition: all 2s;
+    }
 }
 @media (max-width: 800px) { 
+    .userImage {
+        width: 12vw;
+        height: 12vw;
+        transition: all 2s;
+    }
     .stamp{
         height: 8vh;
     }   
@@ -569,9 +609,25 @@ footer div.containerSocial h2{
     .logoHeader .logoGral{
         font-size: 8vw!important;
     }
+    
+}
+
+@media (max-width: 700px) {
+    .chosenCity h3{
+        font-size: 4vw;
+    }
+    .userImage {
+        width: 12vw;
+        height: 12vw;
+        transition: all 2s;
+    }
 }
 
 @media (max-width: 500px){
+    .itineraryContent > h3{
+        font-size: 6vw;
+        text-align: center;
+    }
     .allCities{
         flex-direction: column;
         align-items: center;
@@ -630,6 +686,20 @@ footer div.containerSocial h2{
 
 }
 @media (max-width: 400px){
+    .chosenCity h3, .buttonItenerari h3, .logoButtonItenerari{
+        font-size: 8vw!important;
+    }
+    .valoration{
+        flex-direction: column;
+    }
+    .valoration div:nth-child(2){
+        margin: 10px 0px;
+    }
+    .userImage {
+        width: 20vw;
+        height: 20vw;
+        transition: all 2s;
+    }
     .dropdown{
         /* margin-left: 80px; */
         margin-left: auto;
@@ -710,6 +780,12 @@ footer div.containerSocial h2{
     
     .logoHeader .logoGral{
         font-size: 10vw!important;
+    }
+    footer.footer header.styleFooter{
+        padding: 20px;
+    }
+    footer.footer header.styleFooter button{
+        margin: 0;
     }
 }
 
