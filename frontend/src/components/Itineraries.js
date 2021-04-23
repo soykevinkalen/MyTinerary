@@ -18,7 +18,11 @@ const Itineraries = (props) => {
         const city = props.cities.find(city => city._id === props.match.params.id)
         setChosenCity(city)
     },[props.match.params.id])
-    
+
+    if(!chosenCity){
+        props.history.push('/cities')
+        return null
+    }
     return (
         <div className='itinarie'>
             <Header />

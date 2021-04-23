@@ -8,6 +8,7 @@ import citiesActions from '../redux/actions/citiesActions'
 class Cities extends Component{
 
     componentDidMount(){
+        window.scrollTo(0,0)         
         this.props.getCities()
     }
     

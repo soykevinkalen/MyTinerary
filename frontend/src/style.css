@@ -400,6 +400,7 @@ footer div.containerSocial h2{
     background-position: center;
     align-self: center;
     display: flex;
+    margin-top: 2rem;
 }
 
 .chosenCity h3{
