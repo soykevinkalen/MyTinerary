@@ -4,7 +4,6 @@ import Header from './Header'
 import Footer from './Footer'
 import FlightLandIcon from '@material-ui/icons/FlightLand'
 import { connect } from "react-redux"
-import citiesActions from '../redux/actions/citiesActions'
 import itinerariesActions from '../redux/actions/itinerariesActions'
 import Itinerary from './Itinerary'
 
@@ -13,8 +12,8 @@ const Itineraries = (props) => {
     const [chosenCity, setChosenCity] = useState([])
         
     useEffect(() =>{
-        props.getItineraries(props.match.params.id)
         window.scrollTo(0,0)         
+        props.getItinerariesByCity(props.match.params.id)
         const city = props.cities.find(city => city._id === props.match.params.id)
         setChosenCity(city)
     },[props.match.params.id])
@@ -29,8 +28,8 @@ const Itineraries = (props) => {
             <div className='chosenCity' style={{backgroundImage:`url('${chosenCity.path}')`}}>
                 <h3>{chosenCity.city}</h3>
             </div>
-            {props.itineraries.length? 
-                props.itineraries.map(itinerary => {
+            {props.itinerariesByCity.length? 
+                props.itinerariesByCity.map(itinerary => {
                     return(
                         <Itinerary key={itinerary.title} itinerary={itinerary} /> )})
                 
@@ -51,13 +50,13 @@ const Itineraries = (props) => {
 const mapStateToProps = state => {
     return {
        cities:  state.only.cities,
-       itineraries: state.itinerary.itineraries
+       itinerariesByCity: state.itinerary.itinerariesByCity
     }
 }
 
 const mapDispatchToProps = {
-    getCities: citiesActions.getCities,
-    getItineraries: itinerariesActions.getItinerariesByCity
+    // getCities: citiesActions.getCities,
+    getItinerariesByCity: itinerariesActions.getItinerariesByCity
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itineraries)

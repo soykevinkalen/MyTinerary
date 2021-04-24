@@ -134,6 +134,7 @@ p.citiesCallToAction{
     background-position: 50% 50%;
     width: 30vw;
     height: 40vh;
+    border-radius: 4px;
 }
 
 .slideCity:hover, .buttonCallToAction:hover, .city:hover,
@@ -401,6 +402,7 @@ footer div.containerSocial h2{
     align-self: center;
     display: flex;
     margin-top: 2rem;
+    border-radius: 4px;
 }
 
 .chosenCity h3{
@@ -442,6 +444,8 @@ footer div.containerSocial h2{
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    border-radius: 4px;
+
 }
 .under h3{
     text-align: center;
@@ -477,7 +481,9 @@ footer div.containerSocial h2{
     align-items: center;
     justify-content: center;
 }
-.hashtag p{
+.hashtag button{
+    border: none;
+    background-color:#212529;
     margin-right: 10px;
     color: #0572e6;
 }
@@ -491,12 +497,28 @@ footer div.containerSocial h2{
     color:#7198b5 ;
 }
 .butonIsOpen{
-    border-radius: 20px;
+    border-radius: 4px;
     background-color: #daf0ff;
 }
 .itineraryContent > h3{
     font-size: 4vw;
     text-align: center;
+}
+.modalHashtag{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom:1px solid white;
+}
+
+.modalHashtag h3{
+    text-align: center;
+}
+
+.modalContent{
+    background-color:#343a40;
+    color: white;
 }
 @media (max-width: 991px){
     .navbar-collapse {
