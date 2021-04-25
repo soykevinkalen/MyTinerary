@@ -18,7 +18,7 @@ const Buscador = (props) => {
 
 const mapStateToProps = state => {
     return {
-       citiesFilter:  state.only.citiesFilter
+       citiesFilter:  state.city.citiesFilter
     }
 }
 

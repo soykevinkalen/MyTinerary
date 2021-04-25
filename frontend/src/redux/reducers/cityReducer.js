@@ -4,7 +4,7 @@ const initialState = {
     loading: true
 }
 
-const onlyReducer = (state = initialState, action) => {
+const cityReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_CITIES':
             return {
@@ -24,4 +24,4 @@ const onlyReducer = (state = initialState, action) => {
     }
 }
 
-export default onlyReducer
+export default cityReducer

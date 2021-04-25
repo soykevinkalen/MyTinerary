@@ -481,6 +481,11 @@ footer div.containerSocial h2{
     align-items: center;
     justify-content: center;
 }
+.valoration button{
+    border: none;
+    background-color:#212529;
+}
+
 .hashtag button{
     border: none;
     background-color:#212529;
@@ -497,7 +502,7 @@ footer div.containerSocial h2{
     color:#7198b5 ;
 }
 .butonIsOpen{
-    border-radius: 4px;
+    border-radius:4px;
     background-color: #daf0ff;
 }
 .itineraryContent > h3{

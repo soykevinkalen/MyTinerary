@@ -26,7 +26,7 @@ class Cities extends Component{
 
 const mapStateToProps = state => {
     return {
-       loading:  state.only.loading
+       loading:  state.city.loading
     }
 }
 

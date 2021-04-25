@@ -49,7 +49,7 @@ const Itineraries = (props) => {
 
 const mapStateToProps = state => {
     return {
-       cities:  state.only.cities,
+       cities:  state.city.cities,
        itinerariesByCity: state.itinerary.itinerariesByCity
     }
 }

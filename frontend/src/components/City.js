@@ -21,7 +21,7 @@ const City = (props) => {
 
 const mapStateToProps = state => {
     return {
-       cities:  state.only.citiesFilter
+       cities:  state.city.citiesFilter
     }
 }
 

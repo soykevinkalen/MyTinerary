@@ -35,7 +35,9 @@ const Itinerary = (props) =>{
     }
 
     return(
+            
         <div className='itineraryContent'>
+                
             <h3>{props.itinerary.title}</h3>
             <div className='userImage' style={{backgroundImage:`url('${props.itinerary.authorImage}')`}}></div>
             <h5>{props.itinerary.authorName}</h5>

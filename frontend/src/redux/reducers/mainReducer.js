@@ -1,10 +1,9 @@
 import { combineReducers } from "redux";
-import onlyReducer from './onlyReducer'
+import cityReducer from './cityReducer'
 import itinerariesReducer from './itinerariesReducer'
 
-
 const mainReducer = combineReducers({
-    only: onlyReducer,
+    city: cityReducer,
     itinerary: itinerariesReducer
 })
 

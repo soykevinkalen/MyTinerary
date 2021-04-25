@@ -4,8 +4,7 @@ const citiesActions = {
     getCities: () => {
         return (dispatch, getState) =>{
             axios.get('http://localhost:4000/api/cities')
-            .then(response => dispatch({type: 'GET_CITIES',
-            payload: response.data.respuesta}))
+            .then(response => dispatch({type: 'GET_CITIES', payload: response.data.respuesta}))
             .catch( error => console.log(error))
         }
     },
