@@ -2,21 +2,12 @@ body{
     font-family: 'Varela Round', sans-serif!important;
 }
 
-.navImagen{
-    width: 20vw;
-    height: 30vh;
-    background-size: cover;
-    background-position: center;
-}
-
 .carouselHero{
     width: 100vw;
     height: 100vh;
     background-size:cover;
     background-repeat: no-repeat;
-    background-position: center center;
-    /* display: flex; */
-    /* justify-content: flex-end; */
+    background-position: center;
     display: flex;
     justify-content:flex-end;
 }
@@ -26,7 +17,6 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-
 }
 
 .containerTexto{
@@ -153,8 +143,8 @@ p.citiesCallToAction{
 }
 
 footer.footer{
-    padding-top: 2em;
-    min-height: 40vh;
+    /* padding-top: 2em; */
+    min-height: 35.3vh;
     background-color: #343a40;
     display: flex;
     flex-direction: column;
@@ -175,18 +165,20 @@ footer.footer header.styleFooter .navbar-collapse{
     width: 15%;
 }
 
-footer.footer header.styleFooter .dropdown{
-    display: none;
+footer.footer header.styleFooter .usuario, .carousel button{
+    display: none!important;
+}
+
+div ul.ul-fb li, div ul.ul-fb li button{
+    display: block;
 }
 
 div ul.ul-fb li{
-    display: block;
     margin: 0 0.5vw;
     text-align: center;
 }
 
 div ul.ul-fb li button{
-    display: block;
     color: #fff;
     transition: .2s;
     border: 0;
@@ -302,9 +294,6 @@ footer div.containerSocial h2{
     color: #7198b5;
 }
 
-.carousel button{
-    display: none;
-}
 .imakzv{
     margin: 0!important;
 }
@@ -525,7 +514,71 @@ footer div.containerSocial h2{
     background-color:#343a40;
     color: white;
 }
+div.form,div.form form{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+div.form{
+    align-items: center;
+    background-image: linear-gradient(45deg, #649292 0%, #343a40 100%);
+}
+.logoForm{
+    color: #7198b5!important;
+    font-size: 8vw!important;
+}
+div.form h1{
+    color: white;
+}
+
+div.form form{
+    width: 30%;
+}
+
+div.form form *{
+    border-radius: 4px;
+    margin-bottom: 10px;
+    height: 7vh;
+}
+
+div.form form button{
+    border: 3px solid #343a40;
+    /* width: 50%; */
+}
+
+.dropdown-menu{
+    position: absolute!important;
+    display: flex!important;
+    flex-direction: column!important;
+    background-color: #343a40!important;
+}
+
+.dropdown-toggle::after{
+    margin-left: 1.7rem!important;
+    color: white!important;
+}
+
+.eyeSignUp{
+    position: absolute;
+    right: 2%;
+    cursor: pointer;
+}
+
+div.password{
+    position: relative;
+}
+
+div.password input{
+    width: 100%;
+}
 @media (max-width: 991px){
+    .logoForm{
+        font-size: 10vw!important;
+    }
+    div.form form{
+        width: 40%;
+    }
     .navbar-collapse {
         position: absolute!important;
         top: 100%!important;
@@ -548,6 +601,9 @@ footer div.containerSocial h2{
     }
 }
 @media (max-width: 800px) { 
+    .logoForm{
+        font-size: 14vw!important;
+    }
     .userImage {
         width: 12vw;
         height: 12vw;
@@ -637,6 +693,9 @@ footer div.containerSocial h2{
     .logoHeader .logoGral{
         font-size: 8vw!important;
     }
+    div.form form{
+        width: 50%;
+    }
     
 }
 
@@ -649,9 +708,18 @@ footer div.containerSocial h2{
         height: 12vw;
         transition: all 2s;
     }
+    div.form form{
+        width: 60%;
+    }
 }
 
 @media (max-width: 500px){
+    .logoForm{
+        font-size: 18vw!important;
+    }
+    div.form form{
+        width: 75%;
+    }
     .itineraryContent > h3{
         font-size: 6vw;
         text-align: center;
@@ -714,6 +782,12 @@ footer div.containerSocial h2{
 
 }
 @media (max-width: 400px){
+    .logoForm{
+        font-size: 22vw!important;
+    }
+    div.form form{
+        width: 90%;
+    }
     .chosenCity h3, .buttonItenerari h3, .logoButtonItenerari{
         font-size: 8vw!important;
     }
@@ -822,6 +896,9 @@ footer div.containerSocial h2{
 }
 
 @media (max-width: 350px){
+    div.form form{
+        width: 98%;
+    }
     .dropdown{
         margin-left: 75px;
     }
