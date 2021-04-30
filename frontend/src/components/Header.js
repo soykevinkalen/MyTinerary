@@ -10,6 +10,7 @@ import {connect} from "react-redux"
 import authActions from '../redux/actions/authActions'
 
 const Header = (props) =>{
+    console.log(props.userLogged)
     const picUser = props.userLogged ? props.userLogged.userImage : '../assets/usuario.png'
     return(
         <header className='styleFooter'>
@@ -20,7 +21,7 @@ const Header = (props) =>{
                         <h2>MyTinerary</h2>
                     </div>
                 </NavLink>
-                
+    
                 <NavDropdown className='usuario navLink bg-dark d-flex flex-column' style={{backgroundImage:`url(${picUser})`}} id="collasible-nav-dropdown">
                     {!props.userLogged && (
                         <> 

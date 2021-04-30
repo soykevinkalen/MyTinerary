@@ -4,6 +4,7 @@ const authActions = {
     createUser: (user) => {
         return async (dispatch, getState) => {
             const response = await axios.post('http://localhost:4000/api/user/signup', user)
+            console.log(response)
             dispatch({
                 type: 'LOG_USER',
                 payload: response.data.success ? response.data.respuesta : null
@@ -16,7 +17,8 @@ const authActions = {
             console.log(response)
             dispatch({
                 type:'LOG_USER',
-                payload: response.data.success ? response.data.respuesta : null})
+                payload: response.data.success ? response.data.respuesta : null
+            })
         }
     },
     logOutUser: () => {
@@ -25,13 +27,15 @@ const authActions = {
         }
     },
     logInForced: (user) => {
+        
         return async (dispatch, getState) => {
             try {
-                const respuesta = await axios.get('http://localhost:4000/api/user/loginLS', {
-                headers: {
-                    'Authorization': 'Bearer '+user.token
-                }
-            })
+                const respuesta = await axios.get('http://localhost:4000/api/user/loginForced', {
+                    headers: {
+                        'Authorization': 'Bearer '+user.token
+                    }
+                })
+                console.log(user)
                 dispatch({type: 'LOG_USER', payload: {
                     ...respuesta.data.respuesta,
                     token: user.token

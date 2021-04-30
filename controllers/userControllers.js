@@ -13,10 +13,10 @@ const userControllers = {
         let error;
         let userToRecord;
         
-        const passwordHash = bcryptjs.hashSync(password, 10)
+        password = bcryptjs.hashSync(password, 10)
         if(!mailExist){
             try{
-                userToRecord = new User({firstName, lastName, email, password: passwordHash, userImage, country})
+                userToRecord = new User({firstName, lastName, email, password, userImage, country})
                 console.log(userToRecord)       
                 await userToRecord.save()
                 const token = jwt.sign({...userToRecord}, process.env.SECRET_OR_KEY)
@@ -44,7 +44,8 @@ const userControllers = {
         if(userExist){
             const passwordEqual = bcryptjs.compareSync(password, userExist.password)
             if(passwordEqual){
-                respuesta = userExist
+                const token = jwt.sign({...userExist}, process.env.SECRET_OR_KEY)
+                respuesta = token 
             }else{
                 error = 'Incorrect username and/or password'
             }
@@ -54,7 +55,7 @@ const userControllers = {
 
         res.json({
             success: !error ? true : false,
-            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName},
+            respuesta: !error && {token: respuesta, userImage: userExist.userImage, firstName: userExist.firstName},
             error: error
         })  
     },

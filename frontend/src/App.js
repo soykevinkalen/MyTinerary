@@ -16,11 +16,13 @@ import authActions from './redux/actions/authActions'
 class App extends React.Component {
   render(){
     if (!this.props.userLogged && localStorage.getItem('token')) {
+      console.log("entro")
       const userData = JSON.parse(localStorage.getItem('userLogged'))
       const userForced = {
         token: localStorage.getItem('token'),
         ...userData
       }
+      console.log(userForced)
       this.props.logInForced(userForced)
     }
 

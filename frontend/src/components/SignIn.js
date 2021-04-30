@@ -6,6 +6,8 @@ import Footer from '../components/Footer'
 import {useState } from "react"
 import {connect} from "react-redux"
 import authActions from '../redux/actions/authActions'
+import GoogleLogin from 'react-google-login'
+
 
 
 
@@ -18,9 +20,28 @@ const SignIn = (props) => {
           [e.target.name]: e.target.value
         })
     }
-    const sendValueUser = (e) => {
-        e.preventDefault()
-        props.logInUser(user)
+    // const sendValueUser = (e) => {
+    //     e.preventDefault()
+    //     props.logInUser(user)
+    // }
+
+    const sendValueUser = async (e = null, googleUser = null) => {
+        e && e.preventDefault()
+        let userGen = e ? user : googleUser
+        console.log(userGen)
+        props.logInUser(userGen)
+        // console.log(response)
+        // setUser([
+        //   ...user,
+        //   response.data.respuesta
+        // ])
+        // setUser({firstName: '', lastName: '', email: '', password: '', userImage: '', country: ''})
+    }
+    const responseGoogle = (response) => {
+        console.log(response)
+        if(response.profileObj.email){
+            sendValueUser(null, {email: response.profileObj.email, password: 'a'+response.profileObj.googleId})
+        }
     }
 
     return(
@@ -39,6 +60,13 @@ const SignIn = (props) => {
                         {eye ? <VisibilityOffOutlinedIcon className='eyeSignUp' onClick={()=>setEye(!eye)} /> : <VisibilityOutlinedIcon className='eyeSignUp' onClick={()=>setEye(!eye)}/>}
                     </div>
                     <button className="boton" onClick={sendValueUser}>Sign in!</button>
+                    <GoogleLogin
+                        clientId="974935643152-8625so4e5v3mclin608djtcmp27s608o.apps.googleusercontent.com"
+                        buttonText="Sign in with google"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                    />
                 </form>
             </div>
             <Footer />

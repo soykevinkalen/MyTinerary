@@ -7,6 +7,8 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import {connect} from "react-redux"
 import authActions from '../redux/actions/authActions'
+import GoogleLogin from 'react-google-login'
+
 
 const SignUp = (props) => { 
     const [user, setUser] = useState({firstName: '', lastName: '', email: '', password: '', userImage: '', country: ''})
@@ -26,17 +28,23 @@ const SignUp = (props) => {
         })
     }
 
-    const sendValueUser = async (e) => {
-        e.preventDefault()
-        const response = await props.createUser(user)
-        console.log(response)
+    const sendValueUser = async (e = null, googleUser = null) => {
+        e && e.preventDefault()
+        let userGen = e ? user : googleUser
+        console.log(userGen)
+        const response = await props.createUser(userGen)
+        // console.log(response)
         // setUser([
         //   ...user,
         //   response.data.respuesta
         // ])
         // setUser({firstName: '', lastName: '', email: '', password: '', userImage: '', country: ''})
     }
-
+    const responseGoogle = (response) => {
+        console.log(response)
+        const {givenName, familyName, email, googleId, imageUrl} = response.profileObj
+        sendValueUser(null, {firstName: givenName, lastName: familyName , email, password: "a"+googleId, userImage: imageUrl, country: 'google'})
+    }
     return(
         <>
             <Header /> 
@@ -64,6 +72,13 @@ const SignUp = (props) => {
                         })}
                     </select>
                     <button className="boton" onClick={sendValueUser}>Sign up!</button>
+                    <GoogleLogin
+                        clientId="974935643152-8625so4e5v3mclin608djtcmp27s608o.apps.googleusercontent.com"
+                        buttonText="Sign up with google"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                    />
                 </form>
             </div>
             <Footer />
