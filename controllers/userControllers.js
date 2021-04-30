@@ -57,7 +57,11 @@ const userControllers = {
             respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName},
             error: error
         })  
-    }
+    },
+    loginForced: (req, res) => {
+        console.log(res)
+        res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName}})
+    },
 
 }
 

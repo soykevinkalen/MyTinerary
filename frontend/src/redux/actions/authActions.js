@@ -25,12 +25,26 @@ const authActions = {
         }
     },
     logInForced: (user) => {
-        return(dispatch, getState) => {
-            dispatch({type: 'LOG_USER', payload: user})
-
-            // dispatch({type: 'LOG_USER', payload: user})
+        return async (dispatch, getState) => {
+            try {
+                const respuesta = await axios.get('http://localhost:4000/api/user/loginLS', {
+                headers: {
+                    'Authorization': 'Bearer '+user.token
+                }
+            })
+                dispatch({type: 'LOG_USER', payload: {
+                    ...respuesta.data.respuesta,
+                    token: user.token
+                }})
+            } catch(err) {
+                if (err.response.status === 401) {
+                    alert("Me parece que me estás queriendo cagar con un token falso...")
+                }
+            }
+            
         }
     }
+        
 }
 
 export default authActions
