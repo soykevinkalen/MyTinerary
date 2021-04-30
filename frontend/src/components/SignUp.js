@@ -5,8 +5,10 @@ import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined'
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import {connect} from "react-redux"
+import authActions from '../redux/actions/authActions'
 
-const SignUp = () => { 
+const SignUp = (props) => { 
     const [user, setUser] = useState({firstName: '', lastName: '', email: '', password: '', userImage: '', country: ''})
     const [countries, setCountries] = useState([])
     const [eye, setEye] = useState(false)
@@ -26,7 +28,7 @@ const SignUp = () => {
 
     const sendValueUser = async (e) => {
         e.preventDefault()
-        const response = await axios.post('http://localhost:4000/api/user/signup', user)
+        const response = await props.createUser(user)
         console.log(response)
         // setUser([
         //   ...user,
@@ -69,4 +71,8 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+const mapDispatchToProps = {
+    createUser: authActions.createUser
+}
+
+export default connect(null ,mapDispatchToProps)(SignUp)

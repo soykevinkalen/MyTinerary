@@ -4,10 +4,12 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import {useState } from "react"
-import axios from 'axios'
+import {connect} from "react-redux"
+import authActions from '../redux/actions/authActions'
 
 
-const SignIn = () => {
+
+const SignIn = (props) => {
     const [user, setUser] = useState({email: '', password: ''})
     const [eye, setEye] = useState(false)
     const readInputUser = (e) => {
@@ -16,10 +18,9 @@ const SignIn = () => {
           [e.target.name]: e.target.value
         })
     }
-    const sendValueUser = async (e) => {
+    const sendValueUser = (e) => {
         e.preventDefault()
-        const response = await axios.post('http://localhost:4000/api/user/signin', user)
-        console.log(response)
+        props.logInUser(user)
     }
 
     return(
@@ -45,4 +46,8 @@ const SignIn = () => {
     )
 }
 
-export default SignIn
+const mapDispatchToProps = {
+    logInUser: authActions.logInUser 
+}
+
+export default connect(null ,mapDispatchToProps)(SignIn)

@@ -3,6 +3,8 @@ const router = express.Router()
 const citiesControllers = require('../controllers/citiesControllers')
 const itinerariesControllers = require('../controllers/itinerariesControllers')
 const userControllers = require('../controllers/userControllers')
+const validator = require('../config/validator')
+
 
 const {getCities, postCities,getCity,putCity,deleteCity} = citiesControllers
 const {getItineraries,getItinerariesbyCityId,postItineraries,getItinerary,putItinerary,deleteItinerary} = itinerariesControllers
@@ -30,7 +32,7 @@ router.route('/itineraries/:id')
 .delete(deleteItinerary)
 
 router.route('/user/signup')
-.post(userSignUp)
+.post(validator, userSignUp)
 router.route('/user/signin')
 .post(userSignIn)
 
