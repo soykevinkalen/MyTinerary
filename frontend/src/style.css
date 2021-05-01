@@ -544,7 +544,9 @@ div.form form *:not(h6){
     margin-bottom: 10px;
     height: 7vh;
 }
-
+div.form form h6{
+    color: rgb(226, 2, 2);
+}
 div.form form button{
     border: 3px solid #343a40;
     /* width: 50%; */
@@ -999,6 +1001,9 @@ h6.h6{
     }
 }
 @media (max-width: 300px){
+    div.form form h6{
+        font-size:5.2vw ;
+    }
     .navDrop{
         min-width: 40vw;
     }

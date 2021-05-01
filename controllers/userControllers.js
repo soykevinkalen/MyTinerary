@@ -28,7 +28,9 @@ const userControllers = {
         } else {
             error = 'The mail is already in use'
         }
-        console.log(error)
+        if(error){
+            return res.json({success: false, errores: {'controllers':error}})
+        }
         res.json({
             success: !error ? true : false,
             respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName},

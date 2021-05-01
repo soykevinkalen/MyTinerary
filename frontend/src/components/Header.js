@@ -1,6 +1,5 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import React, { useState } from 'react'
 import HomeIcon from '@material-ui/icons/Home'
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff'
@@ -12,7 +11,6 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 
 const Header = (props) =>{
     const [dropOpen, setDropOpen] = useState(false)
-    console.log(props.userLogged)
     const picUser = props.userLogged ? props.userLogged.userImage : '../assets/usuario.png'
     return(
         <header className='styleFooter'>

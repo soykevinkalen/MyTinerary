@@ -8,6 +8,9 @@ import Footer from '../components/Footer'
 import {connect} from "react-redux"
 import authActions from '../redux/actions/authActions'
 import GoogleLogin from 'react-google-login'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 
 const SignUp = (props) => { 
@@ -37,6 +40,12 @@ const SignUp = (props) => {
         const response = await props.createUser(userGen)
         console.log(response)
         if(response){
+            if(response.controllers){
+                if(response.controllers === "There was an error in the user engraving. Retry"){
+                    return toast.error(response.controllers)
+                }
+                return setMistakes({'email': response.controllers})
+            }
             response.map(error => setMistakes((prevState) =>{ 
                 return {...prevState, [error.context.label]: error.message}
              }))
@@ -89,6 +98,7 @@ const SignUp = (props) => {
                         cookiePolicy={'single_host_origin'}
                     />
                 </form>
+                <ToastContainer />
             </div>
             <Footer />
         </>
