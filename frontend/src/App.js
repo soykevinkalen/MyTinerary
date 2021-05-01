@@ -24,6 +24,7 @@ class App extends React.Component {
       }
       console.log(userForced)
       this.props.logInForced(userForced)
+      // <ReactLoading className='preloader' type={'cylon'} color={'white'} height={667} width={'100%'} />
     }
 
     return(

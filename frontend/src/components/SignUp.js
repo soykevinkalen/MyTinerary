@@ -33,6 +33,7 @@ const SignUp = (props) => {
         let userGen = e ? user : googleUser
         console.log(userGen)
         const response = await props.createUser(userGen)
+        console.log(response)
         // console.log(response)
         // setUser([
         //   ...user,

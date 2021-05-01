@@ -1,15 +1,18 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import React from 'react'
+import React, { useState } from 'react'
 import HomeIcon from '@material-ui/icons/Home'
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff'
 import FlightLandIcon from '@material-ui/icons/FlightLand'
 import {NavLink} from 'react-router-dom'
 import {connect} from "react-redux"
 import authActions from '../redux/actions/authActions'
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 
 const Header = (props) =>{
+    const [dropOpen, setDropOpen] = useState(false)
+    console.log(dropOpen)
     console.log(props.userLogged)
     const picUser = props.userLogged ? props.userLogged.userImage : '../assets/usuario.png'
     return(
@@ -22,7 +25,7 @@ const Header = (props) =>{
                     </div>
                 </NavLink>
     
-                <NavDropdown className='usuario navLink bg-dark d-flex flex-column' style={{backgroundImage:`url(${picUser})`}} id="collasible-nav-dropdown">
+                {/* <NavDropdown className='usuario navLink bg-dark d-flex flex-column' style={{backgroundImage:`url(${picUser})`}} id="collasible-nav-dropdown">
                     {!props.userLogged && (
                         <> 
                             <NavLink className='navLink ms-2' to="/signin">Sign In</NavLink>
@@ -30,8 +33,21 @@ const Header = (props) =>{
                         </>
                     )}
                     {props.userLogged && <button onClick={props.logOutUser}>Log Out</button>}
-                </NavDropdown>
-                
+                </NavDropdown> */}
+                <div className='d-flex usuario' style={{backgroundImage:`url(${picUser})`}}>
+                    <div className='dropContent'>
+                        {dropOpen && (<div className='navDrop navLink bg-dark d-flex flex-column' id="collasible-nav-dropdown">
+                            {!props.userLogged && (
+                                <> 
+                                    <NavLink className='navLink ms-2' to="/signin">Sign In</NavLink>
+                                    <NavLink className='navLink ms-2' to="/signup">Sign Up</NavLink>
+                                </>
+                            )}
+                            {props.userLogged && <h6 className='h6' onClick={props.logOutUser}>Log Out</h6>}
+                        </div>)}
+                        <ArrowDropDownIcon className='iconDrop' onClick={() => setDropOpen(!dropOpen)}/>
+                    </div>
+                </div>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto d-flex justify-content-end px-4v align-items-center">

@@ -572,6 +572,32 @@ div.password{
 div.password input{
     width: 100%;
 }
+
+.navDrop{
+    min-width: 10vw;
+    position: absolute;
+    top: 100%;
+    z-index: 5;
+    padding: 10px;
+    right: 0;
+}
+.iconDrop{
+    color: white;
+    position: absolute;
+    left: 75%;
+    font-size: 3vw!important;
+}
+h6.h6{
+    padding-top: 10px;
+    cursor: pointer;
+}
+.dropContent{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 @media (max-width: 991px){
     .logoForm{
         font-size: 10vw!important;
@@ -598,6 +624,12 @@ div.password input{
         width: 10vw;
         height: 10vw;
         transition: all 2s;
+    }
+    .navDrop{
+        min-width: 15vw;
+    }
+    .iconDrop{
+        margin-left: 4px;
     }
 }
 @media (max-width: 800px) { 
@@ -711,9 +743,22 @@ div.password input{
     div.form form{
         width: 60%;
     }
+    .navDrop{
+        min-width: 18vw;
+    }
+    .iconDrop{
+        margin-left: 6px;
+    }
 }
 
 @media (max-width: 500px){
+    .navDrop{
+        min-width: 22vw;
+    }
+    .iconDrop{
+        margin-left: 8px;
+        font-size: 6vw!important;
+    }
     .logoForm{
         font-size: 18vw!important;
     }
@@ -782,6 +827,13 @@ div.password input{
 
 }
 @media (max-width: 400px){
+    .navDrop{
+        min-width: 25vw;
+    }
+    .iconDrop{
+        margin-left: 8px;
+        font-size: 6vw!important;
+    }
     .logoForm{
         font-size: 22vw!important;
     }
@@ -828,6 +880,16 @@ div.password input{
 }
 
 @media (max-width: 360px){
+    .navDrop{
+        min-width: 25vw;
+    }
+    .iconDrop{
+        margin-left: 8px;
+        font-size: 6vw!important;
+    }
+    .usuario{
+        margin-right: 10px;
+    }
     .stamp{
         height: 5vh;
     }  
@@ -896,6 +958,16 @@ div.password input{
 }
 
 @media (max-width: 350px){
+    .navDrop{
+        min-width: 28vw;
+    }
+    .iconDrop{
+        margin-left: 8px;
+        font-size: 6vw!important;
+    }
+    .usuario{
+        margin-right: 15px;
+    }
     div.form form{
         width: 98%;
     }
@@ -905,6 +977,16 @@ div.password input{
 }
 
 @media (max-width: 320px){
+    .navDrop{
+        min-width: 30vw;
+    }
+    .iconDrop{
+        margin-left: 8px;
+        font-size: 8vw!important;
+    }
+    .usuario{
+        margin-right: 15px;
+    }
     .navbar{
         padding:0.5em 0px!important;
     }
@@ -914,6 +996,16 @@ div.password input{
     }
 }
 @media (max-width: 300px){
+    .navDrop{
+        min-width: 40vw;
+    }
+    .iconDrop{
+        margin-left: 8px;
+        font-size: 10vw!important;
+    }
+    .usuario{
+        margin-right: 15px;
+    }
     /* .dropdown{
         margin-left: 60px;
     } */
