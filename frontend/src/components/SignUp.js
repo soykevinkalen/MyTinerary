@@ -14,7 +14,8 @@ const SignUp = (props) => {
     const [user, setUser] = useState({firstName: '', lastName: '', email: '', password: '', userImage: '', country: ''})
     const [countries, setCountries] = useState([])
     const [eye, setEye] = useState(false)
-
+    const [mistakes, setMistakes] = useState({firstName: '', lastName: '', email: '', password: '', userImage: '',country: ''})
+// {firstName: 'firstName', error: 'Success'}, {lastName: 'lastName', error: 'Success'}, {email: 'email', error:'Success'}, {password: 'password', error: 'Success'}, {userImage: 'userImage', error: 'Success'},{country: 'country', error: 'Success'}
     useEffect(()=>{
         axios.get('https://restcountries.eu/rest/v2/all')
         .then( response => {
@@ -29,17 +30,17 @@ const SignUp = (props) => {
     }
 
     const sendValueUser = async (e = null, googleUser = null) => {
+        setMistakes({firstName: '', lastName: '', email: '', password: '', userImage: '',country: ''})
         e && e.preventDefault()
         let userGen = e ? user : googleUser
         console.log(userGen)
         const response = await props.createUser(userGen)
         console.log(response)
-        // console.log(response)
-        // setUser([
-        //   ...user,
-        //   response.data.respuesta
-        // ])
-        // setUser({firstName: '', lastName: '', email: '', password: '', userImage: '', country: ''})
+        if(response){
+            response.map(error => setMistakes((prevState) =>{ 
+                return {...prevState, [error.context.label]: error.message}
+             }))
+        }
     }
     const responseGoogle = (response) => {
         console.log(response)
@@ -55,23 +56,30 @@ const SignUp = (props) => {
                 <form>
                     <input type="text" className="input" placeholder="Please, enter your first name"
                     onChange={readInputUser} value={user.firstName} name="firstName" />
+                    {mistakes.firstName ? <h6>{mistakes.firstName}</h6> : null} 
                     <input type="text" className="input" placeholder="Please, enter your last name"
                     onChange={readInputUser} value={user.lastName} name="lastName" />
+                    {mistakes.lastName ? <h6>{mistakes.lastName}</h6> : null} 
                     <input type="text" className="input" placeholder="Please, enter your email adress"
                     onChange={readInputUser} value={user.email} name="email" />
+                    {mistakes.email ? <h6>{mistakes.email}</h6> : null} 
                     <div className="password">
                         <input type= {eye ? "text" : "password"} className="input" placeholder="Please, enter your password"
                         onChange={readInputUser} value={user.password} name="password" />
                         {eye ? <VisibilityOffOutlinedIcon className='eyeSignUp' onClick={()=>setEye(!eye)} /> : <VisibilityOutlinedIcon className='eyeSignUp' onClick={()=>setEye(!eye)}/>}
                     </div>
+                        {mistakes.password ? <h6>{mistakes.password}</h6> : null} 
                     <input type="text" className="input" placeholder="Please, enter the URL of your picture"
                     onChange={readInputUser} value={user.userImage} name="userImage" />
+                    {mistakes.userImage ? <h6>{mistakes.userImage}</h6> : null} 
+
                     <select onChange={readInputUser} name="country" className="input">
                         <option value='random'>Choose your country</option>
                         {countries.map(country => {
                             return <option key={country.name} value={country.name}>{country.name}</option>
                         })}
                     </select>
+                    {mistakes.country ? <h6>{mistakes.country}</h6> : null} 
                     <button className="boton" onClick={sendValueUser}>Sign up!</button>
                     <GoogleLogin
                         clientId="974935643152-8625so4e5v3mclin608djtcmp27s608o.apps.googleusercontent.com"

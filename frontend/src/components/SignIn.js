@@ -7,9 +7,8 @@ import {useState } from "react"
 import {connect} from "react-redux"
 import authActions from '../redux/actions/authActions'
 import GoogleLogin from 'react-google-login'
-
-
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const SignIn = (props) => {
     const [user, setUser] = useState({email: '', password: ''})
@@ -29,8 +28,11 @@ const SignIn = (props) => {
         e && e.preventDefault()
         let userGen = e ? user : googleUser
         console.log(userGen)
-        props.logInUser(userGen)
-        // console.log(response)
+        const response = await props.logInUser(userGen)
+
+        if(response){
+            toast.error(response)
+        }
         // setUser([
         //   ...user,
         //   response.data.respuesta
@@ -68,6 +70,7 @@ const SignIn = (props) => {
                         cookiePolicy={'single_host_origin'}
                     />
                 </form>
+                <ToastContainer />
             </div>
             <Footer />
         </>

@@ -6,6 +6,10 @@ const authActions = {
             console.log(user)
             const response = await axios.post('http://localhost:4000/api/user/signup', user)
             console.log(response)
+            if(!response.data.success){
+                console.log(response.data)
+                return response.data.errores
+            }
             dispatch({
                 type: 'LOG_USER',
                 payload: response.data.success ? response.data.respuesta : null
@@ -15,6 +19,9 @@ const authActions = {
     logInUser: (user) => {
         return async(dispatch, getState) => {
             const response = await axios.post('http://localhost:4000/api/user/signin', user)
+            if(!response.data.success){
+                return response.data.error
+            }
             console.log(response)
             dispatch({
                 type:'LOG_USER',

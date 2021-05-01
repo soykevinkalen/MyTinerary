@@ -534,9 +534,12 @@ div.form h1{
 
 div.form form{
     width: 30%;
+    min-height: 85vh;
+    display: flex;
+    justify-content: space-between;
 }
 
-div.form form *{
+div.form form *:not(h6){
     border-radius: 4px;
     margin-bottom: 10px;
     height: 7vh;

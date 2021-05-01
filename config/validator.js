@@ -2,7 +2,7 @@ const joi = require('joi')
 
 const validator = (req, res, next) => {
     //      El schema
-    console.log("validador")
+    
     const schema = joi.object({
         
         firstName: joi.string().trim().min(2).max(20).required().pattern(new RegExp('[a-zA-Z]$')),
@@ -15,9 +15,9 @@ const validator = (req, res, next) => {
 //      La verificación
     const validation = schema.validate(req.body, {abortEarly: false})
 //      Respuesta o el next
-    console.log(validation.error)
+   
     if (validation.error) {
-        return res.json({success: false, errores: validation.error})
+        return res.json({success: false, errores: validation.error.details})
     }
     next()
 }
