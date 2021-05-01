@@ -62,7 +62,7 @@ const SignUp = (props) => {
             <div className="form">
                 <FlightTakeoffIcon className='logoForm'/>
                 <h1>Sign up!</h1>
-                <form>
+                <form className='form'>
                     <input type="text" className="input" placeholder="Please, enter your first name"
                     onChange={readInputUser} value={user.firstName} name="firstName" />
                     {mistakes.firstName ? <h6>{mistakes.firstName}</h6> : null} 
