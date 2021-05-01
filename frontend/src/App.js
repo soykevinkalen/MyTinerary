@@ -16,13 +16,11 @@ import authActions from './redux/actions/authActions'
 class App extends React.Component {
   render(){
     if (!this.props.userLogged && localStorage.getItem('token')) {
-      console.log("entro")
       const userData = JSON.parse(localStorage.getItem('userLogged'))
       const userForced = {
         token: localStorage.getItem('token'),
         ...userData
       }
-      console.log(userForced)
       this.props.logInForced(userForced)
       // <ReactLoading className='preloader' type={'cylon'} color={'white'} height={667} width={'100%'} />
     }
@@ -33,8 +31,8 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/cities" component={Cities} /> 
           <Route path="/itineraries/:id" component={Itineraries} />  
-          {!this.props.userLogged && <Route path="/signup" component={SignUp}/>}
-          {!this.props.userLogged && <Route path="/signin" component={SignIn}/>}
+          <Route path="/signup" component={SignUp}/>
+          <Route path="/signin" component={SignIn}/>
           <Route path='/error' component={Error} />
           <Redirect to='/'/>
         </Switch>

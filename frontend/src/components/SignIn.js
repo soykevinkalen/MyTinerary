@@ -9,6 +9,9 @@ import authActions from '../redux/actions/authActions'
 import GoogleLogin from 'react-google-login'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import {NavLink} from 'react-router-dom'
+import GoogleButton from 'react-google-button'
+
 
 const SignIn = (props) => {
     const [user, setUser] = useState({email: '', password: ''})
@@ -64,6 +67,9 @@ const SignIn = (props) => {
                     <button className="boton" onClick={sendValueUser}>Sign in!</button>
                     <GoogleLogin
                         clientId="974935643152-8625so4e5v3mclin608djtcmp27s608o.apps.googleusercontent.com"
+                        render={renderProps => (
+                            <GoogleButton className='btn-google' onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign in with Google</GoogleButton>
+                          )}
                         buttonText="Sign in with google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
@@ -71,6 +77,7 @@ const SignIn = (props) => {
                     />
                 </form>
                 <ToastContainer />
+                <p>Don't have an account?  <NavLink to='/signup' className="navLink">Sign up here!</NavLink></p>
             </div>
             <Footer />
         </>

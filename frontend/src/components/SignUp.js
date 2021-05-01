@@ -10,6 +10,9 @@ import authActions from '../redux/actions/authActions'
 import GoogleLogin from 'react-google-login'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import {NavLink} from 'react-router-dom'
+import GoogleButton from 'react-google-button'
+
 
 
 
@@ -90,8 +93,15 @@ const SignUp = (props) => {
                     </select>
                     {mistakes.country ? <h6>{mistakes.country}</h6> : null} 
                     <button className="boton" onClick={sendValueUser}>Sign up!</button>
+                    <div className="input">
+                        <h6>Already have an account?  <NavLink to='/signin' className="navLink">Sign in here!</NavLink></h6>
+                        <h6>Or you can sign up with Google</h6>
+                    </div>
                     <GoogleLogin
                         clientId="974935643152-8625so4e5v3mclin608djtcmp27s608o.apps.googleusercontent.com"
+                        render={renderProps => (
+                            <GoogleButton onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign up with Google</GoogleButton>
+                        )}
                         buttonText="Sign up with google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}

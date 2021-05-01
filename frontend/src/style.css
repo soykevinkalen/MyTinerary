@@ -536,6 +536,10 @@ div.form form{
     width: 30%;
 }
 
+.btn-google{
+    align-self: center!important;
+}
+
 div.form form.form{
     width: 30%;
     min-height: 85vh;
@@ -550,6 +554,9 @@ div.form form *:not(h6){
 }
 div.form form h6{
     color: rgb(226, 2, 2);
+}
+form div.input h6{
+    color:#212529;
 }
 div.form form button{
     border: 3px solid #343a40;
@@ -588,7 +595,7 @@ div.password input{
     top: 100%;
     z-index: 5;
     padding: 10px;
-    right: 0;
+    left: 0;
 }
 .iconDrop{
     color: white;
