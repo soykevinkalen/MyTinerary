@@ -3,7 +3,7 @@ import axios from 'axios'
 const authActions = {
     createUser: (user) => {
         return async (dispatch, getState) => {
-            console.log('action')
+            console.log(user)
             const response = await axios.post('http://localhost:4000/api/user/signup', user)
             console.log(response)
             dispatch({

@@ -12,7 +12,6 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 
 const Header = (props) =>{
     const [dropOpen, setDropOpen] = useState(false)
-    console.log(dropOpen)
     console.log(props.userLogged)
     const picUser = props.userLogged ? props.userLogged.userImage : '../assets/usuario.png'
     return(
