@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const userControllers = {
 
     userSignUp: async (req,res) => {
-        let {firstName, lastName, email, password, userImage, country} = req.body
+        let {firstName, lastName, email, password, userImage, country, google} = req.body
         const mailExist = await User.findOne({email})
 
         let respuesta;
@@ -16,7 +16,7 @@ const userControllers = {
         password = bcryptjs.hashSync(password, 10)
         if(!mailExist){
             try{
-                userToRecord = new User({firstName, lastName, email, password, userImage, country})       
+                userToRecord = new User({firstName, lastName, email, password, userImage, country, google})       
                 await userToRecord.save()
                 const token = jwt.sign({...userToRecord}, process.env.SECRET_OR_KEY)
                 respuesta = token  
@@ -30,9 +30,8 @@ const userControllers = {
             return res.json({success: false, errores: {'controllers':error}})
         }
         res.json({
-            success: !error ? true : false,
-            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName},
-            error: error
+            success: true,
+            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName}
         }) 
     },
     userSignIn: async (req,res) => {
@@ -48,7 +47,7 @@ const userControllers = {
                 const token = jwt.sign({...userExist}, process.env.SECRET_OR_KEY)
                 respuesta = token 
             }else{
-                error = 'Incorrect username and/or password'
+                error = userExist.google ? 'You have to login with google' : 'Incorrect username and/or password'                
             }
         } else {
             error = 'Incorrect username and/or password'

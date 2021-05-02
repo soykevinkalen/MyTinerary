@@ -618,7 +618,7 @@ h6.h6{
     .logoForm{
         font-size: 10vw!important;
     }
-    div.form form{
+    div.form form, div.form form.form{
         width: 40%;
     }
     .navbar-collapse {
@@ -741,7 +741,7 @@ h6.h6{
     .logoHeader .logoGral{
         font-size: 8vw!important;
     }
-    div.form form{
+    div.form form, div.form form.form{
         width: 50%;
     }
     
@@ -756,7 +756,7 @@ h6.h6{
         height: 12vw;
         transition: all 2s;
     }
-    div.form form{
+    div.form form, div.form form.form{
         width: 60%;
     }
     .navDrop{
@@ -778,7 +778,7 @@ h6.h6{
     .logoForm{
         font-size: 18vw!important;
     }
-    div.form form{
+    div.form form, div.form form.form{
         width: 75%;
     }
     .itineraryContent > h3{
@@ -853,7 +853,7 @@ h6.h6{
     .logoForm{
         font-size: 22vw!important;
     }
-    div.form form{
+    div.form form, div.form form.form{
         width: 90%;
     }
     .chosenCity h3, .buttonItenerari h3, .logoButtonItenerari{
@@ -984,7 +984,7 @@ h6.h6{
     .usuario{
         margin-right: 15px;
     }
-    div.form form{
+    div.form form, div.form form.form{
         width: 98%;
     }
     .dropdown{
@@ -1012,7 +1012,7 @@ h6.h6{
     }
 }
 @media (max-width: 300px){
-    div.form form h6{
+    div.form form h6, div.form form.form h6{
         font-size:5.2vw ;
     }
     .navDrop{

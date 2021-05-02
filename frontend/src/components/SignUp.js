@@ -51,7 +51,7 @@ const SignUp = (props) => {
     }
     const responseGoogle = (response) => {
         const {givenName, familyName, email, googleId, imageUrl} = response.profileObj
-        sendValueUser(null, {firstName: givenName, lastName: familyName , email, password: "a"+googleId, userImage: imageUrl, country: 'google'})
+        sendValueUser(null, {firstName: givenName, lastName: familyName , email, password: "a"+googleId, userImage: imageUrl, country: 'google', google: true})
     }
     return(
         <>
