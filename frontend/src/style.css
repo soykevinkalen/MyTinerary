@@ -602,6 +602,7 @@ div.password input{
     position: absolute;
     left: 75%;
     font-size: 3vw!important;
+    margin-left: 5px;
 }
 h6.h6{
     padding-top: 10px;
@@ -1012,6 +1013,9 @@ h6.h6{
     }
 }
 @media (max-width: 300px){
+    input.image::placeholder{
+        font-size: 5.2vw;
+    }
     div.form form h6, div.form form.form h6{
         font-size:5.2vw ;
     }

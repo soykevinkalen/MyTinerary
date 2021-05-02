@@ -47,6 +47,8 @@ const SignUp = (props) => {
             response.map(error => setMistakes((prevState) =>{ 
                 return {...prevState, [error.context.label]: error.message}
              }))
+        }else{
+            props.history.push('/')
         }
     }
     const responseGoogle = (response) => {
@@ -75,7 +77,7 @@ const SignUp = (props) => {
                         {eye ? <VisibilityOffOutlinedIcon className='eyeSignUp' onClick={()=>setEye(!eye)} /> : <VisibilityOutlinedIcon className='eyeSignUp' onClick={()=>setEye(!eye)}/>}
                     </div>
                         {mistakes.password ? <h6>{mistakes.password}</h6> : null} 
-                    <input type="text" className="input" placeholder="Please, enter the URL of your picture"
+                    <input type="text" className="input image" placeholder="Please, enter the URL of your picture"
                     onChange={readInputUser} value={user.userImage} name="userImage" />
                     {mistakes.userImage ? <h6>{mistakes.userImage}</h6> : null} 
 
