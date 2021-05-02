@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken')
 const userControllers = {
 
     userSignUp: async (req,res) => {
-        console.log('controller')
         let {firstName, lastName, email, password, userImage, country} = req.body
         const mailExist = await User.findOne({email})
 
@@ -17,8 +16,7 @@ const userControllers = {
         password = bcryptjs.hashSync(password, 10)
         if(!mailExist){
             try{
-                userToRecord = new User({firstName, lastName, email, password, userImage, country})
-                console.log(userToRecord)       
+                userToRecord = new User({firstName, lastName, email, password, userImage, country})       
                 await userToRecord.save()
                 const token = jwt.sign({...userToRecord}, process.env.SECRET_OR_KEY)
                 respuesta = token  
@@ -63,7 +61,6 @@ const userControllers = {
         })  
     },
     loginForced: (req, res) => {
-        console.log(res)
         res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName}})
     },
 

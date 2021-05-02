@@ -3,11 +3,8 @@ import axios from 'axios'
 const authActions = {
     createUser: (user) => {
         return async (dispatch, getState) => {
-            console.log(user)
             const response = await axios.post('http://localhost:4000/api/user/signup', user)
-            console.log(response)
             if(!response.data.success){
-                console.log(response.data)
                 return response.data.errores
             }
             dispatch({
@@ -22,7 +19,6 @@ const authActions = {
             if(!response.data.success){
                 return response.data.error
             }
-            console.log(response)
             dispatch({
                 type:'LOG_USER',
                 payload: response.data.success ? response.data.respuesta : null
@@ -43,7 +39,6 @@ const authActions = {
                         'Authorization': 'Bearer '+user.token
                     }
                 })
-                console.log(user)
                 dispatch({type: 'LOG_USER', payload: {
                     ...respuesta.data.respuesta,
                     token: user.token

@@ -3,7 +3,7 @@ import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined'
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import {useState } from "react"
+import {useEffect, useState } from "react"
 import {connect} from "react-redux"
 import authActions from '../redux/actions/authActions'
 import GoogleLogin from 'react-google-login'
@@ -16,34 +16,25 @@ import GoogleButton from 'react-google-button'
 const SignIn = (props) => {
     const [user, setUser] = useState({email: '', password: ''})
     const [eye, setEye] = useState(false)
+    useEffect (() =>{
+        window.scrollTo(0,0)
+    }, [])
     const readInputUser = (e) => {
         setUser({
           ...user,
           [e.target.name]: e.target.value
         })
     }
-    // const sendValueUser = (e) => {
-    //     e.preventDefault()
-    //     props.logInUser(user)
-    // }
 
     const sendValueUser = async (e = null, googleUser = null) => {
         e && e.preventDefault()
         let userGen = e ? user : googleUser
-        console.log(userGen)
         const response = await props.logInUser(userGen)
-
         if(response){
             toast.error(response)
         }
-        // setUser([
-        //   ...user,
-        //   response.data.respuesta
-        // ])
-        // setUser({firstName: '', lastName: '', email: '', password: '', userImage: '', country: ''})
     }
     const responseGoogle = (response) => {
-        console.log(response)
         if(response.profileObj.email){
             sendValueUser(null, {email: response.profileObj.email, password: 'a'+response.profileObj.googleId})
         }

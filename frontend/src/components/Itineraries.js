@@ -10,12 +10,11 @@ import Itinerary from './Itinerary'
 const Itineraries = (props) => {
     
     const [chosenCity, setChosenCity] = useState([])
-        
     useEffect(() =>{
-        window.scrollTo(0,0)         
-        props.getItinerariesByCity(props.match.params.id)
-        const city = props.cities.find(city => city._id === props.match.params.id)
-        setChosenCity(city)
+        window.scrollTo(0,0)
+            props.getItinerariesByCity(props.match.params.id)
+            const city = props.cities.find(city => city._id === props.match.params.id)
+            setChosenCity(city)
     },[props.match.params.id])
 
     if(!chosenCity){
@@ -55,7 +54,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    // getCities: citiesActions.getCities,
     getItinerariesByCity: itinerariesActions.getItinerariesByCity
 }
 

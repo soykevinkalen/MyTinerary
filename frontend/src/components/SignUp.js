@@ -13,16 +13,13 @@ import 'react-toastify/dist/ReactToastify.css'
 import {NavLink} from 'react-router-dom'
 import GoogleButton from 'react-google-button'
 
-
-
-
 const SignUp = (props) => { 
     const [user, setUser] = useState({firstName: '', lastName: '', email: '', password: '', userImage: '', country: ''})
     const [countries, setCountries] = useState([])
     const [eye, setEye] = useState(false)
     const [mistakes, setMistakes] = useState({firstName: '', lastName: '', email: '', password: '', userImage: '',country: ''})
-// {firstName: 'firstName', error: 'Success'}, {lastName: 'lastName', error: 'Success'}, {email: 'email', error:'Success'}, {password: 'password', error: 'Success'}, {userImage: 'userImage', error: 'Success'},{country: 'country', error: 'Success'}
     useEffect(()=>{
+        window.scrollTo(0,0)
         axios.get('https://restcountries.eu/rest/v2/all')
         .then( response => {
             setCountries(response.data)})
@@ -39,9 +36,7 @@ const SignUp = (props) => {
         setMistakes({firstName: '', lastName: '', email: '', password: '', userImage: '',country: ''})
         e && e.preventDefault()
         let userGen = e ? user : googleUser
-        console.log(userGen)
         const response = await props.createUser(userGen)
-        console.log(response)
         if(response){
             if(response.controllers){
                 if(response.controllers === "There was an error in the user engraving. Retry"){
@@ -55,7 +50,6 @@ const SignUp = (props) => {
         }
     }
     const responseGoogle = (response) => {
-        console.log(response)
         const {givenName, familyName, email, googleId, imageUrl} = response.profileObj
         sendValueUser(null, {firstName: givenName, lastName: familyName , email, password: "a"+googleId, userImage: imageUrl, country: 'google'})
     }
