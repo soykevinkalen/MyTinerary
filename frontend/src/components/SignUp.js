@@ -36,6 +36,9 @@ const SignUp = (props) => {
         setMistakes({firstName: '', lastName: '', email: '', password: '', userImage: '',country: ''})
         e && e.preventDefault()
         let userGen = e ? user : googleUser
+        if(!userGen.email || !userGen.password || !userGen.firstName || !userGen.lastName || !userGen.userImage || !userGen.country ){
+            return toast.error('Fill in the fields')
+        }
         const response = await props.createUser(userGen)
         if(response){
             if(response.controllers){
@@ -47,9 +50,8 @@ const SignUp = (props) => {
             response.map(error => setMistakes((prevState) =>{ 
                 return {...prevState, [error.context.label]: error.message}
              }))
-        }else{
-            props.history.push('/')
         }
+        props.history.push('/')
     }
     const responseGoogle = (response) => {
         const {givenName, familyName, email, googleId, imageUrl} = response.profileObj

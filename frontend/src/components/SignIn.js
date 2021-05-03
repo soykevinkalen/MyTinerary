@@ -29,12 +29,14 @@ const SignIn = (props) => {
     const sendValueUser = async (e = null, googleUser = null) => {
         e && e.preventDefault()
         let userGen = e ? user : googleUser
+        if(!userGen.email || !userGen.password){
+            return toast.error('Fill in the fields')
+        }
         const response = await props.logInUser(userGen)
         if(response){
             toast.error(response)
-        }else{
-            props.history.push('/')
         }
+        props.history.push('/')        
     }
     const responseGoogle = (response) => {
         if(response.profileObj.email){

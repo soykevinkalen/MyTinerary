@@ -615,6 +615,10 @@ h6.h6{
     align-items: center;
     justify-content: flex-end;
 }
+
+/* input:invalid {
+    border: 2px dashed red;
+} */
 @media (max-width: 991px){
     .logoForm{
         font-size: 10vw!important;
