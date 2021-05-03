@@ -50,8 +50,9 @@ const SignUp = (props) => {
             response.map(error => setMistakes((prevState) =>{ 
                 return {...prevState, [error.context.label]: error.message}
              }))
+        }else{
+            props.history.push('/')
         }
-        props.history.push('/')
     }
     const responseGoogle = (response) => {
         const {givenName, familyName, email, googleId, imageUrl} = response.profileObj

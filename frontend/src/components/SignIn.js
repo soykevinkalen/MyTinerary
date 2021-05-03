@@ -35,8 +35,9 @@ const SignIn = (props) => {
         const response = await props.logInUser(userGen)
         if(response){
             toast.error(response)
+        }else{
+            props.history.push('/')        
         }
-        props.history.push('/')        
     }
     const responseGoogle = (response) => {
         if(response.profileObj.email){
