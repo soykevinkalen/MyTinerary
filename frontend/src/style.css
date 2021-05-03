@@ -517,12 +517,27 @@ footer div.containerSocial h2{
 div.form,div.form form{
     display: flex;
     flex-direction: column;
-    
 }
-
+.divFormContent{
+    display: flex;
+    justify-content: center;
+    /* background-image: url('../public/assets/beach.jpg'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 div.form{
     align-items: center;
-    background-image: linear-gradient(45deg, #649292 0%, #343a40 100%);
+    /* background-image: linear-gradient(45deg, #649292 0%, #343a40 100%); */
+    width: 30%;
+    box-shadow: 0px 0px 28px #343a40cb;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 20px 0px;
+    background-color: #343a40cb;
+}
+div.signInContent{
+    margin: 50px 0px;
 }
 .logoForm{
     color: #7198b5!important;
@@ -533,7 +548,7 @@ div.form h1{
 }
 
 div.form form{
-    width: 30%;
+    width: 100%;
 }
 
 .btn-google{
@@ -541,7 +556,7 @@ div.form form{
 }
 
 div.form form.form{
-    width: 30%;
+    width: 100%;
     min-height: 85vh;
     display: flex;
     justify-content: space-between;
@@ -555,8 +570,8 @@ div.form form *:not(h6){
 div.form form h6{
     color: rgb(226, 2, 2);
 }
-form div.input h6{
-    color:#212529;
+form div.input h6, .account{
+    color:white;
 }
 div.form form button{
     border: 3px solid #343a40;
@@ -595,7 +610,7 @@ div.password input{
     top: 100%;
     z-index: 5;
     padding: 10px;
-    left: 0;
+    left: 0;    
 }
 .iconDrop{
     color: white;
@@ -619,13 +634,32 @@ h6.h6{
 /* input:invalid {
     border: 2px dashed red;
 } */
+
+h6.name{
+    margin-bottom: 0;
+    color: white;
+}
+
+.usuarioContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sign{
+    color: white;
+    font-weight: bold;
+}
 @media (max-width: 991px){
     .logoForm{
         font-size: 10vw!important;
     }
-    div.form form, div.form form.form{
+    div.form{
         width: 40%;
     }
+    /* div.form form, div.form form.form{
+        width: 100%;
+    } */
     .navbar-collapse {
         position: absolute!important;
         top: 100%!important;
@@ -746,7 +780,7 @@ h6.h6{
     .logoHeader .logoGral{
         font-size: 8vw!important;
     }
-    div.form form, div.form form.form{
+    div.form{
         width: 50%;
     }
     
@@ -761,7 +795,7 @@ h6.h6{
         height: 12vw;
         transition: all 2s;
     }
-    div.form form, div.form form.form{
+    div.form{
         width: 60%;
     }
     .navDrop{
@@ -783,7 +817,7 @@ h6.h6{
     .logoForm{
         font-size: 18vw!important;
     }
-    div.form form, div.form form.form{
+    div.form{
         width: 75%;
     }
     .itineraryContent > h3{
@@ -858,7 +892,7 @@ h6.h6{
     .logoForm{
         font-size: 22vw!important;
     }
-    div.form form, div.form form.form{
+    div.form {
         width: 90%;
     }
     .chosenCity h3, .buttonItenerari h3, .logoButtonItenerari{
@@ -989,7 +1023,7 @@ h6.h6{
     .usuario{
         margin-right: 15px;
     }
-    div.form form, div.form form.form{
+    div.form{
         width: 98%;
     }
     .dropdown{
@@ -1015,6 +1049,9 @@ h6.h6{
         /* align-self: center; */
         margin: auto;
     }
+    div.input h6{
+        font-size: 4.5vw;
+    }
 }
 @media (max-width: 300px){
     input.image::placeholder{
@@ -1022,6 +1059,9 @@ h6.h6{
     }
     div.form form h6, div.form form.form h6{
         font-size:5.2vw ;
+    }
+    div.input h6{
+        font-size: 4vw!important;
     }
     .navDrop{
         min-width: 40vw;

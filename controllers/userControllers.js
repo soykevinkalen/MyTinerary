@@ -31,7 +31,7 @@ const userControllers = {
         }
         res.json({
             success: true,
-            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName}
+            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName, lastName: userToRecord.lastName}
         }) 
     },
     userSignIn: async (req,res) => {
@@ -41,6 +41,7 @@ const userControllers = {
         let error;
         
         const userExist = await User.findOne({email})
+        
         if(userExist){
             const passwordEqual = bcryptjs.compareSync(password, userExist.password)
             if(passwordEqual){
@@ -55,12 +56,12 @@ const userControllers = {
 
         res.json({
             success: !error ? true : false,
-            respuesta: !error && {token: respuesta, userImage: userExist.userImage, firstName: userExist.firstName},
+            respuesta: !error && {token: respuesta, userImage: userExist.userImage, firstName: userExist.firstName, lastName: userExist.lastName},
             error: error
         })  
     },
     loginForced: (req, res) => {
-        res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName}})
+        res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName, lastName: req.user.lastName}})
     },
 
 }

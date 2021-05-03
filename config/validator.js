@@ -5,22 +5,22 @@ const validator = (req, res, next) => {
     const schema = joi.object({
         
         firstName: joi.string().trim().min(2).max(20).required().pattern(new RegExp('[a-zA-Z]$')).messages({
-            "string.base": "Your name should by a text type",
+            "string.base": "Your name should only have letters",
             "string.empty": "Your first name is a required field",
             "any.required": "Your first name is a required field",
             "string.min": "You first name must have at least 2 letters",
             "string.max": "Your name must be up to 20 characters long",
             "string.trim": "Your first name contains unnecessary spaces",
-            "string.pattern.base":"Your name should by a text type"
+            "string.pattern.base":"Your name should only have letters"
         }),
         lastName: joi.string().trim().min(2).max(20).required().pattern(new RegExp('[a-zA-Z]$')).messages({
-            "string.base": "Your last name should by a text type",
+            "string.base": "Your last name should only have letters",
             "string.empty": "Your last name is a required field",
             "any.required": "Your last name is a required field",
             "string.min": "You last name must have at least 2 letters",
             "string.max": "Your last name must be up to 20 characters long",
             "string.trim": "Your last name contains unnecessary spaces",
-            "string.pattern.base":"Your last name should by a text type"
+            "string.pattern.base":"Your last name should only have letters"
         }),
         email: joi.string().required().trim().email().messages({
             "string.base": "Your email should by a text type",

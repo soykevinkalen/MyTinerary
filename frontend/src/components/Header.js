@@ -12,6 +12,8 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 const Header = (props) =>{
     const [dropOpen, setDropOpen] = useState(false)
     const picUser = props.userLogged ? props.userLogged.userImage : '../assets/usuario.png'
+    const name = props.userLogged ? props.userLogged.firstName : ""
+    const lastName = props.userLogged ? props.userLogged.lastName : ""
     return(
         <header className='styleFooter'>
             <Navbar collapseOnSelect expand="lg" variant="dark" className='styleFooter d-flex justify-content-between'>
@@ -22,28 +24,22 @@ const Header = (props) =>{
                     </div>
                 </NavLink>
     
-                {/* <NavDropdown className='usuario navLink bg-dark d-flex flex-column' style={{backgroundImage:`url(${picUser})`}} id="collasible-nav-dropdown">
-                    {!props.userLogged && (
-                        <> 
-                            <NavLink className='navLink ms-2' to="/signin">Sign In</NavLink>
-                            <NavLink className='navLink ms-2' to="/signup">Sign Up</NavLink>
-                        </>
-                    )}
-                    {props.userLogged && <button onClick={props.logOutUser}>Log Out</button>}
-                </NavDropdown> */}
-                <div className='d-flex usuario' style={{backgroundImage:`url(${picUser})`}}>
-                    <div className='dropContent'>
-                        {dropOpen && (<div className='navDrop navLink bg-dark d-flex flex-column' id="collasible-nav-dropdown">
-                            {!props.userLogged && (
-                                <> 
-                                    <NavLink className='navLink ms-2' to="/signin">Sign In</NavLink>
-                                    <NavLink className='navLink ms-2' to="/signup">Sign Up</NavLink>
-                                </>
-                            )}
-                            {props.userLogged && <h6 className='h6' onClick={props.logOutUser}>Log Out</h6>}
-                        </div>)}
-                        <ArrowDropDownIcon className='iconDrop' onClick={() => setDropOpen(!dropOpen)}/>
+                <div className='usuarioContent'>
+                    <div className='d-flex usuario' style={{backgroundImage:`url(${picUser})`}}>
+                        <div className='dropContent'>
+                            {dropOpen && (<div className='navDrop navLink bg-dark d-flex flex-column' id="collasible-nav-dropdown">
+                                {!props.userLogged && (
+                                    <> 
+                                        <NavLink className='navLink ms-2' to="/signin">Sign In</NavLink>
+                                        <NavLink className='navLink ms-2' to="/signup">Sign Up</NavLink>
+                                    </>
+                                )}
+                                {props.userLogged && <h6 className='h6' onClick={props.logOutUser}>Log Out</h6>}
+                            </div>)}
+                            <ArrowDropDownIcon className='iconDrop' onClick={() => setDropOpen(!dropOpen)}/>
+                        </div>
                     </div>
+                    <h6 className='name'>{name + " " + lastName}</h6>
                 </div>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
