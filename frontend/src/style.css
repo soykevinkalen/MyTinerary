@@ -510,6 +510,10 @@ footer div.containerSocial h2{
     color: red!important;
     cursor: pointer;
 }
+.heartRed{
+    color: red!important;
+}
+
 .diner{
     color: green!important;
 }

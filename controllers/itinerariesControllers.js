@@ -41,9 +41,9 @@ const itinerariesControllers = {
     putItinerary: async(req, res) =>{
         try{
             const modifiedItinerary = await Itinerary.findOneAndUpdate({_id:req.params.id}, {...req.body}, {new: true})
-            res.json({respuesta: modifiedItinerary})
+            res.json({success: true, respuesta: modifiedItinerary})
         }catch(error){
-            res.json({respuesta: 'An error has occurred'})           
+            res.json({success: false, respuesta: 'An error has occurred'})           
             console.log(error)
         }
     },

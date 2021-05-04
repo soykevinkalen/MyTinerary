@@ -61,7 +61,7 @@ const userControllers = {
         })  
     },
     loginForced: (req, res) => {
-        res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName, lastName: req.user.lastName}})
+        res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName, lastName: req.user.lastName, id: req.user._id}})
     },
 
 }

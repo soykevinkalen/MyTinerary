@@ -5,6 +5,8 @@ import WatchLaterIcon from '@material-ui/icons/WatchLater'
 import Modal from 'react-bootstrap/Modal'
 import axios from 'axios'
 import activitiesActions from '../redux/actions/activitiesActions'
+import itinerariesActions from '../redux/actions/itinerariesActions'
+
 import { connect } from "react-redux"
 
 
@@ -16,6 +18,7 @@ const Itinerary = (props) =>{
     const [itinerariesCoincidencies, setItinerariesCoincidencies] = useState([])
     const [itineraries, setItineraries] = useState([])
     const [activities, setActivities] = useState([])
+    const [likes, setLikes] = useState("heart")
     useEffect(()=>{
         axios.get('http://localhost:4000/api/itineraries')
         .then(response => {
@@ -44,11 +47,23 @@ const Itinerary = (props) =>{
             setActivities(activity.data.respuesta)
         }
     }
-    const like = () => {
+    const like = (id) => {
         
-        console.log(props.user)
-        console.log(props.itinerariesByCity)
-
+        const oneItinerary = props.itinerariesByCity.find(itinerary => itinerary._id === id)
+        if(oneItinerary.usersLiked.indexOf(props.user.id) !== -1){
+           
+            oneItinerary.usersLiked = oneItinerary.usersLiked.filter(id => props.user.id !== id)
+            oneItinerary.likes = oneItinerary.likes - 1
+            setLikes("heart")
+        }else{
+            oneItinerary.likes = oneItinerary.likes + 1
+            oneItinerary.usersLiked = [...oneItinerary.usersLiked, props.user.id]
+            setLikes("heartRed")
+        }
+        console.log(oneItinerary)
+        
+        console.log(likes)
+        props.putItinerary(id, oneItinerary)
     }
     return(
             
@@ -58,7 +73,7 @@ const Itinerary = (props) =>{
             <div className='userImage' style={{backgroundImage:`url('${props.itinerary.authorImage}')`}}></div>
             <h5>{props.itinerary.authorName}</h5>
             <div className='valoration'>
-                <div><FavoriteIcon onClick={like} className="heart"/> {props.itinerary.likes} </div>
+                <div><FavoriteIcon onClick={() => like(props.itinerary._id)} className={likes}/> {props.itinerary.likes} </div>
                 <div> <span>Price: </span>{[...Array(props.itinerary.price)].map((p,i) => <LocalAtmIcon className="diner" key={i}/>)}</div>
                 <div><WatchLaterIcon className="watch"/> {props.itinerary.duration} <span>hours</span></div>
             </div>
@@ -129,7 +144,8 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    getActivitiesByItinerary : activitiesActions.getActivitiesByItinerary
+    getActivitiesByItinerary : activitiesActions.getActivitiesByItinerary,
+    putItinerary: itinerariesActions.putItinerary
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itinerary)
