@@ -439,7 +439,32 @@ footer div.containerSocial h2{
 .under h3{
     text-align: center;
 }
-
+.activitiesContent{
+    display: flex;    
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 10px solid black;
+    border-radius: 12px;
+}
+.activitiesContent > h3{
+    background-color: black;
+    width: 100%;
+}
+.activity{
+    background-size: cover;
+    background-position: center;
+    min-width: 12rem;
+    width: 15vw;
+    height: 20vh;
+    box-shadow: 4px 4px 12px rgb(0 0 0 / 43%);
+    border-radius: 4px;
+    margin: 2vh 1vh;
+}
+.activity h6{
+    padding: 2px;
+    background-color: #212529c0;
+    text-align: center;
+}
 .itineraryContent > h5{
     text-align: center;
 }
@@ -481,8 +506,9 @@ footer div.containerSocial h2{
     margin-right: 10px;
     color: #0572e6;
 }
-.heart{
+.heart:hover{
     color: red!important;
+    cursor: pointer;
 }
 .diner{
     color: green!important;

@@ -31,7 +31,7 @@ const userControllers = {
         }
         res.json({
             success: true,
-            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName, lastName: userToRecord.lastName}
+            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName, lastName: userToRecord.lastName, id: userToRecord._id}
         }) 
     },
     userSignIn: async (req,res) => {
@@ -56,7 +56,7 @@ const userControllers = {
 
         res.json({
             success: !error ? true : false,
-            respuesta: !error && {token: respuesta, userImage: userExist.userImage, firstName: userExist.firstName, lastName: userExist.lastName},
+            respuesta: !error && {token: respuesta, userImage: userExist.userImage, firstName: userExist.firstName, lastName: userExist.lastName, id: userExist._id},
             error: error
         })  
     },

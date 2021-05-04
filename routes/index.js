@@ -11,7 +11,7 @@ const passport = require('passport')
 const {getCities, postCities,getCity,putCity,deleteCity} = citiesControllers
 const {getItineraries,getItinerariesbyCityId,postItineraries,getItinerary,putItinerary,deleteItinerary} = itinerariesControllers
 const {userSignUp, userSignIn, loginForced} = userControllers
-const {getActivities, postActivity, getActivitiesByItinerary} = activitiesControllers
+const {getActivities, postActivity, getActivitiesByItinerary, putActivity} = activitiesControllers
 
 router.route('/cities')
 .get(getCities)
@@ -45,6 +45,9 @@ router.route('/user/loginForced')
 router.route('/activities')
 .get(getActivities)
 .post(postActivity)
+
+router.route('/activities/:id')
+.put(putActivity)
 
 router.route('/activitiesByItinerary/:id')
 .get(getActivitiesByItinerary)

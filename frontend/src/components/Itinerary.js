@@ -4,6 +4,9 @@ import LocalAtmIcon from '@material-ui/icons/LocalAtm'
 import WatchLaterIcon from '@material-ui/icons/WatchLater'
 import Modal from 'react-bootstrap/Modal'
 import axios from 'axios'
+import activitiesActions from '../redux/actions/activitiesActions'
+import { connect } from "react-redux"
+
 
 const Itinerary = (props) =>{
 
@@ -12,6 +15,7 @@ const Itinerary = (props) =>{
     const [hashtag, setHashtag] = useState('')
     const [itinerariesCoincidencies, setItinerariesCoincidencies] = useState([])
     const [itineraries, setItineraries] = useState([])
+    const [activities, setActivities] = useState([])
     useEffect(()=>{
         axios.get('http://localhost:4000/api/itineraries')
         .then(response => {
@@ -33,7 +37,19 @@ const Itinerary = (props) =>{
         setShow(true)
         setHashtag(e.target.value)
     }
+    const view = async (id) => {
+        setIsOpen(!isOpen)
+        if(!isOpen){
+            const activity = await props.getActivitiesByItinerary(id)
+            setActivities(activity.data.respuesta)
+        }
+    }
+    const like = () => {
+        
+        console.log(props.user)
+        console.log(props.itinerariesByCity)
 
+    }
     return(
             
         <div className='itineraryContent'>
@@ -42,7 +58,7 @@ const Itinerary = (props) =>{
             <div className='userImage' style={{backgroundImage:`url('${props.itinerary.authorImage}')`}}></div>
             <h5>{props.itinerary.authorName}</h5>
             <div className='valoration'>
-                <div><FavoriteIcon className="heart"/> {props.itinerary.likes} </div>
+                <div><FavoriteIcon onClick={like} className="heart"/> {props.itinerary.likes} </div>
                 <div> <span>Price: </span>{[...Array(props.itinerary.price)].map((p,i) => <LocalAtmIcon className="diner" key={i}/>)}</div>
                 <div><WatchLaterIcon className="watch"/> {props.itinerary.duration} <span>hours</span></div>
             </div>
@@ -84,10 +100,36 @@ const Itinerary = (props) =>{
                 </Modal>
             </div>
             
-            {isOpen && (<div className='under'><h3>UNDER CONSTRUCTION</h3></div>)}
-            <button className="butonIsOpen" onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'View Less' : 'View More'}</button>
+            {isOpen && (<div className='under'>
+                <div className='activitiesContent'>
+                    <h3>Activities</h3>
+                    {
+                        activities.map(activity => {
+                            return(
+                            <div key={activity.title} className='activity' style={{backgroundImage:`url('${activity.image}')`}}>
+                                <h6>{activity.title}</h6>
+                            </div>)
+                        })
+                    }
+                </div>
+                <div className='comments'>
+
+                </div>
+            </div>)}
+            <button className="butonIsOpen" onClick={() => view(props.itinerary._id)}>{isOpen ? 'View Less' : 'View More'}</button>
         </div>     
     )
 }
+const mapStateToProps = state => {
+    return {
+        user: state.auth.userLogged,
+        itinerariesByCity: state.itinerary.itinerariesByCity
 
-export default Itinerary
+       
+    }
+}
+const mapDispatchToProps = {
+    getActivitiesByItinerary : activitiesActions.getActivitiesByItinerary
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Itinerary)

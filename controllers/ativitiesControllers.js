@@ -40,7 +40,7 @@ const activitiesControllers = {
     },
     putActivity: async (req, res) => {
         try{
-            const activity = await Acitivity.findOneAndUpdate({_id: req.params.id}, {...req.body}, {new: true})
+            const activity = await Activity.findOneAndUpdate({_id: req.params.id}, {...req.body}, {new: true})
             res.json({success: true, respuesta: activity})
         }catch(error){
             res.json({success: false, respuesta: 'An error has occurred'})
