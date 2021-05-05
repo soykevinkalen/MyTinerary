@@ -31,7 +31,7 @@ const userControllers = {
         }
         res.json({
             success: true,
-            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName, lastName: userToRecord.lastName, id: userToRecord._id}
+            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName, lastName: userToRecord.lastName}
         }) 
     },
     userSignIn: async (req,res) => {
@@ -56,13 +56,16 @@ const userControllers = {
 
         res.json({
             success: !error ? true : false,
-            respuesta: !error && {token: respuesta, userImage: userExist.userImage, firstName: userExist.firstName, lastName: userExist.lastName, id: userExist._id},
+            respuesta: !error && {token: respuesta, userImage: userExist.userImage, firstName: userExist.firstName, lastName: userExist.lastName},
             error: error
         })  
     },
     loginForced: (req, res) => {
-        res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName, lastName: req.user.lastName, id: req.user._id}})
+        res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName, lastName: req.user.lastName}})
     },
+    idUser: (req,res) =>{
+        res.json({success: true, respuesta: req.user._id})
+    }
 
 }
 

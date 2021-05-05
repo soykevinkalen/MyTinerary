@@ -512,6 +512,8 @@ footer div.containerSocial h2{
 }
 .heartRed{
     color: red!important;
+    cursor: pointer;
+
 }
 
 .diner{

@@ -39,6 +39,7 @@ const authActions = {
                         'Authorization': 'Bearer '+user.token
                     }
                 })
+                
                 dispatch({type: 'LOG_USER', payload: {
                     ...respuesta.data.respuesta,
                     token: user.token
@@ -50,7 +51,26 @@ const authActions = {
             }
             
         }
+    },
+    idUser: (user) => {
+        return async(dispatch, getState) =>{
+            try {
+                const response = await axios.get('http://localhost:4000/api/user/id', {
+                    headers: {
+                        'Authorization' : 'Bearer '+user.token
+                    }
+                })
+                console.log(response)
+                return response
+            }catch(err) {
+                if (err.response.status === 401) {
+                    alert("Me parece que me estás queriendo cagar con un token falso...")
+                }
+            }
+        }
     }
+    
+
         
 }
 

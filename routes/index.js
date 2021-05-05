@@ -10,7 +10,7 @@ const passport = require('passport')
 
 const {getCities, postCities,getCity,putCity,deleteCity} = citiesControllers
 const {getItineraries,getItinerariesbyCityId,postItineraries,getItinerary,putItinerary,deleteItinerary} = itinerariesControllers
-const {userSignUp, userSignIn, loginForced} = userControllers
+const {userSignUp, userSignIn, loginForced, idUser} = userControllers
 const {getActivities, postActivity, getActivitiesByItinerary, putActivity} = activitiesControllers
 
 router.route('/cities')
@@ -51,5 +51,8 @@ router.route('/activities/:id')
 
 router.route('/activitiesByItinerary/:id')
 .get(getActivitiesByItinerary)
+
+router.route('/user/id')
+.get(passport.authenticate('jwt', {session:false}), idUser)
 
 module.exports = router

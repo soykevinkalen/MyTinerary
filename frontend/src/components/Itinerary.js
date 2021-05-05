@@ -6,6 +6,8 @@ import Modal from 'react-bootstrap/Modal'
 import axios from 'axios'
 import activitiesActions from '../redux/actions/activitiesActions'
 import itinerariesActions from '../redux/actions/itinerariesActions'
+import authActions from '../redux/actions/authActions'
+
 
 import { connect } from "react-redux"
 
@@ -47,17 +49,18 @@ const Itinerary = (props) =>{
             setActivities(activity.data.respuesta)
         }
     }
-    const like = (id) => {
-        
+    const like = async (id) => {
+        const response = await props.idUser(props.user)
+        console.log(response.data.respuesta)
         const oneItinerary = props.itinerariesByCity.find(itinerary => itinerary._id === id)
-        if(oneItinerary.usersLiked.indexOf(props.user.id) !== -1){
+        if(oneItinerary.usersLiked.indexOf(response.data.respuesta) !== -1){
            
-            oneItinerary.usersLiked = oneItinerary.usersLiked.filter(id => props.user.id !== id)
+            oneItinerary.usersLiked = oneItinerary.usersLiked.filter(id => response.data.respuesta !== id)
             oneItinerary.likes = oneItinerary.likes - 1
             setLikes("heart")
         }else{
             oneItinerary.likes = oneItinerary.likes + 1
-            oneItinerary.usersLiked = [...oneItinerary.usersLiked, props.user.id]
+            oneItinerary.usersLiked = [...oneItinerary.usersLiked, response.data.respuesta]
             setLikes("heartRed")
         }
         console.log(oneItinerary)
@@ -145,7 +148,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     getActivitiesByItinerary : activitiesActions.getActivitiesByItinerary,
-    putItinerary: itinerariesActions.putItinerary
+    putItinerary: itinerariesActions.putItinerary,
+    idUser: authActions.idUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itinerary)
