@@ -682,6 +682,15 @@ h6.name{
     color: white;
     font-weight: bold;
 }
+
+.deleteEdit{
+    cursor: pointer;
+}
+
+.deleteEditContent{
+    position: absolute;
+    right: 10%;
+}
 @media (max-width: 991px){
     .logoForm{
         font-size: 10vw!important;

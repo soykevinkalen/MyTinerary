@@ -60,7 +60,7 @@ const authActions = {
                         'Authorization' : 'Bearer '+user.token
                     }
                 })
-                console.log(response)
+                
                 return response
             }catch(err) {
                 if (err.response.status === 401) {
