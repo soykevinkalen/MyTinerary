@@ -12,7 +12,7 @@ import { connect } from "react-redux"
 import { ToastContainer, toast } from 'react-toastify'
 
 const Itinerary = (props) =>{
-    console.log(props)
+    console.log(props.itinerary.usersLiked)
     const [isOpen, setIsOpen] = useState(false)
     const [show, setShow] = useState(false)
     const [hashtag, setHashtag] = useState('')
