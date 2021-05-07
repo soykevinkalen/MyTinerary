@@ -138,7 +138,8 @@ const itinerariesControllers = {
     updateComment: async(req, res) => {
         try{
             console.log(req.body.comment)
-            // const result = await Itinerary.findOneAndUpdate({"_id":req.body.itinerary._id ,"comments._id":req.body.comment._id }, { $set: { "comments.$.comment": comment } },{ new:true }  )
+            const result = await Itinerary.findOneAndUpdate({"_id":req.body.itinerary._id ,"comments._id":req.body.comment._id }, { $set: { "comments.$.comment": req.body.comment.comment } },{ new:true }  )
+            res.json({success: true, respuesta: result})
         }catch(error){
             console.log(error)
         }

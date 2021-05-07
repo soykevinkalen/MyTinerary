@@ -69,6 +69,7 @@ const itinerariesActions = {
         }
     },
     updateComment: (user, comment,itinerary) => {
+        console.log('uno')
         return async (dispatch, getState) => {
             // return await axios.put('http://localhost:4000/api/itineraries/comments/'+itinerary, comment)
             const response = await axios.put('http://localhost:4000/api/commentsUpdate/',{comment,itinerary}, {

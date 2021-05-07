@@ -18,35 +18,51 @@ const Comment = (props) => {
     // props.comment
     const edit = (comment) =>{
         setView(!view)
+        props.setViewItinerary(false)
         setUpdatedComment(comment.comment)
         console.log(comment)
+    }
+    const send = () => {
+        // console.log(props)
+        // props.updateComment(updatedComment)
+        console.log(props.comment)
+        console.log(updatedComment)
+        props.comment.comment = updatedComment
+        console.log(props.comment)
+        props.updateComment(props.comment)
+        setView(!view)
+        props.setViewItinerary(true)
+
     }
     return(
         <div>
             <div className='d-flex w-100 justify-content-between'>
+            
             <div className='usuario' style={{backgroundImage:`url('${props.comment.userId.userImage}')`}}></div>
             <h5>{props.comment.userId.firstName + " " + props.comment.userId.lastName }</h5>
             <MoreVertIcon className='deleteEdit' onClick={() => setOpenPointer(!openPointer)}/>
-            {view && (
-                <div className='comments'>
-                    <div className='d-flex w-100 justify-content-between'>
-                    <div className='usuario' style={{backgroundImage:`url('${props.comment.userId.userImage}')`}}></div>
-                    <h5>{props.comment.userId.firstName + " " + props.comment.userId.lastName }</h5>
-                    <MoreVertIcon className='deleteEdit' onClick={() => setOpenPointer(!openPointer)}/>
-                    </div>
-                    <input type="text" className="input" placeholder="Write your comment here" value={updatedComment}/>
-                    <button className="boton">Send</button>
-                </div>
-
-            )
-
-            }
+            
             {openPointer && (<div className='deleteEditContent'>
                 <h6 onClick={()=>props.deleteComment(props.comment)}>Delete</h6>
                 <h6 onClick={()=>edit(props.comment)}>Edit</h6>
             </div>)}
             </div>
-            <h5>{props.comment.comment}</h5>
+            {!view && 
+            <h5>{props.comment.comment}</h5>}
+            {view && (
+                <div className='comments'>
+                    {/* <div className='d-flex w-100 justify-content-between'>
+                    <div className='usuario' style={{backgroundImage:`url('${props.comment.userId.userImage}')`}}></div>
+                    <h5>{props.comment.userId.firstName + " " + props.comment.userId.lastName }</h5>
+                    <MoreVertIcon className='deleteEdit' onClick={() => setOpenPointer(!openPointer)}/>
+                    </div> */}
+                    <input type="text" className="input" placeholder="Write your comment here"  onChange={(e)=>setUpdatedComment(e.target.value)} value={updatedComment}/>
+                    <button className="boton" onClick={send}>Send</button>
+                </div>
+
+            )
+
+            }
         </div>
     )
 }

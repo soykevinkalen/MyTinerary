@@ -11,7 +11,6 @@ import Comment from './Comment'
 import { connect } from "react-redux"
 
 const Itinerary = (props) =>{
-    console.log(props.itinerary)
     const [isOpen, setIsOpen] = useState(false)
     const [show, setShow] = useState(false)
     const [hashtag, setHashtag] = useState('')
@@ -21,6 +20,7 @@ const Itinerary = (props) =>{
     const [likes, setLikes] = useState(props.itinerary.usersLiked)
     const [newComments, setNewComments] = useState(null)
     const [allComments, setAllComments] = useState(props.itinerary.comments)
+    const [viewItinerary, setViewItinerary] = useState(true)
     // const [renderItinerary, setRenderItinerary] = useState(props.itinerary)
     useEffect(()=>{
         axios.get('http://localhost:4000/api/itineraries')
@@ -100,8 +100,8 @@ const Itinerary = (props) =>{
     }
 
     const updateComment = async (comment) =>{
-        // console.log(props)
         const response = await props.updateComment(props.user, comment, props.itinerary)
+        console.log('hola')
         // setAllComments(response.comments)
         console.log(response)
         
@@ -174,24 +174,14 @@ const Itinerary = (props) =>{
                     {
                         allComments.map(comment => {
                             return(
-                                <Comment key={comment._id} comment={comment} itinerary={props.itinerary} deleteComment={deleteComment} updateComment={updateComment}/>
-                                // <div key={comment._id}>
-                                //     <div className='d-flex w-100 justify-content-between'>
-                                //     <div className='usuario' style={{backgroundImage:`url('${comment.userId.userImage}')`}}></div>
-                                //     <h5>{comment.userId.firstName + " " + comment.userId.lastName }</h5>
-                                //     <MoreVertIcon className='deleteEdit' onClick={() => setOpenPointer(!openPointer)}/>
-                                //     {openPointer && (<div className='deleteEditContent'>
-                                //         <h6>Delete</h6>
-                                //         <h6>Edit</h6>
-                                //     </div>)}
-                                //     </div>
-                                //     <h5>{comment.comment}</h5>
-                                // </div>
+                                <Comment key={comment._id} setViewItinerary={setViewItinerary} comment={comment} itinerary={props.itinerary} deleteComment={deleteComment} updateComment={updateComment}/>
                             )
                         })
                     }
+                {viewItinerary && <>     
                     <input type="text" className="input" placeholder="Write your comment here" onChange={readInput}/>
                     <button className="boton" onClick={() => sendValues(props.itinerary._id)}>Send</button>
+                    </>}
                 </div>
             </div>)}
             <button className="butonIsOpen" onClick={() => view(props.itinerary._id)}>{isOpen ? 'View Less' : 'View More'}</button>
