@@ -62,8 +62,8 @@ router.route('/comments/')
 router.route('/commentsUpdate/')
 .put(passport.authenticate('jwt', {session:false}), updateComment)
 
-router.route('/user/id')
-.get(passport.authenticate('jwt', {session:false}), idUser)
+// router.route('/user/id')
+// .get(passport.authenticate('jwt', {session:false}), idUser)
 
 // router.route('/comments')
 // .post(passport.authenticate('jwt', {session:false}), commentsController.addComments)

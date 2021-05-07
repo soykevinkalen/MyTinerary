@@ -691,6 +691,10 @@ h6.name{
     position: absolute;
     right: 10%;
 }
+
+.curser{
+    cursor: pointer!important;
+}
 @media (max-width: 991px){
     .logoForm{
         font-size: 10vw!important;

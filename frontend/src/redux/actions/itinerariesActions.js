@@ -45,8 +45,9 @@ const itinerariesActions = {
                         'Authorization': 'Bearer '+user.token
                     }
                 })
+                console.log(response.data)
                 dispatch({type: 'LIKES', payload: response.data.respuesta})
-                return response.data.respuesta
+                return response.data
             }catch(error){
                 console.log(error)
           }

@@ -17,15 +17,11 @@ const itinerariesReducer = (state = initialState, action) => {
                 itinerariesByCity: state.itinerariesByCity.map( itinerary => itinerary._id === action.payload._id ? action.payload : itinerary)
             }
         case "LIKES":
+            console.log(action.payload.respuesta)
             return{
             ...state,
-            itinerariesByCity: state.itinerariesByCity.map( itinerary => {
-                if(itinerary._id === action.payload._id){
-                    return action.payload
-                }else{
-                    return itinerary
-                }    
-            })
+            itinerariesByCity: state.itinerariesByCity.map( itinerary => itinerary._id === action.payload._id ? action.payload : itinerary)
+
         }
 
         default:

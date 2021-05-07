@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const userControllers = {
 
     userSignUp: async (req,res) => {
-        let {firstName, lastName, email, password, userImage, country, google} = req.body
+        let {firstName, lastName, email, password, userImage, country, google, itinerariesLiked} = req.body
         const mailExist = await User.findOne({email})
 
         let respuesta;
@@ -16,7 +16,7 @@ const userControllers = {
         password = bcryptjs.hashSync(password, 10)
         if(!mailExist){
             try{
-                userToRecord = new User({firstName, lastName, email, password, userImage, country, google})       
+                userToRecord = new User({firstName, lastName, email, password, userImage, country, google, itinerariesLiked})       
                 await userToRecord.save()
                 const token = jwt.sign({...userToRecord}, process.env.SECRET_OR_KEY)
                 respuesta = token  
@@ -31,7 +31,7 @@ const userControllers = {
         }
         res.json({
             success: true,
-            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName, lastName: userToRecord.lastName}
+            respuesta: {token: respuesta, userImage: userToRecord.userImage, firstName: userToRecord.firstName, lastName: userToRecord.lastName, itinerariesLiked: userToRecord.itinerariesLiked, email: userToRecord.email}
         }) 
     },
     userSignIn: async (req,res) => {
@@ -56,16 +56,17 @@ const userControllers = {
 
         res.json({
             success: !error ? true : false,
-            respuesta: !error && {token: respuesta, userImage: userExist.userImage, firstName: userExist.firstName, lastName: userExist.lastName},
+            respuesta: !error && {token: respuesta, userImage: userExist.userImage, firstName: userExist.firstName, lastName: userExist.lastName, itinerariesLiked: userExist.itinerariesLiked, email: userExist.email},
             error: error
         })  
     },
     loginForced: (req, res) => {
-        res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName, lastName: req.user.lastName}})
+        console.log(req)
+        res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName, lastName: req.user.lastName, itinerariesLiked: req.user.itinerariesLiked, email: req.user.email}})
     },
-    idUser: (req,res) =>{
-        res.json({success: true, respuesta: req.user._id})
-    }
+    // idUser: (req,res) =>{
+    //     res.json({success: true, respuesta: req.user._id})
+    // }
 
 }
 

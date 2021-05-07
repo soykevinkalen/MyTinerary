@@ -9,25 +9,38 @@ import itinerariesActions from '../redux/actions/itinerariesActions'
 import authActions from '../redux/actions/authActions'
 import Comment from './Comment'
 import { connect } from "react-redux"
+import { ToastContainer, toast } from 'react-toastify'
 
 const Itinerary = (props) =>{
+    console.log(props)
     const [isOpen, setIsOpen] = useState(false)
     const [show, setShow] = useState(false)
     const [hashtag, setHashtag] = useState('')
     const [itinerariesCoincidencies, setItinerariesCoincidencies] = useState([])
     const [itineraries, setItineraries] = useState([])
     const [activities, setActivities] = useState([])
-    const [likes, setLikes] = useState(props.itinerary.usersLiked)
+    const [likes, setLikes] = useState(false)
     const [newComments, setNewComments] = useState(null)
     const [allComments, setAllComments] = useState(props.itinerary.comments)
     const [viewItinerary, setViewItinerary] = useState(true)
-    // const [renderItinerary, setRenderItinerary] = useState(props.itinerary)
+    // let [likeArray, setLikeArray] = useState(props.itinerary.usersLiked)
+
     useEffect(()=>{
         axios.get('http://localhost:4000/api/itineraries')
         .then(response => {
             setItineraries(response.data.respuesta)})
             .catch( error => console.log(error))
         },[])
+    useEffect(()=>{
+        if(props.user){
+            if(props.itinerary.usersLiked.indexOf(props.user.email) !== -1){
+                setLikes(true)
+            }else{
+                setLikes(false)            
+            }
+        }
+        
+    },[props])
     let coincidencies = []
     const getItinerariesHashtag = (e) =>{
         itineraries.map(itinerary =>{
@@ -50,52 +63,34 @@ const Itinerary = (props) =>{
             setActivities(activity.data.respuesta)
         }
     }
-    const like = async (itineraryId) => {
-        console.log("entro")
-        let response = await props.likes(props.user, props.itinerary)
-        console.log(response)
-        setLikes(response.usersLiked)
-        
-        // if(!response.success){
-            
-        //     response = await props.deslike(props.user, itineraryId)
-        //     console.log(response)
-        // }
-        // setLikes(response.respuesta.usersLiked)
-        // console.log(response)
-        // const response = await props.idUser(props.user)
-        // const itinerary = props.itinerariesByCity.find(itinerary => itinerary._id === itineraryId)
-        // if(itinerary.usersLiked.indexOf(response.data.respuesta) !== -1){
-        //     itinerary.usersLiked = itinerary.usersLiked.filter(id => response.data.respuesta !== id)
-        //     itinerary.likes = itinerary.likes - 1
-        //     setLikes("heart")
-        // }else{
-        //     itinerary.likes = itinerary.likes + 1
-        //     itinerary.usersLiked = [...itinerary.usersLiked, response.data.respuesta]
-        //     setLikes("heartRed")
-        // }
-        
-        // props.putItinerary(itineraryId, itinerary)
+    const like = async () => {
+        if(props.user){
+            let response = await props.likes(props.user, props.itinerary)
+            setLikes(!likes)
+            console.log(response)
+            // setLikeArray(response.usersLiked)
+        }else{
+            toast.error("You have to log in", {
+                position: toast.POSITION.TOP_CENTER
+              });
+        }
     }
     const readInput = (e) => {
         if(e.target.value) setNewComments(e.target.value)        
     }
     const sendValues = async (itineraryId) => {
-        // const response = await props.idUser(props.user)
-        // const itinerary = props.itinerariesByCity.find(itinerary => itinerary._id === itineraryId)
-        // const comment = {userId: response.data.respuesta, comment: newComments}
-        // itinerary.comments = []
-        // props.putItinerary(itineraryId, itinerary)
-
-        const itinerary = await props.putComments(props.user,itineraryId, newComments)
-        console.log(itinerary.comments)
-        setAllComments(itinerary.comments)
+        if(props.user){
+            const itinerary = await props.putComments(props.user,itineraryId, newComments)
+            setAllComments(itinerary.comments)
+        }else{
+            toast.error("You have to log in", {
+                position: toast.POSITION.TOP_CENTER
+              });
+        }
     }
     const deleteComment = async (comment) =>{
-        console.log(props)
         const response = await props.deleteComment(props.user, comment, props.itinerary)
         setAllComments(response.comments)
-        console.log(response.comments)
         
     }
 
@@ -116,7 +111,7 @@ const Itinerary = (props) =>{
             <div className='userImage' style={{backgroundImage:`url('${props.itinerary.authorImage}')`}}></div>
             <h5>{props.itinerary.authorName}</h5>
             <div className='valoration'>
-                <div><FavoriteIcon onClick={() => like(props.itinerary._id) }/> {props.itinerary.usersLiked.length} </div>
+                <div><FavoriteIcon className='curser' style={{color:`${likes ? 'red' : 'white' }`}} onClick={like}/> {props.itinerary.usersLiked.length} </div>
                 <div> <span>Price: </span>{[...Array(props.itinerary.price)].map((p,i) => <LocalAtmIcon className="diner" key={i}/>)}</div>
                 <div><WatchLaterIcon className="watch"/> {props.itinerary.duration} <span>hours</span></div>
             </div>
@@ -145,7 +140,7 @@ const Itinerary = (props) =>{
                                     <div className='userImage' style={{backgroundImage:`url('${itinerary.authorImage}')`}}></div>
                                     <h5>{itinerary.authorName}</h5>
                                     <div className='valoration'>
-                                        <div><FavoriteIcon className="heart"/> {itinerary.likes} </div>
+                                        <div><FavoriteIcon className="curser heart"/> {itinerary.likes} </div>
                                         <div> <span>Price: </span>{[...Array(itinerary.price)].map((p,i) => <LocalAtmIcon className="diner" key={i}/>)}</div>
                                         <div><WatchLaterIcon className="watch"/> {itinerary.duration} <span>hours</span></div>
                                     </div>
@@ -178,13 +173,15 @@ const Itinerary = (props) =>{
                             )
                         })
                     }
+                
                 {viewItinerary && <>     
-                    <input type="text" className="input" placeholder="Write your comment here" onChange={readInput}/>
+                    <input type="text" className="input" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={readInput} disabled={!props.user && true}/>
                     <button className="boton" onClick={() => sendValues(props.itinerary._id)}>Send</button>
                     </>}
                 </div>
             </div>)}
             <button className="butonIsOpen" onClick={() => view(props.itinerary._id)}>{isOpen ? 'View Less' : 'View More'}</button>
+            <ToastContainer />
         </div>     
     )
 }
@@ -197,10 +194,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     getActivitiesByItinerary : activitiesActions.getActivitiesByItinerary,
     putItinerary: itinerariesActions.putItinerary,
-    idUser: authActions.idUser,
     putComments: itinerariesActions.putComments,
     likes: itinerariesActions.likes,
-    deslike: itinerariesActions.deslike,
     deleteComment: itinerariesActions.deleteComment,
     updateComment: itinerariesActions.updateComment    
 }
