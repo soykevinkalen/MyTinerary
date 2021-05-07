@@ -21,6 +21,7 @@ const Itinerary = (props) =>{
     const [likes, setLikes] = useState(props.itinerary.usersLiked)
     const [newComments, setNewComments] = useState(null)
     const [allComments, setAllComments] = useState(props.itinerary.comments)
+    // const [renderItinerary, setRenderItinerary] = useState(props.itinerary)
     useEffect(()=>{
         axios.get('http://localhost:4000/api/itineraries')
         .then(response => {
@@ -90,6 +91,22 @@ const Itinerary = (props) =>{
         console.log(itinerary.comments)
         setAllComments(itinerary.comments)
     }
+    const deleteComment = async (comment) =>{
+        console.log(props)
+        const response = await props.deleteComment(props.user, comment, props.itinerary)
+        setAllComments(response.comments)
+        console.log(response.comments)
+        
+    }
+
+    const updateComment = async (comment) =>{
+        // console.log(props)
+        const response = await props.updateComment(props.user, comment, props.itinerary)
+        // setAllComments(response.comments)
+        console.log(response)
+        
+    }
+    
     // const comentarioNuevo = await Itinerary.findOneAndUpdate({ _id: idItinerari }, { $push: { comments: { userId: populate(idUsuario), comment: mensaje } } }, { new: true })
     return(
             
@@ -157,7 +174,7 @@ const Itinerary = (props) =>{
                     {
                         allComments.map(comment => {
                             return(
-                                <Comment comment={comment}/>
+                                <Comment key={comment._id} comment={comment} itinerary={props.itinerary} deleteComment={deleteComment} updateComment={updateComment}/>
                                 // <div key={comment._id}>
                                 //     <div className='d-flex w-100 justify-content-between'>
                                 //     <div className='usuario' style={{backgroundImage:`url('${comment.userId.userImage}')`}}></div>
@@ -173,7 +190,7 @@ const Itinerary = (props) =>{
                             )
                         })
                     }
-                    <input type="text" className="input" placeholder="Comments..." onChange={readInput}/>
+                    <input type="text" className="input" placeholder="Write your comment here" onChange={readInput}/>
                     <button className="boton" onClick={() => sendValues(props.itinerary._id)}>Send</button>
                 </div>
             </div>)}
@@ -193,7 +210,9 @@ const mapDispatchToProps = {
     idUser: authActions.idUser,
     putComments: itinerariesActions.putComments,
     likes: itinerariesActions.likes,
-    deslike: itinerariesActions.deslike
+    deslike: itinerariesActions.deslike,
+    deleteComment: itinerariesActions.deleteComment,
+    updateComment: itinerariesActions.updateComment    
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itinerary)

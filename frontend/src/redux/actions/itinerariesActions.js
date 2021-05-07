@@ -52,6 +52,40 @@ const itinerariesActions = {
           }
       }
     },
+    deleteComment: (user, comment,itinerary) => {
+        return async (dispatch, getState) => {
+            // return await axios.put('http://localhost:4000/api/itineraries/comments/'+itinerary, comment)
+            const response = await axios.put('http://localhost:4000/api/comments/',{comment,itinerary}, {
+                headers: {
+                    'Authorization' : 'Bearer '+user.token
+                }
+            })
+            if(!response.success){
+                return response.data.respuesta
+            }
+            // return response.data.respuesta
+            dispatch({type: 'COMMENTS', payload: response.data.respuesta})
+            .catch(error => console.log(error))
+        }
+    },
+    updateComment: (user, comment,itinerary) => {
+        return async (dispatch, getState) => {
+            // return await axios.put('http://localhost:4000/api/itineraries/comments/'+itinerary, comment)
+            const response = await axios.put('http://localhost:4000/api/commentsUpdate/',{comment,itinerary}, {
+                headers: {
+                    'Authorization' : 'Bearer '+user.token
+                }
+            })
+            if(!response.success){
+                return response.data.respuesta
+            }
+            // return response.data.respuesta
+            dispatch({type: 'COMMENTS', payload: response.data.respuesta})
+            .catch(error => console.log(error))
+        }
+    }
+    //  const result = await Itinerary.findOneAndUpdate({"_id":id_Itinerary ,"comments._id":idComment }, { $set: { "comments.$.comment": comment } },{ new:true } )
+    // .populate({ path:"comments", populate:{ path:"user_id", select:{ "name":1 ,"last_name":1,"picture":1 } } })
     //   deslike: (user, id) => {
     //     return async (dispatch, getState) => {
     //         const response = await axios.put('http://localhost:4000/api/itineraries/deslike/'+id,{id},{
@@ -68,7 +102,7 @@ const itinerariesActions = {
     //   },
 
 
-    
+
 // sendComment: (comment, token, id, commentObj) =>{
 //     return async (dispatch, getState) =>{
 //       try{

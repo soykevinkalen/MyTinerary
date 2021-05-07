@@ -88,31 +88,58 @@ const itinerariesControllers = {
             console.log(error)
         }
     },
-    deslike: async(req, res) => {
-        try{
-            console.log(req.user._id)
-            const modifiedItinerary = await Itinerary.findOneAndUpdate({_id:req.params.id},{$pull: {'usersLiked':req.user._id}},{new: true})
+    // deslike: async(req, res) => {
+    //     try{
+    //         console.log(req.user._id)
+    //         const modifiedItinerary = await Itinerary.findOneAndUpdate({_id:req.params.id},{$pull: {'usersLiked':req.user._id}},{new: true})
             
-            // modifiedItinerary.aggregate([
-            //     {
-            //         $project:{
-            //             item:1,
-            //             likes: {$cond: {if: {$isArray: "$usersLiked"}, then: {$size: "$usersLiked"}, else: 0}}
-            //         }
-            //     }
-            // ])
-            res.json({success: true, respuesta: modifiedItinerary})
-        }catch(error){
-            res.json({success: false, respuesta: 'An error has occurred'})           
-            console.log(error)
-        }            
-    },
+    //         // modifiedItinerary.aggregate([
+    //         //     {
+    //         //         $project:{
+    //         //             item:1,
+    //         //             likes: {$cond: {if: {$isArray: "$usersLiked"}, then: {$size: "$usersLiked"}, else: 0}}
+    //         //         }
+    //         //     }
+    //         // ])
+    //         res.json({success: true, respuesta: modifiedItinerary})
+    //     }catch(error){
+    //         res.json({success: false, respuesta: 'An error has occurred'})           
+    //         console.log(error)
+    //     }            
+    // },
     deleteItinerary: async(req, res) =>{
         try {
             const erasedItinerary = await Itinerary.findOneAndDelete({_id:req.params.id})
             res.json({respuesta: erasedItinerary})
         }catch(error){
             res.json({respuesta: 'An error has occurred'})           
+            console.log(error)
+        }
+    }
+    ,
+    deleteComment: async(req,res) =>{
+        try{
+            console.log(req.body.comment)
+            const modifiedItinerary = await Itinerary.findOneAndUpdate({_id:req.body.itinerary._id},{$pull: {'comments': {_id: req.body.comment._id, userId: req.body.comment.userId._id }}}, {new: true}).populate({ path:"comments", populate:{ path:"userId", select:{ "firstName":1 ,"lastName":1,"userImage":1 } } })
+            // const borrarComentario = await Itinerary.findOneAndUpdate({ _id: idItinerario, "comments._id": idComment},
+            //     {$pull: {comments: {_id: idComment, userId:userId}}}, { new: true })
+            res.json({success: true, respuesta: modifiedItinerary})
+            
+            // .populate({ path:"comments", populate:{ path:"userId", select:{ "firstname":1 ,"lastname":1,"image":1 } } })
+            // const modificItinerary = await Itinerary.findOneAndUpdate({_id: IdItinerary}, 
+            //     {$pull: {comments: {_id: commentId}}},
+            //     {new: true}
+            //  )
+        }catch(error){
+            res.json({respuesta: 'An error has occurred'})           
+            console.log(error)
+        }
+    },
+    updateComment: async(req, res) => {
+        try{
+            console.log(req.body.comment)
+            // const result = await Itinerary.findOneAndUpdate({"_id":req.body.itinerary._id ,"comments._id":req.body.comment._id }, { $set: { "comments.$.comment": comment } },{ new:true }  )
+        }catch(error){
             console.log(error)
         }
     }

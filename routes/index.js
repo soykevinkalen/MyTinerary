@@ -9,7 +9,7 @@ const passport = require('passport')
 
 
 const {getCities, postCities,getCity,putCity,deleteCity} = citiesControllers
-const {getItineraries,getItinerariesbyCityId,postItineraries,getItinerary,putItinerary,putComments,likes,deleteItinerary,deslike} = itinerariesControllers
+const {updateComment,getItineraries,getItinerariesbyCityId,postItineraries,getItinerary,putItinerary,putComments,likes,deleteItinerary,deleteComment} = itinerariesControllers
 const {userSignUp, userSignIn, loginForced, idUser} = userControllers
 const {getActivities, postActivity, getActivitiesByItinerary, putActivity} = activitiesControllers
 
@@ -54,10 +54,13 @@ router.route('/activitiesByItinerary/:id')
 
 router.route('/itineraries/like/:id')
 .put(passport.authenticate('jwt', {session:false}), likes)
-router.route('/itineraries/deslike/:id')
-.put(passport.authenticate('jwt', {session:false}), deslike)
 router.route('/itineraries/comments/:id')
 .put(passport.authenticate('jwt', {session:false}), putComments)
+router.route('/comments/')
+.put(passport.authenticate('jwt', {session:false}), deleteComment)
+// router.route('/itineraries/commentDelete/:id')
+router.route('/commentsUpdate/')
+.put(passport.authenticate('jwt', {session:false}), updateComment)
 
 router.route('/user/id')
 .get(passport.authenticate('jwt', {session:false}), idUser)
