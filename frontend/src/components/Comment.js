@@ -27,9 +27,9 @@ const Comment = (props) => {
     }
     return(
         <div className='commentContent'>
-            <div className='d-flex w-100 commentOne'>
+            <div className='commentOne'>
             
-            <div className='usuario picUser' style={{backgroundImage:`url('${props.comment.userId.userImage}')`}}></div>
+            <div className='picUser' style={{backgroundImage:`url('${props.comment.userId.userImage}')`}}></div>
             <h5>{props.comment.userId.firstName + " " + props.comment.userId.lastName }</h5>
             { 
             (props.user && props.comment.userId.email === props.user.email) ?  <MoreVertIcon className='deleteEdit' onClick={() => props.user ? setOpenPointer(!openPointer) : toast.error("You have to log in", {

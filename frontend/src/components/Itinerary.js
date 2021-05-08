@@ -20,9 +20,10 @@ const Itinerary = (props) =>{
     const [itineraries, setItineraries] = useState([])
     const [activities, setActivities] = useState([])
     const [likes, setLikes] = useState(false)
-    const [newComments, setNewComments] = useState(null)
+    const [newComments, setNewComments] = useState('')
     const [allComments, setAllComments] = useState(props.itinerary.comments)
     const [viewItinerary, setViewItinerary] = useState(true)
+    const [valueComment, setValueComment] = useState('')
     // let [likeArray, setLikeArray] = useState(props.itinerary.usersLiked)
 
     useEffect(()=>{
@@ -76,12 +77,14 @@ const Itinerary = (props) =>{
         }
     }
     const readInput = (e) => {
-        if(e.target.value) setNewComments(e.target.value)        
+        if(e.target.value) setNewComments(e.target.value)   
+           
     }
     const sendValues = async (itineraryId) => {
         if(props.user){
             const itinerary = await props.putComments(props.user,itineraryId, newComments)
             setAllComments(itinerary.comments)
+            setNewComments('')
         }else{
             toast.error("You have to log in", {
                 position: toast.POSITION.TOP_CENTER
@@ -168,17 +171,20 @@ const Itinerary = (props) =>{
                 </div>
                 <div className='comments'>
                     <h3>Comments</h3>
-                    {
-                        allComments.map(comment => {
-                            return(
-                                <Comment key={comment._id} setViewItinerary={setViewItinerary} comment={comment} itinerary={props.itinerary} deleteComment={deleteComment} updateComment={updateComment}/>
-                            )
-                        })
-                    }
-                
-                {viewItinerary && <div>     
-                    <input type="text" id='inputComment' className="input" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={readInput} disabled={!props.user && true}/>
-                    <button className="boton" onClick={() => sendValues(props.itinerary._id)}>Send</button>
+                    <div className='divComments'>
+                        {
+                            allComments.map(comment => {
+                                return(
+                                    <Comment key={comment._id} setViewItinerary={setViewItinerary} comment={comment} itinerary={props.itinerary} deleteComment={deleteComment} updateComment={updateComment}/>
+                                )
+                            })
+                        }
+                    
+
+                    </div>
+                {viewItinerary && <div className='sendContent'>     
+                    <input type="text" value={newComments} className="inputComment" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={readInput} disabled={!props.user && true}/>
+                    <button className="buttonComment" onClick={() => sendValues(props.itinerary._id)}>Send</button>
                     </div>}
                 </div>
             </div>)}
