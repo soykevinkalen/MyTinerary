@@ -10,7 +10,7 @@ const passport = require('passport')
 
 const {getCities, postCities,getCity,putCity,deleteCity} = citiesControllers
 const {updateComment,getItineraries,getItinerariesbyCityId,postItineraries,getItinerary,putItinerary,putComments,likes,deleteItinerary,deleteComment} = itinerariesControllers
-const {userSignUp, userSignIn, loginForced, idUser} = userControllers
+const {userSignUp, userSignIn, loginForced} = userControllers
 const {getActivities, postActivity, getActivitiesByItinerary, putActivity} = activitiesControllers
 
 router.route('/cities')
@@ -58,23 +58,7 @@ router.route('/itineraries/comments/:id')
 .put(passport.authenticate('jwt', {session:false}), putComments)
 router.route('/comments/')
 .put(passport.authenticate('jwt', {session:false}), deleteComment)
-// router.route('/itineraries/commentDelete/:id')
 router.route('/commentsUpdate/')
 .put(passport.authenticate('jwt', {session:false}), updateComment)
 
-// router.route('/user/id')
-// .get(passport.authenticate('jwt', {session:false}), idUser)
-
-// router.route('/comments')
-// .post(passport.authenticate('jwt', {session:false}), commentsController.addComments)
-// .put(passport.authenticate('jwt', {session:false}), commentsController.removeComment)
-
-// router.route('/commentupdate')
-// .post(passport.authenticate('jwt', {session:false}), commentsController.updateComment)
-
-// router.route('/like')
-// .post(passport.authenticate('jwt', {session:false}), likesController.likeItinerary)
-
-// router.route('/dislike')
-// .post(passport.authenticate('jwt', {session:false}), likesController.dislikeItinerary)
 module.exports = router

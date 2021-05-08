@@ -165,7 +165,7 @@ footer.footer header.styleFooter .navbar-collapse{
     width: 15%;
 }
 
-footer.footer header.styleFooter .usuario, .carousel button{
+footer.footer header.styleFooter .usuario, .carousel button,footer.footer header.styleFooter h6.name{
     display: none!important;
 }
 
@@ -446,9 +446,55 @@ footer div.containerSocial h2{
     border: 10px solid black;
     border-radius: 12px;
 }
-.activitiesContent > h3{
+.activitiesContent > h3,
+.comments > h3{
     background-color: black;
     width: 100%;
+    text-align: center;
+    
+}
+.comments{
+    display: flex;
+    flex-direction: column;
+    border: 10px solid black;
+    border-radius: 12px;
+    width: 100%;
+    align-items: center;
+    margin-top: 10px;
+    overflow: auto;
+}
+.commentOne > h5{
+    width: 80%;
+    /* text-align: center; */
+    padding-left: 10px;
+    font-size: 1.2rem
+}
+.input{
+    width: 30vw;
+    /* width: 70%; */
+    border-radius: 8px;
+    padding: 0.5px;
+    margin-bottom: 5px;
+}
+.input::placeholder{
+    text-align: center;
+}
+.boton{
+    border-radius: 8px;
+    background-color: #daf0ff;
+}
+h5.comentario{
+    margin: 5px 0px 5px 5px;
+    height: auto;
+    word-wrap: break-word;
+}
+.commentContent{
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 5px;
+    margin: 5px 0px;
+    box-shadow: 4px 4px 12px rgb(0 0 0 / 43%);
+    width: 90%;
 }
 .activity{
     background-size: cover;
@@ -926,6 +972,11 @@ h6.name{
     }
 
 }
+@media (max-width: 450px){
+    .under{
+        width: 95%
+    }
+}
 @media (max-width: 400px){
     .navDrop{
         min-width: 25vw;
@@ -976,6 +1027,9 @@ h6.name{
     .slideCarrousel {
         min-width: 100%;
         transition: all 2s;
+    }
+    .under{
+        width: 98%;
     }
 }
 
@@ -1074,6 +1128,13 @@ h6.name{
     .dropdown{
         margin-left: 75px;
     }
+    .commentOne > h5{
+        width: 20%;
+    }
+    /* .picUser{
+        width: 4em;
+        height: 4em;
+    } */
 }
 
 @media (max-width: 320px){

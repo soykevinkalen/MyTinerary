@@ -140,7 +140,8 @@ const Itinerary = (props) =>{
                                     <div className='userImage' style={{backgroundImage:`url('${itinerary.authorImage}')`}}></div>
                                     <h5>{itinerary.authorName}</h5>
                                     <div className='valoration'>
-                                        <div><FavoriteIcon className="curser heart"/> {itinerary.likes} </div>
+                                        
+                                        <div><FavoriteIcon/> {itinerary.usersLiked.length} </div>
                                         <div> <span>Price: </span>{[...Array(itinerary.price)].map((p,i) => <LocalAtmIcon className="diner" key={i}/>)}</div>
                                         <div><WatchLaterIcon className="watch"/> {itinerary.duration} <span>hours</span></div>
                                     </div>
@@ -166,6 +167,7 @@ const Itinerary = (props) =>{
                     }
                 </div>
                 <div className='comments'>
+                    <h3>Comments</h3>
                     {
                         allComments.map(comment => {
                             return(
@@ -174,10 +176,10 @@ const Itinerary = (props) =>{
                         })
                     }
                 
-                {viewItinerary && <>     
-                    <input type="text" className="input" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={readInput} disabled={!props.user && true}/>
+                {viewItinerary && <div>     
+                    <input type="text" id='inputComment' className="input" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={readInput} disabled={!props.user && true}/>
                     <button className="boton" onClick={() => sendValues(props.itinerary._id)}>Send</button>
-                    </>}
+                    </div>}
                 </div>
             </div>)}
             <button className="butonIsOpen" onClick={() => view(props.itinerary._id)}>{isOpen ? 'View Less' : 'View More'}</button>

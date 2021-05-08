@@ -45,28 +45,12 @@ const authActions = {
                     token: user.token
                 }})
             } catch(err) {
+                console.log(err)
                 if (err.response.status === 401) {
                     alert("Me parece que me estás queriendo cagar con un token falso...")
                 }
             }
             
-        }
-    },
-    idUser: (user) => {
-        return async(dispatch, getState) =>{
-            try {
-                const response = await axios.get('http://localhost:4000/api/user/id', {
-                    headers: {
-                        'Authorization' : 'Bearer '+user.token
-                    }
-                })
-                
-                return response
-            }catch(err) {
-                if (err.response.status === 401) {
-                    alert("Me parece que me estás queriendo cagar con un token falso...")
-                }
-            }
         }
     }
     
