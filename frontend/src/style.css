@@ -462,6 +462,7 @@ footer div.containerSocial h2{
     width: 90%;
     align-items: center;
     margin-top: 10px;
+    position: relative;
     /* overflow: auto; */
     
 
@@ -470,17 +471,23 @@ footer div.containerSocial h2{
     overflow-y: auto;
     height: 320px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 
 }
-.comments div{
+.divComments .commentContent{
     align-self: flex-start;
+    max-width: 90%;
 }
 .commentOne{
     width: 100%;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
-.commentOne > h5{
+.commentOne > div{
+    display: flex;
+}
+.commentOne > div > h5{
     /* width: 80%; */
     /* text-align: center; */
     /* padding-left: 10px; */
@@ -499,8 +506,9 @@ footer div.containerSocial h2{
 }
 .inputComment{
     width: 90%;
-
 }
+
+
 .boton,.buttonComment{
     border-radius: 8px;
     background-color: #daf0ff;
@@ -766,13 +774,34 @@ h6.name{
     
 }
 
-.deleteEditContent{
+/* .deleteEditContent{
     position: absolute;
-    right: 10%;
+    /* right: 10%; */
+    /* right: 0px; */
+    /* left: 27%; */
+/* }  */
+.editIcon{
+    margin-left: 5px;
+    /* margin: 0px 5px 0px 50px; */
 }
-
 .curser{
     cursor: pointer!important;
+}
+.sinComentarios{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #41759c;
+}
+.closeIcon{
+    margin-left: 50px;
+}
+.commentsEdit{
+    display:flex;
+    margin: 5px 0px;
+    /* width: 80vh; */
 }
 @media (max-width: 991px){
     .logoForm{
@@ -929,8 +958,17 @@ h6.name{
         margin-left: 6px;
     }
 }
+@media (max-width: 530px){
+    .inputComment::placeholder{
+        font-size: 3vw;
+    }
+
+}
 
 @media (max-width: 500px){
+    .inputComment::placeholder{
+        font-size: 2.8vw;
+    }
     .navDrop{
         min-width: 22vw;
     }
@@ -1006,11 +1044,23 @@ h6.name{
 
 }
 @media (max-width: 450px){
+    .valoration{
+        flex-direction: column;
+    }
+    .valoration div:nth-child(2){
+        margin: 10px 0px;
+    }
+    .inputComment::placeholder{
+        font-size: 3.5vw;
+    }
     .under{
         width: 95%
     }
 }
 @media (max-width: 400px){
+    .inputComment::placeholder{
+        font-size: 3.2vw;
+    }
     .navDrop{
         min-width: 25vw;
     }
@@ -1027,12 +1077,7 @@ h6.name{
     .chosenCity h3, .buttonItenerari h3, .logoButtonItenerari{
         font-size: 8vw!important;
     }
-    .valoration{
-        flex-direction: column;
-    }
-    .valoration div:nth-child(2){
-        margin: 10px 0px;
-    }
+    
     .userImage {
         width: 20vw;
         height: 20vw;
@@ -1145,6 +1190,13 @@ h6.name{
 }
 
 @media (max-width: 350px){
+    .itineraryContent, .chosenCity{
+        width: 95%;
+    }
+.commentOne > div > h5 {
+    text-align: center;
+    font-size: 1rem;
+}
     .navDrop{
         min-width: 28vw;
     }
@@ -1161,16 +1213,12 @@ h6.name{
     .dropdown{
         margin-left: 75px;
     }
-    .commentOne > h5{
-        /* width: 20%; */
-    }
-    /* .picUser{
-        width: 4em;
-        height: 4em;
-    } */
 }
 
 @media (max-width: 320px){
+    .inputComment::placeholder{
+        font-size: 3vw;
+    }
     .navDrop{
         min-width: 30vw;
     }
@@ -1193,8 +1241,8 @@ h6.name{
     }
 }
 @media (max-width: 300px){
-    .itineraryContent{
-        width: 90%;
+    .itineraryContent, .chosenCity{
+        width: 95%;
     }
     input.image::placeholder{
         font-size: 5.2vw;

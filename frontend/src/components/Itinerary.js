@@ -172,12 +172,15 @@ const Itinerary = (props) =>{
                 <div className='comments'>
                     <h3>Comments</h3>
                     <div className='divComments'>
-                        {
+                        {allComments.length ? 
                             allComments.map(comment => {
                                 return(
                                     <Comment key={comment._id} setViewItinerary={setViewItinerary} comment={comment} itinerary={props.itinerary} deleteComment={deleteComment} updateComment={updateComment}/>
                                 )
                             })
+                            : <div className='sinComentarios'>
+                                <h2>Be the first to comment</h2>
+                            </div> 
                         }
                     
 
