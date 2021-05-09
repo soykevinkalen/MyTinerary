@@ -21,7 +21,6 @@ class App extends React.Component {
         token: localStorage.getItem('token'),
         ...userData
       }
-      console.log(userForced)
       this.props.logInForced(userForced)
     }
 

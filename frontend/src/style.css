@@ -548,6 +548,7 @@ h5.comentario{
     padding: 2px;
     background-color: #212529c0;
     text-align: center;
+    height: 35%;
 }
 .itineraryContent > h5{
     text-align: center;

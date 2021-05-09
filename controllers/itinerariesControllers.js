@@ -50,7 +50,6 @@ const itinerariesControllers = {
     },
     putComments: async(req,res) => {
         try{
-            console.log(req)
             const modifiedItinerary = await Itinerary.findOneAndUpdate({_id:req.params.id},{$push: {'comments': {...req.body, userId: req.user._id}}}, {new: true}).populate({ path:"comments", populate:{ path:"userId", select:{ "firstName":1 ,"lastName":1,"userImage":1,"email":1} } })
             res.json({success: true, respuesta: modifiedItinerary})
         }catch(error){
@@ -59,24 +58,18 @@ const itinerariesControllers = {
         }
     },
     likes: async (req, res) =>{
-        const {_id} = req.user
         try{
             const array = req.body.itinerary.usersLiked 
             let modifiedItinerary = null
-            let modifiedUser = null
-            if(array.indexOf(req.user.email) != -1){
-                // modifiedUser = await User.findOneAndUpdate({_id:req.user._id},{$pull: {'itinerariesLiked':req.params.id}},{new: true})
-                modifiedItinerary = await Itinerary.findOneAndUpdate({_id:req.params.id},{$pull: {'usersLiked':req.user.email}},{new: true})
-                // console.log(modifiedUser)
-                res.json({success: true, respuesta: modifiedItinerary}) 
-            }else{
-                // modifiedUser = await User.findOneAndUpdate({_id:req.user._id},{$push: {'itinerariesLiked':req.params.id}}, {new: true})
-                modifiedItinerary = await Itinerary.findOneAndUpdate({_id:req.params.id},{$push: {'usersLiked': req.user.email}}, {new: true})
-                // console.log(modifiedUser)
-                res.json({success: true, respuesta: modifiedItinerary})
-            }
-        }catch(error){
             
+            if(array.indexOf(req.user.email) != -1){
+                modifiedItinerary = await Itinerary.findOneAndUpdate({_id:req.params.id},{$pull: {'usersLiked':req.user.email}},{new: true})
+            }else{
+                modifiedItinerary = await Itinerary.findOneAndUpdate({_id:req.params.id},{$push: {'usersLiked': req.user.email}}, {new: true})
+            }
+            res.json({success: true, respuesta: modifiedItinerary}) 
+
+        }catch(error){
             res.json({success: false, respuesta: error})           
             console.log(error)
         }
@@ -93,7 +86,6 @@ const itinerariesControllers = {
     ,
     deleteComment: async(req,res) =>{
         try{
-            console.log(req.body.comment)
             const modifiedItinerary = await Itinerary.findOneAndUpdate({_id:req.body.itinerary._id},{$pull: {'comments': {_id: req.body.comment._id, userId: req.body.comment.userId._id }}}, {new: true}).populate({ path:"comments", populate:{ path:"userId", select:{ "firstName":1 ,"lastName":1,"userImage":1, "email":1 } } })
             res.json({success: true, respuesta: modifiedItinerary})
         }catch(error){
@@ -103,11 +95,10 @@ const itinerariesControllers = {
     },
     updateComment: async(req, res) => {
         try{
-            console.log(req.body.comment)
             const result = await Itinerary.findOneAndUpdate({"_id":req.body.itinerary._id ,"comments._id":req.body.comment._id }, { $set: { "comments.$.comment": req.body.comment.comment } },{ new:true }).populate({ path:"comments", populate:{ path:"userId", select:{ "firstName":1 ,"lastName":1,"userImage":1, "email":1 } } })
-            res.json({success: true, respuesta: modifiedItinerary})
             res.json({success: true, respuesta: result})
         }catch(error){
+            res.json({respuesta: 'An error has occurred'})           
             console.log(error)
         }
     }

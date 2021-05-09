@@ -61,13 +61,8 @@ const userControllers = {
         })  
     },
     loginForced: (req, res) => {
-        console.log(req)
         res.json({success: true, respuesta: {userImage: req.user.userImage, firstName: req.user.firstName, lastName: req.user.lastName, itinerariesLiked: req.user.itinerariesLiked, email: req.user.email}})
-    },
-    // idUser: (req,res) =>{
-    //     res.json({success: true, respuesta: req.user._id})
-    // }
-
+    }
 }
 
 module.exports = userControllers

@@ -12,15 +12,16 @@ const itinerariesReducer = (state = initialState, action) => {
                 loading: false
             }
         case "COMMENTS":
+            
+            return{
+                ...state,
+                itinerariesByCity: state.itinerariesByCity.map( itinerary => itinerary._id === action.payload._id ? action.payload : itinerary)                
+            }
+        case "LIKES":
+            
             return{
                 ...state,
                 itinerariesByCity: state.itinerariesByCity.map( itinerary => itinerary._id === action.payload._id ? action.payload : itinerary)
-            }
-        case "LIKES":
-            console.log(action.payload.respuesta)
-            return{
-            ...state,
-            itinerariesByCity: state.itinerariesByCity.map( itinerary => itinerary._id === action.payload._id ? action.payload : itinerary)
 
         }
 
