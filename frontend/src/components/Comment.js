@@ -3,6 +3,8 @@ import { connect } from "react-redux"
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import EditIcon from '@material-ui/icons/Edit'
 import CloseIcon from '@material-ui/icons/Close'
+import Swal from 'sweetalert2'
+
 const Comment = (props) => {
     const [close, setClose] = useState(false)
 
@@ -15,10 +17,32 @@ const Comment = (props) => {
         setUpdatedComment(comment.comment)
     }
     const send = () => {
-        props.comment.comment = updatedComment
-        props.updateComment(props.comment)
-        setView(!view)
-        setClose(!close)
+        if(updatedComment && updatedComment.trim() !== ""){
+            props.comment.comment = updatedComment
+            props.updateComment(props.comment)
+            setView(!view)
+            setClose(!close)
+        }
+    }
+    const erase = (comment) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                props.deleteComment(comment)
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+          })
     }
     return(
         <div className='commentContent'>
@@ -34,7 +58,7 @@ const Comment = (props) => {
                 {close ? <CloseIcon className='closeIcon' onClick={()=>{setClose(!close);setView(!view)}}/> : 
                 <div> 
                 <EditIcon className='editIcon' onClick={()=>edit(props.comment)}/>
-                <DeleteForeverIcon onClick={()=>props.deleteComment(props.comment)}/>
+                <DeleteForeverIcon onClick={()=>erase(props.comment)}/>
                 </div>}
                 </> : null
             }

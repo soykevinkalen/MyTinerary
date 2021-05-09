@@ -33,7 +33,7 @@ const validator = (req, res, next) => {
         password: joi.string().min(5).trim().required().pattern(/(?=.*\d)(?=.*[A-z])/).messages({
             "string.empty": "Your password is a required field",
             "string.pattern.base": "Your password must contain a letter and a number",
-            "string.min": "Your passwrod must contain at least 5 characters",
+            "string.min": "Your password must contain at least 5 characters",
             "any.required": "Your password is a required field",
         }),
         userImage: joi.string().required().trim().messages({

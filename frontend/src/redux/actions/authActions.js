@@ -44,9 +44,9 @@ const authActions = {
                     ...respuesta.data.respuesta,
                     token: user.token
                 }})
-            } catch(err) {
-                console.log(err)
-                if (err.response.status === 401) {
+            } catch(error) {
+                console.log(error)
+                if (error.response.status === 401) {
                     alert("Me parece que me estás queriendo cagar con un token falso...")
                 }
             }

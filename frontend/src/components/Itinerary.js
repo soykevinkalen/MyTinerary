@@ -72,15 +72,13 @@ const Itinerary = (props) =>{
               });
         }
     }
-    const readInput = (e) => {
-        if(e.target.value) setNewComments(e.target.value)   
-           
-    }
+    
     const sendValues = async (itineraryId) => {
         if(props.user){
             setLoading(false)
             if(newComments && newComments.trim() !== ""){
                 const itinerary = await props.putComments(props.user,itineraryId, newComments)
+                console.log(itinerary)
                 setAllComments(itinerary.comments)
                 setNewComments('')
                 setLoading(true)
@@ -177,7 +175,7 @@ const Itinerary = (props) =>{
                         }
                     </div>
                 {viewItinerary && <div className='sendContent'>     
-                    <input type="text" value={newComments} className="inputComment" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={readInput} disabled={!props.user && true}/>
+                    <input type="text" value={newComments} className="inputComment" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={(e) => setNewComments(e.target.value)} disabled={!props.user && true}/>
                     <button className="buttonComment" onClick={loading ? () => sendValues(props.itinerary._id) : null}>Send</button>
                     </div>}
                 </div>
