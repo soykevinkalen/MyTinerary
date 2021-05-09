@@ -63,7 +63,7 @@ const Itinerary = (props) =>{
     const like = async () => {
         if(props.user){
             setLoading(false)
-            let response = await props.likes(props.user, props.itinerary)
+            await props.likes(props.user, props.itinerary)
             setLikes(!likes)
             setLoading(true)
         }else{
@@ -72,7 +72,11 @@ const Itinerary = (props) =>{
               });
         }
     }
-    
+    const enter = (e,id) =>{
+        if(e.key === 'Enter'){
+            sendValues(id)  
+        }
+    }
     const sendValues = async (itineraryId) => {
         if(props.user){
             setLoading(false)
@@ -155,7 +159,10 @@ const Itinerary = (props) =>{
                         activities.map(activity => {
                             return(
                             <div key={activity.title} className='activity' style={{backgroundImage:`url('${activity.image}')`}}>
-                                <h6>{activity.title}</h6>
+                                <div>
+                                    <h6>{activity.title}</h6>
+
+                                </div>
                             </div>)
                         })
                     }
@@ -175,7 +182,7 @@ const Itinerary = (props) =>{
                         }
                     </div>
                 {viewItinerary && <div className='sendContent'>     
-                    <input type="text" value={newComments} className="inputComment" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={(e) => setNewComments(e.target.value)} disabled={!props.user && true}/>
+                    <input onKeyDown={(e)=>enter(e, props.itinerary._id)} type="text" value={newComments} className="inputComment" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={(e) => setNewComments(e.target.value)} disabled={!props.user && true}/>
                     <button className="buttonComment" onClick={loading ? () => sendValues(props.itinerary._id) : null}>Send</button>
                     </div>}
                 </div>

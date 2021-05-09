@@ -1,33 +1,49 @@
 import axios from 'axios'
+import {toast } from 'react-toastify'
 
 const authActions = {
     createUser: (user) => {
         return async (dispatch, getState) => {
-            const response = await axios.post('http://localhost:4000/api/user/signup', user)
-            if(!response.data.success){
-                return response.data.errores
+            try{
+
+                const response = await axios.post('http://localhost:4000/api/user/signup', user)
+                if(!response.data.success){
+                    return response.data.errores
+                }
+                dispatch({
+                    type: 'LOG_USER',
+                    payload: response.data.success ? response.data.respuesta : null
+                })
+            }catch(error){
+                console.log(error)
+
             }
-            dispatch({
-                type: 'LOG_USER',
-                payload: response.data.success ? response.data.respuesta : null
-            })
         }
     },
     logInUser: (user) => {
         return async(dispatch, getState) => {
-            const response = await axios.post('http://localhost:4000/api/user/signin', user)
-            if(!response.data.success){
-                return response.data.error
+            try{
+
+                const response = await axios.post('http://localhost:4000/api/user/signin', user)
+                if(!response.data.success){
+                    return response.data.error
+                }
+                dispatch({
+                    type:'LOG_USER',
+                    payload: response.data.success ? response.data.respuesta : null
+                })
+            }catch(error){
+                console.log(error)
             }
-            dispatch({
-                type:'LOG_USER',
-                payload: response.data.success ? response.data.respuesta : null
-            })
         }
     },
     logOutUser: () => {
         return(dispatch, getState) => {
-            dispatch({type: 'LOGOUT_USER'})
+            try{
+                dispatch({type: 'LOGOUT_USER'})
+            }catch(error){
+                console.log(error)
+            }
         }
     },
     logInForced: (user) => {
@@ -46,9 +62,7 @@ const authActions = {
                 }})
             } catch(error) {
                 console.log(error)
-                if (error.response.status === 401) {
-                    alert("Me parece que me estás queriendo cagar con un token falso...")
-                }
+                toast.error('Ops... An error occurred, contact the administrator')  
             }
             
         }

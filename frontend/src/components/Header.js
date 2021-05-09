@@ -28,19 +28,19 @@ const Header = (props) =>{
                     <div className='d-flex usuario' style={{backgroundImage:`url(${picUser})`}}>
                         <div className='dropContent'>
                             {dropOpen && (<div className='navDrop navLink bg-dark d-flex flex-column' id="collasible-nav-dropdown">
-                                {!props.userLogged && (
+                                {!props.userLogged ? (
                                     <> 
                                         <NavLink className='navLink ms-2' to="/signin">Sign In</NavLink>
                                         <NavLink className='navLink ms-2' to="/signup">Sign Up</NavLink>
                                     </>
-                                )}
-                                {props.userLogged && <h6 className='h6' onClick={props.logOutUser}>Log Out</h6>}
+                                ) : <h6 className='h6' onClick={props.logOutUser}>Log Out</h6>}
                             </div>)}
                             <ArrowDropDownIcon className='iconDrop' onClick={() => setDropOpen(!dropOpen)}/>
                         </div>
                     </div>
                     <h6 className='name'>{name + " " + lastName}</h6>
                 </div>
+
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto d-flex justify-content-end px-4v align-items-center">

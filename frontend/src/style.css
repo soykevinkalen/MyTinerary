@@ -35,11 +35,6 @@ body{
     background-color: #343a40c0;
     width: 100%;
 }
-/* 
-.carouselHero h3{
-    text-align: start;
-    padding: 0.5vw 0 0.5vw 0.5vw;
-} */
 
 .containerTexto h1, p.citiesCallToAction{
     font-size: 10vw;
@@ -143,7 +138,6 @@ p.citiesCallToAction{
 }
 
 footer.footer{
-    /* padding-top: 2em; */
     min-height: 35.3vh;
     background-color: #343a40;
     display: flex;
@@ -366,7 +360,6 @@ footer div.containerSocial h2{
 }
 
 .itinarie{
-    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -406,7 +399,6 @@ footer div.containerSocial h2{
     flex-direction: column;
     height: 100vh;
     justify-content: space-between;
-    /* align-items: center; */
 }
 
 .serverError h1{
@@ -427,12 +419,10 @@ footer div.containerSocial h2{
     color: white;
     width: 80%;
     background-color: #212529;
-    /* height: 50vh; */
     margin-top: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* padding: 1rem; */
     border-radius: 4px;
 
 }
@@ -462,14 +452,11 @@ footer div.containerSocial h2{
     width: 90%;
     align-items: center;
     margin-top: 10px;
-    position: relative;
-    /* overflow: auto; */
-    
-
+    position: relative; 
 }
 .divComments{
     overflow-y: auto;
-    height: 320px;
+    height: 100px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -488,9 +475,6 @@ footer div.containerSocial h2{
     display: flex;
 }
 .commentOne > div > h5{
-    /* width: 80%; */
-    /* text-align: center; */
-    /* padding-left: 10px; */
     font-size: 1.2rem
 }
 
@@ -498,7 +482,6 @@ footer div.containerSocial h2{
     margin-right: 5px;
 }
 .inputComment,.buttonComment{
-    /* margin-bottom: 4vh; */
     border: none;
     border-radius: 3px;
     padding: 1vh;
@@ -524,7 +507,6 @@ h5.comentario{
     padding: 5px;
     margin: 5px 5px;
     box-shadow: 4px 4px 12px rgb(0 0 0 / 43%);
-    /* width: 90%; */
 }
 
 .sendContent{
@@ -544,11 +526,17 @@ h5.comentario{
     border-radius: 4px;
     margin: 2vh 1vh;
 }
-.activity h6{
+.activity > div > h6{
     padding: 2px;
-    background-color: #212529c0;
     text-align: center;
+    margin-top: 2px;
+}
+.activity > div{
     height: 35%;
+    background-color: #212529c0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .itineraryContent > h5{
     text-align: center;
@@ -640,14 +628,12 @@ div.form,div.form form{
 .divFormContent{
     display: flex;
     justify-content: center;
-    /* background-image: url('../public/assets/beach.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 div.form{
     align-items: center;
-    /* background-image: linear-gradient(45deg, #649292 0%, #343a40 100%); */
     width: 30%;
     box-shadow: 0px 0px 28px #343a40cb;
     border-radius: 12px;
@@ -694,7 +680,6 @@ form div.input h6, .account{
 }
 div.form form button{
     border: 3px solid #343a40;
-    /* width: 50%; */
 }
 
 .dropdown-menu{
@@ -750,10 +735,6 @@ h6.h6{
     justify-content: flex-end;
 }
 
-/* input:invalid {
-    border: 2px dashed red;
-} */
-
 h6.name{
     margin-bottom: 0;
     color: white;
@@ -775,15 +756,8 @@ h6.name{
     
 }
 
-/* .deleteEditContent{
-    position: absolute;
-    /* right: 10%; */
-    /* right: 0px; */
-    /* left: 27%; */
-/* }  */
 .editIcon{
     margin-left: 5px;
-    /* margin: 0px 5px 0px 50px; */
 }
 .curser{
     cursor: pointer!important;
@@ -802,7 +776,6 @@ h6.name{
 .commentsEdit{
     display:flex;
     margin: 5px 0px;
-    /* width: 80vh; */
 }
 @media (max-width: 991px){
     .logoForm{
@@ -811,9 +784,7 @@ h6.name{
     div.form{
         width: 40%;
     }
-    /* div.form form, div.form form.form{
-        width: 100%;
-    } */
+
     .navbar-collapse {
         position: absolute!important;
         top: 100%!important;
@@ -1085,7 +1056,6 @@ h6.name{
         transition: all 2s;
     }
     .dropdown{
-        /* margin-left: 80px; */
         margin-left: auto;
     }
     .logoHeader{
@@ -1234,7 +1204,6 @@ h6.name{
         padding:0.5em 0px!important;
     }
     button.navbar-toggler{
-        /* align-self: center; */
         margin: auto;
     }
     div.input h6{
@@ -1264,9 +1233,6 @@ h6.name{
     .usuario{
         margin-right: 15px;
     }
-    /* .dropdown{
-        margin-left: 60px;
-    } */
 }
 
 .navbar-collapse{

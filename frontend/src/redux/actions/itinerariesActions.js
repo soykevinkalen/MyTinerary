@@ -1,5 +1,5 @@
 import axios from 'axios'
-// import { ToastContainer, toast } from 'react-toastify'
+import {toast } from 'react-toastify'
 
 const itinerariesActions = {
     getItinerariesByCity: (id) => {
@@ -33,6 +33,7 @@ const itinerariesActions = {
                 return response.data.respuesta
             }catch(error){
                 console.log(error)
+                toast.error('Ops... An error occurred, contact the administrator')
             }
         }
     },
@@ -44,11 +45,11 @@ const itinerariesActions = {
                         'Authorization': 'Bearer '+user.token
                     }
                 })
-                
                 dispatch({type: 'LIKES', payload: response.data.respuesta})
-                return response.data
             }catch(error){
                 console.log(error)
+                toast.error('Ops... An error occurred, contact the administrator')
+
           }
       }
     },
@@ -64,6 +65,8 @@ const itinerariesActions = {
                 return response.data.respuesta
             }catch(error){
                 console.log(error)
+                toast.error('Ops... An error occurred, contact the administrator')
+
             }
         }
     },
@@ -79,6 +82,8 @@ const itinerariesActions = {
                 return response.data.respuesta
             }catch(error){
                 console.log(error)
+                toast.error('Ops... An error occurred, contact the administrator')
+
             }
         }
     }

@@ -11,11 +11,13 @@ const Itineraries = (props) => {
     
     const [chosenCity, setChosenCity] = useState([])
     useEffect(() =>{
+        props.getItinerariesByCity(props.match.params.id)
+        const city = props.cities.find(city => city._id === props.match.params.id)
+        setChosenCity(city)
+    },[props])
+    useEffect(() =>{
         window.scrollTo(0,0)
-            props.getItinerariesByCity(props.match.params.id)
-            const city = props.cities.find(city => city._id === props.match.params.id)
-            setChosenCity(city)
-    },[props.match])
+    },[])
 
     if(!chosenCity){
         props.history.push('/cities')
