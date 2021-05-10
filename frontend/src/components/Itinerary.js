@@ -82,7 +82,6 @@ const Itinerary = (props) =>{
             setLoading(false)
             if(newComments.trim() !== ""){
                 const itinerary = await props.putComments(props.user,itineraryId, newComments)
-                console.log(itinerary)
                 setAllComments(itinerary.comments)
                 setNewComments('')
                 setLoading(true)
