@@ -16,8 +16,13 @@ const Comment = (props) => {
         setClose(!close)
         setUpdatedComment(comment.comment)
     }
+    const enter = (e) =>{
+        if(e.key === 'Enter'){
+            send()  
+        }
+    }
     const send = () => {
-        if(updatedComment && updatedComment.trim() !== ""){
+        if(updatedComment.trim() !== ""){
             props.comment.comment = updatedComment
             props.updateComment(props.comment)
             setView(!view)
@@ -68,7 +73,7 @@ const Comment = (props) => {
             <h5 className='comentario'>{props.comment.comment}</h5>}
             {view && (
                 <div className='commentsEdit'>
-                    <input type="text" className="inputComment" placeholder="Write your comment here"  onChange={(e)=>setUpdatedComment(e.target.value)} value={updatedComment}/>
+                    <input onKeyDown={enter} type="text" className="inputComment" placeholder="Write your comment here"  onChange={(e)=>setUpdatedComment(e.target.value)} value={updatedComment}/>
                     <button className="buttonComment" onClick={send}>Send</button>
                 </div>
             )}
