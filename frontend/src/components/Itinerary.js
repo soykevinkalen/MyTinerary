@@ -80,7 +80,7 @@ const Itinerary = (props) =>{
     const sendValues = async (itineraryId) => {
         if(props.user){
             setLoading(false)
-            if(newComments && newComments.trim() !== ""){
+            if(newComments.trim() !== ""){
                 const itinerary = await props.putComments(props.user,itineraryId, newComments)
                 console.log(itinerary)
                 setAllComments(itinerary.comments)
