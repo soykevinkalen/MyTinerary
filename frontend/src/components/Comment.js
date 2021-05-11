@@ -60,10 +60,10 @@ const Comment = (props) => {
             {
                 (props.user && props.comment.userId.email === props.user.email) ? 
                 <>
-                {close ? <CloseIcon className='closeIcon' onClick={()=>{setClose(!close);setView(!view)}}/> : 
+                {close ? <CloseIcon className='icon' onClick={()=>{setClose(!close);setView(!view)}}/> : 
                 <div> 
-                <EditIcon className='editIcon' onClick={()=>edit(props.comment)}/>
-                <DeleteForeverIcon onClick={()=>erase(props.comment)}/>
+                <EditIcon className='icon' onClick={()=>edit(props.comment)}/>
+                <DeleteForeverIcon className='icon'onClick={()=>erase(props.comment)}/>
                 </div>}
                 </> : null
             }

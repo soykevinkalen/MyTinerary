@@ -462,6 +462,11 @@ footer div.containerSocial h2{
     flex-direction: column;
 
 }
+
+.icon{
+    cursor: pointer;
+}
+
 .divComments .commentContent{
     align-self: flex-start;
     max-width: 90%;
