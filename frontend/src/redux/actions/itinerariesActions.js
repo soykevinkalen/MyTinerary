@@ -4,7 +4,7 @@ import {toast } from 'react-toastify'
 const itinerariesActions = {
     getItinerariesByCity: (id) => {
         return (dispatch, getState) =>{
-            axios.get('http://localhost:4000/api/itinerariesByCity/'+id)
+            axios.get('https://kbaezmytinerary.herokuapp.com/api/itinerariesByCity/'+id)
             .then(response => {
                 dispatch({type: 'GET_ITINERARIES_BY_CITY',
             payload: response.data.respuesta})})
@@ -13,7 +13,7 @@ const itinerariesActions = {
     },
     putItinerary: (id, itinerary) => {
         return async (dispatch, getState) => {
-            const response = await axios.put('http://localhost:4000/api/itineraries/'+id, itinerary)
+            const response = await axios.put('https://kbaezmytinerary.herokuapp.com/api/itineraries/'+id, itinerary)
             if(!response.success){
                 return response.data.respuesta
             }
@@ -24,7 +24,7 @@ const itinerariesActions = {
     putComments: (user,id, comment) => {
         return async (dispatch, getState) => {
             try{
-                const response = await axios.put('http://localhost:4000/api/itineraries/comments/'+id,{comment}, {
+                const response = await axios.put('https://kbaezmytinerary.herokuapp.com/api/itineraries/comments/'+id,{comment}, {
                     headers: {
                         'Authorization' : 'Bearer '+user.token
                     }
@@ -40,7 +40,7 @@ const itinerariesActions = {
     likes: (user, itinerary) => {
         return async (dispatch, getState) => {
             try{
-                const response = await axios.put('http://localhost:4000/api/itineraries/like/'+itinerary._id,{itinerary},{
+                const response = await axios.put('https://kbaezmytinerary.herokuapp.com/api/itineraries/like/'+itinerary._id,{itinerary},{
                     headers: {
                         'Authorization': 'Bearer '+user.token
                     }
@@ -56,7 +56,7 @@ const itinerariesActions = {
     deleteComment: (user, comment,itinerary) => {
         return async (dispatch, getState) => {
             try{
-                const response = await axios.put('http://localhost:4000/api/comments/',{comment,itinerary}, {
+                const response = await axios.put('https://kbaezmytinerary.herokuapp.com/api/comments/',{comment,itinerary}, {
                     headers: {
                         'Authorization' : 'Bearer '+user.token
                     }
@@ -73,7 +73,7 @@ const itinerariesActions = {
     updateComment: (user, comment,itinerary) => {
         return async (dispatch, getState) => {
             try{
-                const response = await axios.put('http://localhost:4000/api/commentsUpdate/',{comment,itinerary}, {
+                const response = await axios.put('https://kbaezmytinerary.herokuapp.com/api/commentsUpdate/',{comment,itinerary}, {
                     headers: {
                         'Authorization' : 'Bearer '+user.token
                     }
