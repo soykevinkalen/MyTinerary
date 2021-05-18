@@ -18,7 +18,7 @@ const Itinerary = (props) =>{
     const [itineraries, setItineraries] = useState([])
     const [activities, setActivities] = useState([])
     const [likes, setLikes] = useState(false)
-    const [newComments, setNewComments] = useState('')
+    const [newComment, setNewComment] = useState('')
     const [allComments, setAllComments] = useState(props.itinerary.comments)
     const [viewItinerary, setViewItinerary] = useState(true)
     const [loading, setLoading] = useState(true)
@@ -80,10 +80,10 @@ const Itinerary = (props) =>{
     const sendValues = async (itineraryId) => {
         if(props.user){
             setLoading(false)
-            if(newComments.trim() !== ""){
-                const itinerary = await props.putComments(props.user,itineraryId, newComments)
+            if(newComment.trim() !== ""){
+                const itinerary = await props.putComments(props.user,itineraryId, newComment)
                 setAllComments(itinerary.comments)
-                setNewComments('')
+                setNewComment('')
                 setLoading(true)
             }
         }else{
@@ -181,7 +181,7 @@ const Itinerary = (props) =>{
                         }
                     </div>
                 {viewItinerary && <div className='sendContent'>     
-                    <input onKeyDown={(e)=>enter(e, props.itinerary._id)} type="text" value={newComments} className="inputComment" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={(e) => setNewComments(e.target.value)} disabled={!props.user && true}/>
+                    <input onKeyDown={(e)=>enter(e, props.itinerary._id)} type="text" value={newComment} className="inputComment" placeholder={props.user ? "Write your comment here": "You have to log in"} onChange={(e) => setNewComment(e.target.value)} disabled={!props.user && true}/>
                     <button className="buttonComment" onClick={loading ? () => sendValues(props.itinerary._id) : null}>Send</button>
                     </div>}
                 </div>
