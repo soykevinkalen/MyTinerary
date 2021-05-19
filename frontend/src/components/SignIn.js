@@ -64,7 +64,7 @@ const SignIn = (props) => {
                         </div>
                         <button className="boton" onClick={sendValueUser}>Sign in!</button>
                         <GoogleLogin
-                            clientId="974935643152-8625so4e5v3mclin608djtcmp27s608o.apps.googleusercontent.com"
+                            clientId="974935643152-dc0ocnkdohrlv5gug0tjbf6r9t32smcb.apps.googleusercontent.com"
                             render={renderProps => (
                                 <GoogleButton className='btn-google' onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign in with Google</GoogleButton>
                             )}
