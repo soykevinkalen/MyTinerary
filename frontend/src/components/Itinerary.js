@@ -24,7 +24,7 @@ const Itinerary = (props) =>{
     const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
-        axios.get('http://localhost:4000/api/itineraries')
+        axios.get('https://kbaezmytinerary.herokuapp.com/api/itineraries')
         .then(response => {
             setItineraries(response.data.respuesta)})
             .catch( error => console.log(error))
