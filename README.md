@@ -1,7 +1,7 @@
 # MYTINERARY ✈
 
 # Trabajo realizado
-Una app desarrollada en cinco semanas, realizando dailies diarias para poder resolver los diferentes inconvenientes ya que fue un challenge para el bootcamp cursado en MindHub.
+Una pagina web desarrollada en cinco semanas, realizando dailies diarias para poder resolver los diferentes inconvenientes ya que fue un challenge para el bootcamp cursado en MindHub.
 # Comenzando  🚀
 ```
 # Instalar dependencias para el cliente
