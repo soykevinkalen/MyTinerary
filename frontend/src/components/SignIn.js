@@ -40,6 +40,7 @@ const SignIn = (props) => {
             setTimeout(function(){ props.history.push('/') }, 5000);       
         }
     }
+    
     const responseGoogle = (response) => {
         if(response.profileObj.email){
             sendValueUser(null, {email: response.profileObj.email, password: 'a'+response.profileObj.googleId})
